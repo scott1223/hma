@@ -1,0 +1,76 @@
+@font-face {
+	font-family: 'TT Firs Text';
+	font-style: normal;
+	font-weight: 700;
+	src: url('./fonts/tt-firs-bold.otf') format('otf');
+	src: url('./fonts/tt-firs-bold.woff') format('woff');
+}
+@font-face {
+	font-family: 'TT Firs Text';
+	font-style: normal;
+	font-weight: 600;
+	src: url('./fonts/tt-firs-demibold.otf') format('otf');
+	src: url('./fonts/tt-firs-demibold.woff') format('woff');
+}
+@font-face {
+	font-family: 'TT Firs Text';
+	font-style: normal;
+	font-weight: 500;
+	src: url('./fonts/tt-firs-medium.otf') format('otf');
+	src: url('./fonts/tt-firs-medium.woff') format('woff');
+}
+@font-face {
+	font-family: 'TT Firs Text';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./fonts/tt-firs-normal.otf') format('otf');
+	src: url('./fonts/tt-firs-normal.woff') format('woff');
+}
+@font-face {
+	font-family: 'TT Firs Text';
+	font-style: normal;
+	font-weight: 300;
+	src: url('./fonts/tt-firs-regular.otf') format('otf');
+	src: url('./fonts/tt-firs-regular.woff') format('woff');
+}
+
+.container {
+	max-width: 1920px;
+	width: 100%;
+	padding-inline: 20px;
+	margin-inline: auto;
+}
+
+* {
+	color: var(--text-color);
+	position: relative;
+	font-family: 'TT Firs Text';
+	font-weight: 300;
+}
+html {
+	scrollbar-gutter: stable;
+	height: auto;
+}
+
+body {
+	font-family: 'TT Firs Text';
+	scrollbar-gutter: stable;
+	font-weight: 300;
+	line-height: 120%;
+	color: var(--text-color);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--white-color);
+	position: relative;
+
+	&.fixed {
+		overflow: hidden;
+	}
+
+	@include fluid-text(16, 16);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 500;
+}
