@@ -97,7 +97,7 @@
 			width: 80%;
 			font-size: clamp(50px, calc(75 / 1600 * 100vw), 75px);
 			color: #333333;
-		}
+		} 
 
 		&-grid {
             width: 100%;
