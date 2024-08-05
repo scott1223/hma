@@ -295,8 +295,7 @@
 			}
 
 			:global(.footer-grid-row-element) {
-				aspect-ratio: 1;
-				height: min-content;
+				height: 100%;
 			}
 		}
 	}
