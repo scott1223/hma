@@ -280,6 +280,7 @@
 			display: grid;
 			grid-template-columns: 1fr 1px 1fr;
 			gap: 6px;
+			height: min-content;
 
 			.border-vertical {
 				height: 100%;
