@@ -20,7 +20,7 @@
 			<h4 class="footer-text">
 				Вам как Себе - наша уникальная философия и подход в создании проектов.
 			</h4>
-			<div class="footer-grid">
+			<div class="footer-grid hidden-tablet">
 				<div class="borders">
 					<div></div>
 					<div></div>
@@ -77,6 +77,16 @@
 					<div></div>
 				</div>
 			</div>
+			<div class="footer-tablet visible-tablet">
+				{@render footerLink({ url: '/#', text: 'instagram' })}
+				<div class="border-vertical"></div>
+				{@render footerLink({ url: '/#', text: 'instagram', class: 'invert' })}
+				<div class="border-horizontal"></div>
+				{@render footerLink({ url: '/#', text: 'instagram' })}
+				<div class="border-vertical"></div>
+
+				{@render footerLink({ url: '/#', text: 'instagram' })}
+			</div>
 		</div>
 	</div>
 </footer>
@@ -89,8 +99,12 @@
 		display: flex;
 		flex-direction: column;
 		gap: 100px;
-        align-items: center;
-        justify-content: end;
+		align-items: center;
+		justify-content: end;
+
+		@media (max-width: 1024px) {
+			min-height: auto;
+		}
 
 		&-text {
 			text-align: center;
@@ -101,10 +115,10 @@
 			@media (max-width: 767px) {
 				font-size: clamp(30px, 3.75vw, 60px);
 			}
-		} 
+		}
 
 		&-grid {
-            width: 100%;
+			width: 100%;
 			display: grid;
 			grid-template-rows: 1px 1fr 1px 1fr 1px;
 			grid-template-columns: 1fr;
@@ -120,6 +134,15 @@
 					width: 100%;
 					height: 1px;
 					background-color: rgba($color: #000000, $alpha: 0.1);
+
+					@media (max-width: 1024px) {
+						& {
+							display: none;
+						}
+						&:nth-child(1) {
+							display: flex;
+						}
+					}
 
 					&:nth-child(even) {
 						background-color: transparent;
@@ -180,7 +203,7 @@
 					&.invert {
 						background-color: var(--accent-color);
 						svg {
-                            transform: rotate(-45deg);
+							transform: rotate(-45deg);
 							line {
 								stroke: #fff;
 							}
@@ -245,6 +268,29 @@
 					width: 1px;
 					background-color: rgba($color: #000000, $alpha: 0.1);
 				}
+			}
+		}
+
+		&-tablet {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr 1px 1fr;
+			gap: 6px;
+
+			.border-vertical {
+				height: 100%;
+				width: 1px;
+				background-color: rgba($color: #000000, $alpha: 0.1);
+			}
+			.border-horizontal {
+				height: 1px;
+				width: 100%;
+				background-color: rgba($color: #000000, $alpha: 0.1);
+				grid-column: 1 / span 3;
+			}
+
+			:global(.footer-grid-row-element) {
+				aspect-ratio: 1;
 			}
 		}
 	}

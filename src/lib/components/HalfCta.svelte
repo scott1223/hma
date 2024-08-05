@@ -49,8 +49,8 @@
 		return tl;
 	};
 
-    const scaleBack = () => {
-        let timeline = gsap.timeline({
+	const scaleBack = () => {
+		let timeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: '.half-cta-section',
 				start: 'bottom 400px',
@@ -59,17 +59,21 @@
 			}
 		});
 
-        timeline.to('.half-cta-section', {
-            scale: 0.95,
-            yPercent: -10,
-            duration: 0.5
-        })
-        
-        return timeline
-    }
+		timeline.to('.half-cta-section', {
+			scale: 0.95,
+			yPercent: -10,
+			duration: 0.5
+		});
+
+		return timeline;
+	};
 
 	onMount(() => {
-		master.add(scrollAnimation()).add(scaleBack());
+		if (window.innerWidth > 1024) {
+			master.add(scrollAnimation()).add(scaleBack());
+		} else {
+			scaleBack();
+		}
 	});
 </script>
 
@@ -105,8 +109,19 @@
 		gap: 6px;
 		height: calc(100dvh - 20px);
 
-		&-section {
-			height: calc(100dvh - 20px);
+		@media (max-width: 1024px) {
+			@media (orientation: portrait) {
+				height: 50vh;
+			}
+
+			@media (orientation: landscape) {
+				height: 100vh;
+			}
+		}
+		@media (max-width: 767px) {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
 		}
 
 		&-element {
@@ -116,6 +131,11 @@
 			top: 0;
 			border-radius: var(--border-radius);
 			overflow: hidden;
+
+			@media (max-width: 767px) {
+				position: relative;
+				aspect-ratio: 1;
+			}
 
 			&-wrap {
 				height: 100%;
@@ -140,6 +160,10 @@
 					font-size: clamp(50px, calc(60 / 1600 * 100vw), 60px);
 					font-weight: 500;
 
+					@media (max-width: 767px) {
+						font-size: clamp(30px, calc(60 / 1600 * 100vw), 60px);
+					}
+
 					&::before {
 						content: '';
 						width: 0%;
@@ -148,8 +172,8 @@
 						top: 101%;
 						background-color: #fff;
 						transition: all 0.5s ease;
-                        border: var(--border-radius);
-                        overflow: hidden;
+						border: var(--border-radius);
+						overflow: hidden;
 					}
 
 					@media (hover: hover) {
@@ -182,12 +206,23 @@
 				left: 0;
 				z-index: 2;
 
+				@media (max-width: 1024px) {
+					width: calc(50% - 3px);
+				}
+				@media (max-width: 767px) {
+					width: 100%;
+				}
+
 				.half-cta-element-content {
 					background-image: url('/about-cta.png');
 				}
 
 				.half-cta-element-cover {
 					background-color: var(--accent-color);
+
+					@media (max-width: 1024px) {
+						display: none;
+					}
 				}
 
 				p {
@@ -202,11 +237,19 @@
 					font-size: clamp(50px, calc(60 / 1600 * 100vw), 60px);
 					text-align: center;
 					font-weight: 500;
+
+					@media (max-width: 1024px) {
+						display: none;
+					}
 				}
 			}
 			&[data-cover='2'] {
 				width: calc(50% - 3px);
 				right: 0;
+
+				@media (max-width: 767px) {
+					width: 100%;
+				}
 
 				.half-cta-element-content {
 					background-position: top top;
@@ -215,6 +258,10 @@
 
 				.half-cta-element-cover {
 					background-color: #f7f7f7;
+
+					@media (max-width: 1024px) {
+						display: none;
+					}
 				}
 
 				p {
@@ -229,6 +276,10 @@
 					font-size: clamp(50px, calc(60 / 1600 * 100vw), 60px);
 					text-align: center;
 					font-weight: 500;
+
+					@media (max-width: 1024px) {
+						display: none;
+					}
 				}
 			}
 		}

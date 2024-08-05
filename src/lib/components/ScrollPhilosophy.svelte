@@ -30,7 +30,9 @@
 	onMount(() => {
 		const scrollDivs = document.querySelectorAll('.scroll-philosophy div');
 
-		scrollAnimation(scrollDivs);
+		if(window.innerWidth > 1024) {
+			scrollAnimation(scrollDivs);
+		}
 	});
 </script>
 
@@ -78,10 +80,8 @@
 				background-size: 130%;
 			}
 			@media (max-width: 1024px) {
-				background-size: 230%;
-			}
-			@media (max-width: 767px) {
-				background-size: 400%;
+				background-attachment: scroll;
+				background-size: cover;
 			}
 		}
 		h3 {

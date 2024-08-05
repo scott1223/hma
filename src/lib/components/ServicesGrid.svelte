@@ -134,6 +134,25 @@
 				grid-template-columns: 1fr 1px 1fr 1px 1fr;
 				gap: 6px;
 
+				@media (max-width: 767px) {
+					display: flex;
+					width: 100%;
+					overflow-x: scroll;
+					-ms-overflow-style: none;
+					scrollbar-width: none;
+					&::-webkit-scrollbar {
+						display: none;
+					}
+
+					.border-vertical {
+						display: none;
+					}
+
+					img {
+						width: 60%;
+					}
+				}
+
 				img {
 					aspect-ratio: 1;
 				}
