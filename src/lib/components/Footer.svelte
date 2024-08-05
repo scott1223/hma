@@ -279,6 +279,7 @@
 			width: 100%;
 			display: grid;
 			grid-template-columns: 1fr 1px 1fr;
+			grid-template-rows: 1fr 1px 1fr;
 			gap: 6px;
 			height: min-content;
 
@@ -295,7 +296,7 @@
 			}
 
 			:global(.footer-grid-row-element) {
-				height: 100%;
+				aspect-ratio: 1;
 			}
 		}
 	}
