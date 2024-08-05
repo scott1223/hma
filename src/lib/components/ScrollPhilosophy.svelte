@@ -1,6 +1,6 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
-    import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onMount } from 'svelte';
 
 	gsap.registerPlugin(ScrollTrigger);
@@ -12,23 +12,25 @@
 				pin: true,
 				start: 'top 10px',
 				end: `+=${scrollDivs[0].scrollHeight * 3}px`,
-				scrub: 1,
+				scrub: 1
 			}
 		});
 
 		tl.to(scrollDivs[3], {
 			height: '0%'
-		}).to(scrollDivs[2], {
-			height: '0%'
-		}).to(scrollDivs[1], {
-			height: '0%'
-		});
+		})
+			.to(scrollDivs[2], {
+				height: '0%'
+			})
+			.to(scrollDivs[1], {
+				height: '0%'
+			});
 	};
 
 	onMount(() => {
 		const scrollDivs = document.querySelectorAll('.scroll-philosophy div');
 
-        scrollAnimation(scrollDivs)
+		scrollAnimation(scrollDivs);
 	});
 </script>
 
@@ -59,18 +61,28 @@
 		}
 
 		div {
-            top: 0;
-            left: 0;
+			top: 0;
+			left: 0;
 			height: 100%;
 			width: 100%;
 			position: absolute;
 			background-attachment: fixed;
 			background-size: cover;
-			background-position: top top;
+			background-position: center top;
 			background-repeat: no-repeat;
-            filter: brightness(60%);
+			filter: brightness(60%);
 			border-radius: var(--border-radius);
 			overflow: hidden;
+
+			@media (max-width: 1400px) {
+				background-size: 130%;
+			}
+			@media (max-width: 1024px) {
+				background-size: 230%;
+			}
+			@media (max-width: 767px) {
+				background-size: 400%;
+			}
 		}
 		h3 {
 			position: absolute;
@@ -81,8 +93,12 @@
 			width: 80%;
 			text-wrap: balance;
 			color: #fff;
-            line-height: 100%;
+			line-height: 100%;
 			font-size: clamp(50px, calc(75 / 1600 * 100vw), 75px);
+
+			@media (max-width: 767px) {
+				font-size: clamp(30px, calc(60 / 1600 * 100vw), 60px);
+			}
 		}
 	}
 </style>

@@ -44,10 +44,4 @@
 
 .--margin-bottom{
     margin-bottom: 110px;
-    @include tablet{
-        margin-bottom: 80px;
-    }
-    @include mobile{
-        margin-bottom: 60px;
-    }
 }

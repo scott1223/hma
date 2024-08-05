@@ -97,6 +97,10 @@
 			width: 80%;
 			font-size: clamp(50px, calc(75 / 1600 * 100vw), 75px);
 			color: #333333;
+
+			@media (max-width: 767px) {
+				font-size: clamp(30px, 3.75vw, 60px);
+			}
 		} 
 
 		&-grid {

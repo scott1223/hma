@@ -3,6 +3,7 @@
 	import '../app.scss';
 
 	import Lenis from 'lenis';
+	import Footer from '$lib/components/Footer.svelte';
 
 	onMount(() => {
 		const lenis = new Lenis({
@@ -17,4 +18,7 @@
 	});
 </script>
 
-<slot />
+<main>
+	<slot />
+	<Footer />
+</main>

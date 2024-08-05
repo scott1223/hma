@@ -81,6 +81,10 @@
 			grid-template-columns: 2fr 1px 3fr;
 			gap: 6px;
 
+			@media (max-width: 1024px) {
+				grid-template-columns: 1fr;
+			}
+
 			div {
 				height: 1px;
 				width: 100%;
@@ -88,6 +92,14 @@
 
 				&:nth-child(2) {
 					background-color: transparent;
+					@media (max-width: 1024px) {
+						display: none;
+					}
+				}
+				&:nth-child(3) {
+					@media (max-width: 1024px) {
+						display: none;
+					}
 				}
 			}
 		}
@@ -96,6 +108,11 @@
 			display: grid;
 			grid-template-columns: 2fr 1px 3fr;
 			gap: 6px;
+
+			@media (max-width: 1024px) {
+				display: flex;
+				flex-direction: column;
+			}
 
 			&-desc {
 				display: flex;
@@ -117,7 +134,7 @@
 				grid-template-columns: 1fr 1px 1fr 1px 1fr;
 				gap: 6px;
 
-				img{
+				img {
 					aspect-ratio: 1;
 				}
 			}
@@ -127,5 +144,10 @@
 		width: 1px;
 		height: 100%;
 		background-color: rgba($color: #000000, $alpha: 0.1);
+
+		@media (max-width: 1024px) {
+			width: 0px;
+			height: 100%;
+		}
 	}
 </style>
