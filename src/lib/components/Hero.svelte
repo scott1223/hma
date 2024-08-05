@@ -332,7 +332,7 @@
 
 		&-wrap {
 			margin-top: 10px;
-			min-height: calc(100dvh - 20px);
+			min-height: calc(100vh - 20px);
 			@media (max-width: 1400px) {
 				
 				min-height: 700px;
@@ -340,21 +340,21 @@
 
 			@media (max-width: 1024px) {
 				@media (orientation: portrait) {
-					min-height: calc(70dvh - 20px);
+					min-height: calc(70vh - 20px);
 				}
 
 				@media (orientation: landscape) {
-					min-height: calc(100dvh - 20px);
+					min-height: calc(100vh - 20px);
 				}
 			}
 
 			@media (max-width: 767px) {
 				@media (orientation: portrait) {
-					min-height: calc(100dvh - 20px);
+					min-height: calc(100vh - 20px);
 				}
 
 				@media (orientation: landscape) {
-					min-height: calc(100dvh - 20px);
+					min-height: calc(100vh - 20px);
 				}
 			}
 		}
@@ -466,7 +466,7 @@
 				grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr 1px 1fr;
 				grid-template-rows: 1fr 1px 1fr 1px 1fr;
 				gap: 6px;
-				height: calc(100dvh - 20px);
+				height: calc(100vh - 20px);
 				max-height: 1080px;
 
 				@media (max-width: 1400px) {

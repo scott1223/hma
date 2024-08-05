@@ -51,13 +51,13 @@
 <style lang="scss">
 	.scroll-philosophy {
 		max-height: 1920px;
-		height: calc(100dvh - 20px);
+		height: calc(100vh - 20px);
 		display: flex;
 		align-items: end;
 
 		&-section {
 			max-height: 1920px;
-			height: calc(100dvh - 20px);
+			height: calc(100vh - 20px);
 			border-radius: var(--border-radius);
 			overflow: hidden;
 		}

@@ -112,6 +112,14 @@
 			@media (max-width: 1024px) {
 				display: flex;
 				flex-direction: column;
+				.services-grid-element-desc {
+					padding-top: 15px;
+				}
+				&:nth-child(2) {
+					.services-grid-element-desc {
+						padding-top: 0px;
+					}
+				}
 			}
 
 			&-desc {

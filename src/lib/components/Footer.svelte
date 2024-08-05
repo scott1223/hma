@@ -93,7 +93,7 @@
 
 <style lang="scss">
 	.footer {
-		min-height: calc(100dvh - 20px);
+		min-height: calc(100vh - 20px);
 		margin-top: auto;
 		margin-bottom: 10px;
 		display: flex;
@@ -109,6 +109,10 @@
 		&-text {
 			text-align: center;
 			width: 80%;
+
+			line-height: 100%;
+
+			text-wrap: balance;
 			font-size: clamp(50px, calc(75 / 1600 * 100vw), 75px);
 			color: #333333;
 
@@ -291,6 +295,7 @@
 
 			:global(.footer-grid-row-element) {
 				aspect-ratio: 1;
+				height: fit-content;
 			}
 		}
 	}
