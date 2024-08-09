@@ -115,7 +115,10 @@
 				{
 					autoAlpha: 1,
 					duration: 0.6,
-					stagger: 0.3
+					stagger: 0.3,
+					onComplete: () => {
+						document.querySelector('#header').classList.remove('invisible')
+					}
 				},
 				'>'
 			);

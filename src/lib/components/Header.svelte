@@ -72,7 +72,7 @@
 				width: '150px',
 				height: 'calc(28px + (2*10px))',
 				stagger: 0.1
-			})
+			});
 	}
 
 	onMount(() => {
@@ -85,11 +85,11 @@
 <header
 	id="header"
 	bind:this={header}
-    class="invisible"
+	class="invisible"
 	onclick={() => {
 		toggleBurger();
 	}}
-    role="button"
+	role="button"
 >
 	<div class="container">
 		<div class="header-wrap">
@@ -143,7 +143,7 @@
 			li a {
 				display: block;
 				overflow: hidden;
-                width: fit-content;
+				width: fit-content;
 				span {
 					display: block;
 					color: #fff;
@@ -261,12 +261,16 @@
 		height: 48px;
 		z-index: 10;
 		max-width: 500px;
-        transition: all 0.5s ease;
+		transition: all 0.5s ease;
 
-        &:global(.invisible){
-            opacity: 0;
-            visibility: hidden;
-        }
+		@media (max-width: 767px) {
+			max-width: calc(100% - 60px);
+		}
+
+		&:global(.invisible) {
+			opacity: 0;
+			visibility: hidden;
+		}
 
 		&:global(.active) {
 			.burger-menu {

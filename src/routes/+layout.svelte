@@ -17,7 +17,7 @@
 		gsap.set(cover, { yPercent: 0, scale: 0.95 });
 	}
 	function outroGSAP(node, { duration = 1000, ease = 'power2.inOut', delay }) {
-		const scrollValue = lenis.scroll
+		const scrollValue = lenis.scroll;
 		const tl = gsap.timeline({
 			defaults: {
 				ease: ease,
@@ -35,13 +35,15 @@
 				scale: 1,
 				y: 0,
 				duration: duration / 4,
-				onComplete: () => {lenis.scrollTo(scrollValue, { immediate: true });}
+				onComplete: () => {
+					lenis.scrollTo(scrollValue, { immediate: true });
+				}
 			},
 			{
 				scale: 0.95,
 				y: 100,
 				duration: duration / 4
-			},
+			}
 		).to(cover, {
 			yPercent: -100,
 			scale: 1
@@ -102,6 +104,8 @@
 		<p>
 			{#if data.url === '/about'}
 				О нас
+			{:else if data.url === '/cases'}
+				Кейсы
 			{:else if data.url === '/'}
 				Hey Marketing Agency
 			{/if}
@@ -135,9 +139,6 @@
 			<Footer />
 		</div>
 	{/key}
-
-	<a href="/about">about</a>
-	<a href="/">home</a>
 </main>
 
 <style lang="scss">
@@ -149,7 +150,7 @@
 		overflow: hidden;
 		position: fixed;
 		width: 100%;
-		height: 100vh;
+		height: 100dvh;
 		top: 100%;
 		left: 0;
 		pointer-events: none;
