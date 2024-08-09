@@ -1,29 +1,9 @@
 <script>
 	import ButtonText from './uikit/ButtonText.svelte';
 
-	const projects = [
-		{
-			href: '#',
-			image: '/project1.png',
-			name: 'Peeps',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '#',
-			image: '/project2.png',
-			name: 'Happy Pet',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '#',
-			image: '/project3.png',
-			name: 'Syntesis',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		}
-	];
+	let { isCasesPage, projects } = $props()
+
+	console.log(projects)
 </script>
 
 {#snippet projectElement(project)}
@@ -66,7 +46,9 @@
 					<div></div>
 				</div>
 			</div>
-			<ButtonText text="Смотреть все проекты" href="/projects" />
+			{#if !isCasesPage}
+				<ButtonText text="Смотреть все проекты" href="/projects" />
+			{/if}
 		</div>
 	</div>
 </section>

@@ -1,23 +1,23 @@
 <script>
 	import '../app.scss';
-	import Lenis from 'lenis';
-	import Footer from '$lib/components/Footer.svelte';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import Lenis from 'lenis';
+	import Footer from '$lib/components/Footer.svelte';
+	import Header from '../lib/components/Header.svelte';
 
 	const globalNavigation = getIsNavigating();
 	const { data } = $props();
 	let lenis;
-	let main;
 	let cover;
 
 	function setInitials() {
 		gsap.set(cover, { yPercent: 0, scale: 0.95 });
-		console.log('setting initials');
 	}
 	function outroGSAP(node, { duration = 1000, ease = 'power2.inOut', delay }) {
+		const scrollValue = lenis.scroll
 		const tl = gsap.timeline({
 			defaults: {
 				ease: ease,
@@ -34,13 +34,14 @@
 			{
 				scale: 1,
 				y: 0,
-				duration: duration / 4
+				duration: duration / 4,
+				onComplete: () => {lenis.scrollTo(scrollValue, { immediate: true });}
 			},
 			{
 				scale: 0.95,
 				y: 100,
 				duration: duration / 4
-			}
+			},
 		).to(cover, {
 			yPercent: -100,
 			scale: 1
@@ -89,18 +90,14 @@
 		}
 		requestAnimationFrame(raf);
 	}
-
 	onMount(() => {
 		setInitials();
 		lenisScrollStart();
 	});
 </script>
 
-<main bind:this={main}>
-	<nav>
-		<a href="/">home</a>
-		<a href="/about">about</a>
-	</nav>
+<main>
+	<Header />
 	<div class="cover-transition" bind:this={cover}>
 		<p>
 			{#if data.url === '/about'}
@@ -115,27 +112,20 @@
 			class="transition-wrap"
 			out:outroGSAP={{ duration: 2000 }}
 			in:introGSAP={{ duration: 2000, delay: 2000 }}
-			onintrostart={() => {
-				console.log('introstart');
-			}}
+			onintrostart={() => {}}
 			onoutrostart={() => {
-				console.log('outrostart');
 				globalNavigation.isNavigatingTrue();
-
 				setTimeout(() => {
 					globalNavigation.isNavigatingFalse();
 				}, 3600);
 			}}
 			onintroend={() => {
-				console.log('introend');
-
 				setInitials();
 				ScrollTrigger.getAll().forEach((trigger) => {
 					trigger.refresh();
 				});
 			}}
 			onoutroend={() => {
-				console.log('outroend');
 				if (lenis) {
 					lenis.scrollTo(0, { immediate: true });
 				}
@@ -147,6 +137,7 @@
 	{/key}
 
 	<a href="/about">about</a>
+	<a href="/">home</a>
 </main>
 
 <style lang="scss">

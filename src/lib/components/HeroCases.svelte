@@ -1,7 +1,6 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
-	import { onDestroy, onMount } from 'svelte';
-	import Button from './uikit/Button.svelte';
+	import { onMount } from 'svelte';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
 
 	const globalNavigation = getIsNavigating();
@@ -36,9 +35,6 @@
 		});
 		gsap.set('.preloader *[data-hero="1"] .cover', {
 			xPercent: 110
-		});
-		gsap.set('.preloader *[data-hero="0"]', {
-			autoAlpha: 0
 		});
 	};
 	const preloaderAnimation = () => {
@@ -75,58 +71,6 @@
 					yPercent: 0
 				},
 				'>'
-			)
-
-			.to(
-				'#fourth-preloader p span',
-				{
-					autoAlpha: 1,
-					duration: 0.8,
-					delay: 0.2
-				},
-				'>'
-			)
-			.to(
-				'#fourth-preloader p span',
-				{
-					autoAlpha: 0,
-					duration: 0.8,
-					delay: 0.5
-				},
-				'>'
-			)
-			.to(
-				'#second-preloader p span',
-				{
-					autoAlpha: 1,
-					duration: 0.8
-				},
-				'<'
-			)
-			.to(
-				'#second-preloader p span',
-				{
-					autoAlpha: 0,
-					duration: 0.8,
-					delay: 0.5
-				},
-				'>'
-			)
-			.to(
-				'#fifth-preloader p span',
-				{
-					autoAlpha: 1,
-					duration: 0.8
-				},
-				'<'
-			)
-			.to(
-				'#fifth-preloader p span',
-				{
-					autoAlpha: 0,
-					duration: 0.8
-				},
-				'>'
 			);
 
 		return tl;
@@ -145,13 +89,6 @@
 			})
 			.to(
 				'#main-square p span',
-				{
-					autoAlpha: 1
-				},
-				'<'
-			)
-			.to(
-				'.preloader *[data-hero="0"]',
 				{
 					autoAlpha: 1
 				},
@@ -178,10 +115,7 @@
 				{
 					autoAlpha: 1,
 					duration: 0.6,
-					stagger: 0.3,
-					onComplete: () => {
-						document.querySelector('#header').classList.remove('invisible')
-					}
+					stagger: 0.3
 				},
 				'>'
 			);
@@ -229,21 +163,15 @@
 	};
 
 	onMount(() => {
-
 		$effect(() => {
 			if (!globalNavigation.isNavigating) {
 				master
 					.add(setInitialStates())
 					.add(preloaderAnimation())
-					.add(heroAnimation(), '>')
+					.add(heroAnimation(), '>-=1.4')
 					.add(toggleProjects(), '<+=2.5');
 			}
 		});
-	});
-	onDestroy(() => {
-		if (master) {
-			master.kill();
-		}
 	});
 </script>
 
@@ -262,65 +190,40 @@
 					<div class="line --height"><span></span></div>
 					<div class="line --width"><span></span></div>
 					<div class="preloader-element" id="first-preloader">
-						<p><span>sites</span></p>
 						<div data-hero="1">
 							<img class="--m-top" src="/hero1.png" alt="" />
 							<div class="cover"></div>
 						</div>
-						<div data-hero="2">
-							<img class="--m-top" src="/hero-collection2.png" alt="" />
-						</div>
 					</div>
 
 					<div class="preloader-element" id="second-preloader">
-						<p><span>logo</span></p>
-					</div>
-
-					<div class="preloader-element" id="third-preloader">
-						<p><span>branding</span></p>
 						<div data-hero="2">
-							<img class="--m-top" src="/hero-collection2-2.png" alt="" />
+							<img class="--m-top" src="/about-hero1-1.svg" alt="" />
 						</div>
 					</div>
+
+					<div class="preloader-element" id="third-preloader"></div>
 
 					<div class="preloader-element" id="fourth-preloader">
-						<p><span>branding</span></p>
 						<div data-hero="1">
 							<img class="--m-top" src="/hero2.png" alt="" />
-							<div class="cover"></div>
 						</div>
 						<div data-hero="2">
-							<img class="--m-top" src="/hero-collection2-3.png" alt="" />
+							<img class="--m-top" src="/about-hero1-2.svg" alt="" />
 						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
 						<div>
-							<p>
-								<img src="/formula.svg" alt="formula" />
-							</p>
-							<p><span class="first">Hey Marketing Agency</span></p>
+							<p></p>
+							<p><span class="first">Наши кейсы</span></p>
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
-						<p><span>branding</span></p>
 						<div data-hero="1">
 							<img src="/hero3.png" alt="" />
-							<div class="cover"></div>
-						</div>
-						<div data-hero="2">
-							<img src="/hero-collection2-4.png" alt="" />
 						</div>
 					</div>
-					<div class="preloader-element" id="sixth-preloader">
-						<p><span>branding</span></p>
-
-						<div data-hero="0">
-							<Button text="Превращаем компании в бренды" />
-						</div>
-						<div data-hero="2">
-							<img src="/hero-collection2-4.png" alt="" />
-						</div>
-					</div>
+					<div class="preloader-element" id="sixth-preloader"></div>
 				</div>
 			</div>
 		</div>
@@ -532,7 +435,7 @@
 		#fourth-preloader {
 			display: flex;
 			grid-column: 7 / span 3;
-			grid-row: 1 / span 3;
+			grid-row: 3 / span 3;
 
 			@media (max-width: 1024px) {
 				grid-column: 1 / span 1;
@@ -561,20 +464,20 @@
 			}
 
 			div[data-hero='1'] {
-				grid-column: 1/3;
+				grid-column: 2/span 2;
 			}
 			div[data-hero='2'] {
-				grid-column: 2/4;
+				grid-column: 1/span 2;
 			}
 			div[data-hero='3'] {
-				grid-column: 1/4;
+				grid-column: 2/span 1;
 			}
 		}
 		#sixth-preloader {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			grid-column: 7 / span 3;
-			grid-row: 5 / span 1;
+			grid-row: 1 / span 1;
 
 			@media (max-width: 1024px) {
 				display: flex;
@@ -664,7 +567,7 @@
 		.line:nth-child(7) {
 			display: flex;
 			grid-column: 7 / span 3;
-			grid-row: 4 / span 1;
+			grid-row: 2 / span 1;
 
 			@media (max-width: 1024px) {
 				display: none;

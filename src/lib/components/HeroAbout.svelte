@@ -116,7 +116,10 @@
 				{
 					autoAlpha: 1,
 					duration: 0.6,
-					stagger: 0.3
+					stagger: 0.3,
+					onComplete: () => {
+						document.querySelector('#header').classList.remove('invisible')
+					}
 				},
 				'>'
 			);
@@ -164,9 +167,6 @@
 	};
 
 	onMount(() => {
-		console.log('mount about');
-
-
 		$effect(() => {
 			if (!globalNavigation.isNavigating) {
 				master
@@ -174,7 +174,6 @@
 					.add(preloaderAnimation())
 					.add(heroAnimation(), '>-=1.4')
 					.add(toggleProjects(), '<+=2.5');
-				console.log('playing');
 			}
 		});
 	});
