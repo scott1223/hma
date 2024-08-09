@@ -1,18 +1,21 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	gsap.registerPlugin(ScrollTrigger);
 
+	let tl;
+
 	const scrollAnimation = (scrollDivs) => {
-		let tl = gsap.timeline({
+		tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: '.scroll-philosophy-section',
 				pin: true,
 				start: 'top 10px',
 				end: `+=${scrollDivs[0].scrollHeight * 3}px`,
-				scrub: 1
+				scrub: 1,
+				markers: true
 			}
 		});
 
@@ -28,10 +31,19 @@
 	};
 
 	onMount(() => {
+
 		const scrollDivs = document.querySelectorAll('.scroll-philosophy div');
 
-		if(window.innerWidth > 1024) {
-			scrollAnimation(scrollDivs);
+		if (window.innerWidth > 1024) {
+			setTimeout(() => {
+				scrollAnimation(scrollDivs);
+			}, 50);
+		}
+	});
+
+	onDestroy(() => {
+		if (tl) {
+			tl.kill();
 		}
 	});
 </script>

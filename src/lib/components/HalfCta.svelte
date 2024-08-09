@@ -1,7 +1,7 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 
 	gsap.registerPlugin(ScrollTrigger);
@@ -70,9 +70,17 @@
 
 	onMount(() => {
 		if (window.innerWidth > 1024) {
-			master.add(scrollAnimation()).add(scaleBack());
+			setTimeout(() => {
+				master.add(scrollAnimation()).add(scaleBack());
+			}, 200);
 		} else {
 			scaleBack();
+		}
+	});
+
+	onDestroy(() => {
+		if (master) {
+			master.kill();
 		}
 	});
 </script>

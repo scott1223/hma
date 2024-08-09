@@ -266,12 +266,6 @@
 						transition: all 0.5s ease;
 					}
 				}
-
-				.border-vertical {
-					height: 100%;
-					width: 1px;
-					background-color: rgba($color: #000000, $alpha: 0.1);
-				}
 			}
 		}
 
@@ -289,9 +283,6 @@
 				background-color: rgba($color: #000000, $alpha: 0.1);
 			}
 			.border-horizontal {
-				height: 1px;
-				width: 100%;
-				background-color: rgba($color: #000000, $alpha: 0.1);
 				grid-column: 1 / span 3;
 			}
 
@@ -299,5 +290,16 @@
 				aspect-ratio: 1;
 			}
 		}
+	}
+
+	:global(.border-vertical) {
+		height: 100%;
+		width: 1px;
+		background-color: rgba($color: #000000, $alpha: 0.1);
+	}
+	:global(.border-horizontal) {
+		height: 1px;
+		width: 100%;
+		background-color: rgba($color: #000000, $alpha: 0.1);
 	}
 </style>

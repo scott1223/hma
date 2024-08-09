@@ -68,6 +68,7 @@ body {
 	flex-direction: column;
 	background-color: var(--white-color);
 	position: relative;
+	overflow-x: hidden;
 
 	&.fixed {
 		overflow: hidden;
