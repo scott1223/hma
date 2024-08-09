@@ -14,8 +14,7 @@
 				pin: true,
 				start: 'top 10px',
 				end: `+=${scrollDivs[0].scrollHeight * 3}px`,
-				scrub: 1,
-				markers: true
+				scrub: 1
 			}
 		});
 
