@@ -105,6 +105,9 @@
 						<li>
 							<a href="/cases"><span>кейсы</span></a>
 						</li>
+						<li>
+							<a href="/media"><span>медиа</span></a>
+						</li>
 					</ul>
 				</nav>
 			</div>

@@ -108,8 +108,6 @@
 			color: #333333;
 			font-weight: 500;
 
-			@include fluid-text(50, 75);
-
 			@media (max-width: 767px) {
 				font-size: clamp(30px, 3.75vw, 60px);
 			}
