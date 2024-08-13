@@ -34,9 +34,6 @@
 		gsap.set('.preloader *[data-hero="2"]', {
 			autoAlpha: 0
 		});
-		gsap.set('.preloader *[data-hero="1"] .cover', {
-			xPercent: 110
-		});
 		gsap.set('.preloader *[data-hero="0"]', {
 			autoAlpha: 0
 		});
@@ -265,7 +262,6 @@
 						<p><span>sites</span></p>
 						<div data-hero="1">
 							<img class="--m-top" src="/hero1.png" alt="" />
-							<div class="cover"></div>
 						</div>
 						<div data-hero="2">
 							<img class="--m-top" src="/hero-collection2.png" alt="" />
@@ -287,7 +283,6 @@
 						<p><span>branding</span></p>
 						<div data-hero="1">
 							<img class="--m-top" src="/hero2.png" alt="" />
-							<div class="cover"></div>
 						</div>
 						<div data-hero="2">
 							<img class="--m-top" src="/hero-collection2-3.png" alt="" />
@@ -305,7 +300,6 @@
 						<p><span>branding</span></p>
 						<div data-hero="1">
 							<img src="/hero3.png" alt="" />
-							<div class="cover"></div>
 						</div>
 						<div data-hero="2">
 							<img src="/hero-collection2-4.png" alt="" />
@@ -402,14 +396,6 @@
 					border-radius: 7px;
 				}
 
-				.cover {
-					position: absolute;
-					top: -1px;
-					left: -1px;
-					width: 102%;
-					height: 102%;
-					background-color: #fff;
-				}
 			}
 
 			&:is(#main-square) {

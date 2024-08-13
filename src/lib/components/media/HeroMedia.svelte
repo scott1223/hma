@@ -304,7 +304,6 @@
 
 					border-radius: 7px;
 				}
-
 			}
 
 			&:is(#main-square) {

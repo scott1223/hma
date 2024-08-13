@@ -30,9 +30,6 @@
 		gsap.set('.preloader *[data-hero="1"]', {
 			autoAlpha: 0
 		});
-		gsap.set('.preloader *[data-hero="2"]', {
-			autoAlpha: 0
-		});
 	};
 	const preloaderAnimation = () => {
 		const tl = gsap.timeline({
@@ -114,7 +111,7 @@
 					duration: 0.6,
 					stagger: 0.3,
 					onComplete: () => {
-						document.querySelector('#header').classList.remove('invisible')
+						document.querySelector('#header').classList.remove('invisible');
 					}
 				},
 				'>'
@@ -122,59 +119,15 @@
 
 		return timeline;
 	};
-	const toggleProjects = () => {
-		const tl1 = gsap.timeline({
-			defaults: {
-				ease: 'power3',
-				duration: 0.6
-			},
-			repeat: -1
-		});
-
-		tl1
-			.to('.preloader *[data-hero="1"]', {
-				autoAlpha: 0,
-				delay: 2.5
-			})
-			.to(
-				'.preloader *[data-hero="2"]',
-				{
-					autoAlpha: 1,
-					delay: 0.5,
-					stagger: 0.3
-				},
-				'<'
-			)
-			.to('.preloader *[data-hero="2"]', {
-				autoAlpha: 0,
-				delay: 2.5
-			})
-			.to(
-				'.preloader *[data-hero="1"]',
-				{
-					autoAlpha: 1,
-					delay: 0.5,
-					stagger: 0.3
-				},
-				'<'
-			);
-
-		return tl1;
-	};
 
 	onMount(() => {
 		$effect(() => {
 			if (!globalNavigation.isNavigating) {
-				master
-					.add(setInitialStates())
-					.add(preloaderAnimation())
-					.add(heroAnimation(), '>-=1.4')
-					.add(toggleProjects(), '<+=2.5');
+				master.add(setInitialStates()).add(preloaderAnimation()).add(heroAnimation(), '>-=1.4');
 			}
 		});
 	});
 </script>
-
 
 <section class="preloader-section --margin-bottom">
 	<div class="container">
@@ -196,11 +149,7 @@
 						</div>
 					</div>
 
-					<div class="preloader-element" id="second-preloader">
-						<div data-hero="2">
-							<img class="--m-top" src="/about-hero1-1.svg" alt="" />
-						</div>
-					</div>
+					<div class="preloader-element" id="second-preloader"></div>
 
 					<div class="preloader-element" id="third-preloader"></div>
 
@@ -208,14 +157,11 @@
 						<div data-hero="1">
 							<img class="--m-top" src="/hero2.png" alt="" />
 						</div>
-						<div data-hero="2">
-							<img class="--m-top" src="/about-hero1-2.svg" alt="" />
-						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
 						<div>
 							<p></p>
-							<p><span class="first">Медиа</span></p>
+							<p><span class="first">Медиа Соло</span></p>
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
@@ -258,11 +204,11 @@
 
 			@media (max-width: 767px) {
 				@media (orientation: portrait) {
-					min-height: calc(100vh - 20px);
+					min-height: 75vh;
 				}
 
 				@media (orientation: landscape) {
-					min-height: calc(100vh - 20px);
+					min-height: 75vh;
 				}
 			}
 		}
@@ -304,7 +250,6 @@
 
 					border-radius: 7px;
 				}
-
 			}
 
 			&:is(#main-square) {
@@ -364,7 +309,7 @@
 			&-wrap {
 				display: grid;
 				grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr 1px 1fr;
-				grid-template-rows: 1fr 1px 1fr 1px 1fr;
+				grid-template-rows: 1fr 1px 2fr 1px;
 				gap: 6px;
 				height: calc(100vh - 20px);
 				max-height: 1080px;
@@ -374,7 +319,7 @@
 				}
 				@media (max-width: 1024px) {
 					grid-template-columns: 1fr 1px 1fr 1px 1fr;
-					grid-template-rows: 1fr 1px 1fr 1px 1fr;
+					grid-template-rows: 1fr 1px 2fr;
 					@media (orientation: portrait) {
 						max-height: 70vh;
 					}
@@ -386,10 +331,9 @@
 				@media (max-width: 767px) {
 					grid-template-columns: 1fr 1px 1fr;
 
-					grid-template-rows: 1fr 1px 1fr 1px 1fr 1px 1fr;
+					grid-template-rows: 1fr 1px 1fr 1px 1fr;
 					@media (orientation: portrait) {
-						max-height: 100%;
-						min-height: 100vh;
+						min-height: 75vh;
 					}
 
 					@media (orientation: landscape) {
@@ -427,11 +371,11 @@
 		#fourth-preloader {
 			display: flex;
 			grid-column: 7 / span 3;
-			grid-row: 3 / span 3;
+			grid-row: 3 / span 1;
 
 			@media (max-width: 1024px) {
-				grid-column: 1 / span 1;
-				grid-row: 5 / span 1;
+				grid-column: 5 / span 1;
+				grid-row: 3 / span 1;
 			}
 		}
 		#main-square {
@@ -439,6 +383,9 @@
 			grid-column: 1 / span 5;
 			grid-row: 3 / span 1;
 
+			@media (max-width: 1024px) {
+				grid-column: 1 / span 3;
+			}
 			@media (max-width: 767px) {
 				grid-column: 1 / span 3;
 			}
@@ -456,13 +403,13 @@
 			}
 
 			div[data-hero='1'] {
-				grid-column: 2/span 2;
+				grid-column: 2 / span 2;
 			}
 			div[data-hero='2'] {
-				grid-column: 1/span 2;
+				grid-column: 1 / span 2;
 			}
 			div[data-hero='3'] {
-				grid-column: 2/span 1;
+				grid-column: 2 / span 1;
 			}
 		}
 		#sixth-preloader {
@@ -544,7 +491,8 @@
 			grid-row: 3 / span 1;
 
 			@media (max-width: 1024px) {
-				display: none;
+				grid-row: 3 / span 1;
+				grid-column: 4 / span 1;
 			}
 		}
 		.line:nth-child(6) {
@@ -586,8 +534,8 @@
 		}
 		.line:nth-child(9) {
 			display: flex;
-			grid-column: 1 / span 9;
-			grid-row: 6 / span 1;
+			grid-column: 7 / span 3;
+			grid-row: 4 / span 1;
 
 			@media (max-width: 1024px) {
 				display: none;

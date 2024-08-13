@@ -27,10 +27,10 @@
 		gsap.set('.preloader .line.--height', {
 			height: '0%'
 		});
-		gsap.set('.preloader *[data-hero="1"]', {
+		gsap.set('.preloader *[data-hero="0"]', {
 			autoAlpha: 0
 		});
-		gsap.set('.preloader *[data-hero="2"]', {
+		gsap.set('.preloader *[data-hero="1"]', {
 			autoAlpha: 0
 		});
 	};
@@ -100,6 +100,13 @@
 				'<'
 			)
 			.to(
+				'[data-hero="0"]',
+				{
+					autoAlpha: 1
+				},
+				'<'
+			)
+			.to(
 				'#main-square span',
 				{
 					color: '#fff',
@@ -114,7 +121,7 @@
 					duration: 0.6,
 					stagger: 0.3,
 					onComplete: () => {
-						document.querySelector('#header').classList.remove('invisible')
+						document.querySelector('#header').classList.remove('invisible');
 					}
 				},
 				'>'
@@ -122,59 +129,15 @@
 
 		return timeline;
 	};
-	const toggleProjects = () => {
-		const tl1 = gsap.timeline({
-			defaults: {
-				ease: 'power3',
-				duration: 0.6
-			},
-			repeat: -1
-		});
-
-		tl1
-			.to('.preloader *[data-hero="1"]', {
-				autoAlpha: 0,
-				delay: 2.5
-			})
-			.to(
-				'.preloader *[data-hero="2"]',
-				{
-					autoAlpha: 1,
-					delay: 0.5,
-					stagger: 0.3
-				},
-				'<'
-			)
-			.to('.preloader *[data-hero="2"]', {
-				autoAlpha: 0,
-				delay: 2.5
-			})
-			.to(
-				'.preloader *[data-hero="1"]',
-				{
-					autoAlpha: 1,
-					delay: 0.5,
-					stagger: 0.3
-				},
-				'<'
-			);
-
-		return tl1;
-	};
 
 	onMount(() => {
 		$effect(() => {
 			if (!globalNavigation.isNavigating) {
-				master
-					.add(setInitialStates())
-					.add(preloaderAnimation())
-					.add(heroAnimation(), '>-=1.4')
-					.add(toggleProjects(), '<+=2.5');
+				master.add(setInitialStates()).add(preloaderAnimation()).add(heroAnimation(), '>-=1.4');
 			}
 		});
 	});
 </script>
-
 
 <section class="preloader-section --margin-bottom">
 	<div class="container">
@@ -197,30 +160,43 @@
 					</div>
 
 					<div class="preloader-element" id="second-preloader">
-						<div data-hero="2">
-							<img class="--m-top" src="/about-hero1-1.svg" alt="" />
+						<div data-hero="1">
+							<img class="--m-top" src="/hero2.png" alt="" />
 						</div>
 					</div>
 
-					<div class="preloader-element" id="third-preloader"></div>
+					<div class="preloader-element" id="third-preloader">
+						<div data-hero="1">
+							<img class="--m-top" src="/hero2.png" alt="" />
+						</div>
+					</div>
 
 					<div class="preloader-element" id="fourth-preloader">
 						<div data-hero="1">
 							<img class="--m-top" src="/hero2.png" alt="" />
 						</div>
-						<div data-hero="2">
-							<img class="--m-top" src="/about-hero1-2.svg" alt="" />
-						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
 						<div>
 							<p></p>
-							<p><span class="first">Медиа</span></p>
+							<p><span class="first">Соло кейс</span></p>
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
-						<div data-hero="1">
-							<img src="/hero3.png" alt="" />
+						<div data-hero="0">
+							<div class="list">
+								<p class="list-label">Услуга</p>
+								<ul>
+									<li>Разработка фирменного стиля бренда</li>
+									<li>Брендбук</li>
+									<li>Дизайн упаковки</li>
+									<li>Дизайн вывески входной группы</li>
+								</ul>
+							</div>
+							<div class="list">
+								<p class="list-label">Клиент</p>
+								<p>Молодой амбициозный проект в сфере общепита</p>
+							</div>
 						</div>
 					</div>
 					<div class="preloader-element" id="sixth-preloader"></div>
@@ -275,19 +251,6 @@
 			font-size: clamp(18px, calc(20 / 1600 * 100vw), 20px);
 			gap: 6px;
 
-			p {
-				overflow: hidden;
-				display: block;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-
-				span {
-					display: block;
-				}
-			}
-
 			& > div {
 				width: 100%;
 				height: 100%;
@@ -304,7 +267,6 @@
 
 					border-radius: 7px;
 				}
-
 			}
 
 			&:is(#main-square) {
@@ -386,7 +348,7 @@
 				@media (max-width: 767px) {
 					grid-template-columns: 1fr 1px 1fr;
 
-					grid-template-rows: 1fr 1px 1fr 1px 1fr 1px 1fr;
+					grid-template-rows: 1fr 1px 1fr 1px 1fr 1px 1fr 1fr;
 					@media (orientation: portrait) {
 						max-height: 100%;
 						min-height: 100vh;
@@ -421,7 +383,7 @@
 
 			@media (max-width: 767px) {
 				grid-column: 1 / span 1;
-				grid-row: 7 / span 1;
+				grid-row: 5 / span 1;
 			}
 		}
 		#fourth-preloader {
@@ -430,7 +392,7 @@
 			grid-row: 3 / span 3;
 
 			@media (max-width: 1024px) {
-				grid-column: 1 / span 1;
+				grid-column: 5 / span 1;
 				grid-row: 5 / span 1;
 			}
 		}
@@ -438,6 +400,12 @@
 			display: flex;
 			grid-column: 1 / span 5;
 			grid-row: 3 / span 1;
+
+			p,
+			span {
+				display: block;
+				overflow: hidden;
+			}
 
 			@media (max-width: 767px) {
 				grid-column: 1 / span 3;
@@ -451,18 +419,78 @@
 
 			@media (max-width: 1024px) {
 				display: flex;
-				grid-column: 3 / span 1;
+				grid-column: 1 / span 3;
 				grid-row: 5 / span 1;
 			}
+			@media (max-width: 767px) {
+				display: flex;
+				grid-column: 1 / span 3;
+				grid-row: 7 / span 2;
+			}
 
-			div[data-hero='1'] {
-				grid-column: 2/span 2;
-			}
-			div[data-hero='2'] {
-				grid-column: 1/span 2;
-			}
-			div[data-hero='3'] {
-				grid-column: 2/span 1;
+			div[data-hero='0'] {
+				grid-column: 1 / span 3;
+				display: flex;
+				justify-content: space-between;
+				padding: 15px;
+
+				@media (max-width: 1024px) {
+					padding: 10px;
+				}
+				@media (max-width: 767px) {
+					flex-direction: column;
+					justify-content: start;
+					gap: 40px;
+					padding: 10px;
+				}
+
+				.list {
+					display: flex;
+					flex-direction: column;
+					gap: 32px;
+					font-size: clamp(16px, calc(21 / 1600 * 100vw), 21px);
+
+					@media (max-width: 1024px) {
+						gap: 20px;
+					}
+
+					&:nth-child(2) {
+						width: 40%;
+
+						@media (max-width: 767px) {
+							width: 100%;
+						}
+					}
+					p {
+						text-wrap: balance;
+					}
+
+					ul {
+						display: flex;
+						flex-direction: column;
+						list-style: disc inside;
+						width: fit-content;
+
+						li {
+							padding: 13px;
+							border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+							list-style: disc inside;
+
+							@media (max-width: 1024px) {
+								padding: 7px 5px 7px 0;
+							}
+							&:first-child {
+								border-top: none;
+								padding-top: 0;
+							}
+						}
+					}
+
+					&-label {
+						font-size: clamp(12px, calc(15 / 1600 * 100vw), 15px);
+						color: #a9a9a9;
+					}
+				}
 			}
 		}
 		#sixth-preloader {
@@ -511,8 +539,8 @@
 			grid-column: 4 / span 1;
 			grid-row: 1 / span 1;
 			@media (max-width: 767px) {
-				grid-column: 2 / span 1;
 				grid-row: 5 / span 1;
+				grid-column: 2 / span 1;
 			}
 		}
 		.line:nth-child(3) {
@@ -524,7 +552,7 @@
 				display: none;
 			}
 			@media (max-width: 767px) {
-				display: flex;
+				display: none;
 				grid-column: 2 / span 1;
 				grid-row: 7 / span 1;
 			}

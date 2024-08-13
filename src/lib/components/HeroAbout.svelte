@@ -34,9 +34,6 @@
 		gsap.set('.preloader *[data-hero="2"]', {
 			autoAlpha: 0
 		});
-		gsap.set('.preloader *[data-hero="1"] .cover', {
-			xPercent: 110
-		});
 	};
 	const preloaderAnimation = () => {
 		const tl = gsap.timeline({
@@ -196,7 +193,6 @@
 					<div class="preloader-element" id="first-preloader">
 						<div data-hero="1">
 							<img class="--m-top" src="/hero1.png" alt="" />
-							<div class="cover"></div>
 						</div>
 					</div>
 
@@ -307,15 +303,6 @@
 					object-fit: cover;
 
 					border-radius: 7px;
-				}
-
-				.cover {
-					position: absolute;
-					top: -1px;
-					left: -1px;
-					width: 102%;
-					height: 102%;
-					background-color: #fff;
 				}
 			}
 
