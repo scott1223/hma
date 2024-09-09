@@ -2,6 +2,7 @@
 	import HeroAbout from "$lib/components/HeroAbout.svelte";
 	import Accordion from "$lib/components/Accordion.svelte";
 	import Stuff from "$lib/components/Stuff.svelte";
+	import { SITE_URL } from '$lib/globals.js';
 
     let {data} = $props()
 
