@@ -80,7 +80,7 @@
 <style lang="scss">
 	.slider-case {
 		display: flex;
-		height: calc(100vh - 20px);
+		height: fit-content;
 
 		@media (max-width: 1024px) {
 			gap: 6px;
@@ -155,6 +155,7 @@
 			img {
 				border-radius: var(--border-radius);
 				object-fit: cover;
+				aspect-ratio: 16/9;
 				
 				@media (max-width: 767px) {
 					aspect-ratio: 4/3;

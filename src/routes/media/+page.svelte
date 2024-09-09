@@ -6,7 +6,7 @@
 	let { data } = $props();
 	console.log(data)
 
-	let seo = data.mediaPage.attributes.SEO
+	let seo = data?.mediaPage?.attributes?.SEO
 </script>
 
 <svelte:head>

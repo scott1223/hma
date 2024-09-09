@@ -124,6 +124,7 @@
 					img {
 						object-fit: cover;
 						transition: all 0.5s ease;
+						aspect-ratio: 16/11;
 					}
 				}
 				h6 {

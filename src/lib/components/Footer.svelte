@@ -2,8 +2,6 @@
 	import Button from './uikit/Button.svelte';
 
 	let { info } = $props();
-
-	console.log(info)
 </script>
 
 {#snippet footerLink(link)}
