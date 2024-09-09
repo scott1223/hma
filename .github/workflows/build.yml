@@ -29,7 +29,7 @@ jobs:
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: https://cr.heymarketing.ru
-          app: 'hma'
+          app: 'sveltekit-app'
           token: ${{ secrets.APP_TOKEN }}
           image: 'ghcr.io/aintnewtathis-yy/hma:latest'
 
