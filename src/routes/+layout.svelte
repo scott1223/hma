@@ -10,6 +10,7 @@
 
 	const globalNavigation = getIsNavigating();
 	const { data } = $props();
+	
 	let lenis;
 	let cover;
 
