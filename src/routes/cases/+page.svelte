@@ -1,7 +1,7 @@
 <script>
 	import HeroCases from '$lib/components/HeroCases.svelte';
 	import ProjectsGrid from '$lib/components/ProjectsGrid.svelte';
-	import { SITE_URL } from '$env/static/private';
+	import { SITE_URL } from '$lib/globals.js';
 
 	let {data} = $props()
 

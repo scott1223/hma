@@ -2,7 +2,7 @@
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { onMount } from 'svelte';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
-	import { CMS_URL } from '$env/static/private';
+	import { CMS_URL } from '$lib/globals.js';
 
 	let { heroImages1, heroImages2 } = $props();
 

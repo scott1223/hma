@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { CMS_URL } from '$env/static/private';
+	import { CMS_URL } from '$lib/globals.js';
 
 	let numberSlides = $state(1);
 	let slider;

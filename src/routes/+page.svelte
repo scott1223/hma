@@ -6,7 +6,7 @@
 	import ScrollPhilosophy from '$lib/components/ScrollPhilosophy.svelte';
 	import HalfCta from '$lib/components/HalfCta.svelte';
 	import ServicesGrid from '$lib/components/ServicesGrid.svelte';
-	import { SITE_URL } from '$env/static/private';
+	import { SITE_URL } from '$lib/globals.js';
 
 	let { data } = $props();
 

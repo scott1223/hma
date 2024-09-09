@@ -1,5 +1,5 @@
 <script>
-	import { CMS_URL } from '$env/static/private';
+	import { CMS_URL } from '$lib/globals.js';
 	
 	let { services } = $props()
 </script>

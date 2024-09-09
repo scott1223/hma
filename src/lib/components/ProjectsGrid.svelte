@@ -1,6 +1,6 @@
 <script>
 	import ButtonText from './uikit/ButtonText.svelte';
-	import { CMS_URL } from '$env/static/private';
+	import { CMS_URL } from '$lib/globals.js';
 
 	let { isCasesPage, projects } = $props()
 

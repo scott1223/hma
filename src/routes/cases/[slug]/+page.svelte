@@ -4,7 +4,7 @@
 	import DescriptionBlock from '$lib/components/solocase/DescriptionBlock.svelte';
 	import SliderCase from '$lib/components/solocase/SliderCase.svelte';
 	import NextPrev from '$lib/components/solocase/NextPrev.svelte';
-	import { SITE_URL } from '$env/static/private';
+	import { SITE_URL } from '$lib/globals.js';
 
 	let {data} = $props();
 	let content = data.content.attributes

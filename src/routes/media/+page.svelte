@@ -1,7 +1,7 @@
 <script>
 	import HeroMedia from '$lib/components/media/HeroMedia.svelte';
 	import MediaGrid from '$lib/components/media/MediaGrid.svelte';
-	import { SITE_URL } from '$env/static/private';
+	import { SITE_URL } from '$lib/globals.js';
 
 	let { data } = $props();
 	console.log(data)

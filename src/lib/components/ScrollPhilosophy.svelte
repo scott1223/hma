@@ -2,7 +2,7 @@
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onDestroy, onMount } from 'svelte';
-	import { CMS_URL } from '$env/static/private';
+	import { CMS_URL } from '$lib/globals.js';
 
 	let { data } = $props()
 	let images = data.images.data

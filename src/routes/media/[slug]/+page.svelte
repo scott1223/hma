@@ -3,7 +3,7 @@
 	import DescriptionBlock from '$lib/components/solocase/DescriptionBlock.svelte';
 	import FullImage from '$lib/components/solocase/FullImage.svelte';
 	import MediaGrid from '$lib/components/media/MediaGrid.svelte';
-	import { SITE_URL } from '$env/static/private';
+	import { SITE_URL } from '$lib/globals.js';
 
 	let {data} = $props();
 
