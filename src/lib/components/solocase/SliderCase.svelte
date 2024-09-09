@@ -1,14 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
+	import { CMS_URL } from '$env/static/private';
 
 	let numberSlides = $state(1);
 	let slider;
 	let sliderElements = $state([]);
+	let {sliderData} = $props()
 
 	function scrollChecker() {
 		const currentScroll = slider.scrollLeft;
 		numberSlides = Math.round(currentScroll / slider.offsetWidth);
-		console.log(numberSlides++);
 	}
 
 	onMount(() => {
@@ -26,30 +27,12 @@
 					scrollChecker();
 				}}
 			>
+				{#each sliderData as slide}
 				<div class="slider-case-element">
-					<img src="/hero1.png" alt="" />
-					<p>Название слайда 1</p>
+					<img src={CMS_URL + slide.image.data?.attributes.url} alt="" />
+					<p>{slide.name}</p>
 				</div>
-				<div class="slider-case-element">
-					<img src="/hero2.png" alt="" />
-					<p>Название слайда 2</p>
-				</div>
-				<div class="slider-case-element">
-					<img src="/hero1.png" alt="" />
-					<p>Название слайда 3</p>
-				</div>
-				<div class="slider-case-element">
-					<img src="/hero2.png" alt="" />
-					<p>Название слайда 4</p>
-				</div>
-				<div class="slider-case-element">
-					<img src="/hero1.png" alt="" />
-					<p>Название слайда 5</p>
-				</div>
-				<div class="slider-case-element">
-					<img src="/hero2.png" alt="" />
-					<p>Название слайда 6</p>
-				</div>
+				{/each}
 			</div>
 			<div class="slider-case-controls">
 				<button
@@ -107,10 +90,10 @@
 			scroll-snap-align: start;
 			-ms-overflow-style: none;
 			scrollbar-width: none;
+            scroll-behavior: smooth;
 			&::-webkit-scrollbar {
 				display: none;
 			}
-            scroll-behavior: smooth;
 		}
 
 		&-wrap {
@@ -172,6 +155,10 @@
 			img {
 				border-radius: var(--border-radius);
 				object-fit: cover;
+				
+				@media (max-width: 767px) {
+					aspect-ratio: 4/3;
+				}
 			}
 		}
 		&-controls {

@@ -2,6 +2,9 @@
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { onMount } from 'svelte';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
+	import { CMS_URL } from '$env/static/private';
+
+	let { heroImages, services, client, title } = $props();
 
 	const globalNavigation = getIsNavigating();
 	const master = gsap.timeline({
@@ -155,31 +158,31 @@
 					<div class="line --width"><span></span></div>
 					<div class="preloader-element" id="first-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero1.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages[0]?.attributes.url} alt={heroImages[0]?.attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="second-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages[1]?.attributes.url} alt={heroImages[1]?.attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="third-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages[2]?.attributes.url} alt={heroImages[2]?.attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="fourth-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages[3]?.attributes.url} alt={heroImages[3]?.attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
 						<div>
 							<p></p>
-							<p><span class="first">Соло кейс</span></p>
+							<p><span class="first">{title}</span></p>
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
@@ -187,15 +190,14 @@
 							<div class="list">
 								<p class="list-label">Услуга</p>
 								<ul>
-									<li>Разработка фирменного стиля бренда</li>
-									<li>Брендбук</li>
-									<li>Дизайн упаковки</li>
-									<li>Дизайн вывески входной группы</li>
+									{#each services as service}
+										<li>{service.text}</li>
+									{/each}
 								</ul>
 							</div>
 							<div class="list">
 								<p class="list-label">Клиент</p>
-								<p>Молодой амбициозный проект в сфере общепита</p>
+								<p>{client}</p>
 							</div>
 						</div>
 					</div>
@@ -395,6 +397,10 @@
 				grid-column: 5 / span 1;
 				grid-row: 5 / span 1;
 			}
+			@media (max-width: 767px) {
+				grid-column: 3 / span 1;
+        		grid-row: 5 / span 1;
+			}
 		}
 		#main-square {
 			display: flex;
@@ -416,6 +422,10 @@
 			grid-template-columns: 1fr 1fr 1fr;
 			grid-column: 1 / span 5;
 			grid-row: 5 / span 1;
+
+			& > div {
+				overflow: visible;
+			}
 
 			@media (max-width: 1024px) {
 				display: flex;
@@ -440,7 +450,7 @@
 				@media (max-width: 767px) {
 					flex-direction: column;
 					justify-content: start;
-					gap: 40px;
+					gap: 20px;
 					padding: 10px;
 				}
 
@@ -470,6 +480,10 @@
 						flex-direction: column;
 						list-style: disc inside;
 						width: fit-content;
+
+						@media (max-width: 767px) {
+							width: 100%;
+						}
 
 						li {
 							padding: 13px;

@@ -3,6 +3,9 @@
 	import { onMount } from 'svelte';
 	import Button from './uikit/Button.svelte';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
+	import { CMS_URL } from '$env/static/private';
+
+	let {heroImages1, heroImages2} = $props()
 
 	const globalNavigation = getIsNavigating();
 	const master = gsap.timeline({
@@ -192,13 +195,13 @@
 					<div class="line --width"><span></span></div>
 					<div class="preloader-element" id="first-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero1.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages1[0].attributes.url} alt={heroImages1[0].attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="second-preloader">
 						<div data-hero="2">
-							<img class="--m-top" src="/about-hero1-1.svg" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages2[0].attributes.url} alt={heroImages2[0].attributes.alternativeText} />
 						</div>
 					</div>
 
@@ -206,10 +209,10 @@
 
 					<div class="preloader-element" id="fourth-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages1[1].attributes.url} alt={heroImages1[1].attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img class="--m-top" src="/about-hero1-2.svg" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages2[1].attributes.url} alt={heroImages2[1].attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
@@ -220,7 +223,7 @@
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
 						<div data-hero="1">
-							<img src="/hero3.png" alt="" />
+							<img src={CMS_URL + heroImages1[2].attributes.url} alt={heroImages1[2].attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="sixth-preloader"></div>

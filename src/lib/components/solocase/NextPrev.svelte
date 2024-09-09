@@ -1,4 +1,10 @@
 <script>
+	import { CMS_URL } from '$env/static/private';
+	
+	let { next, prev, current } = $props();
+
+	next = next  ??  current
+	prev = prev  ??  current
 </script>
 
 <section class="nextprev-section --margin-bottom">
@@ -11,15 +17,15 @@
 				<div></div>
 			</div>
 			<div class="nextprev-body">
-				<div class="nextprev-body-element prev">
-					<div><img src="/hero1.png" alt="" /></div>
-					<h6>Название кейса</h6>
-				</div>
+				<a href={"/cases/" + prev.SEO.slug} class="nextprev-body-element prev">
+					<div><img src={CMS_URL + prev.thumbnail.data.attributes.url} alt="" /></div>
+					<h6>{prev.title}</h6>
+				</a>
 				<div class="border-vertical"></div>
-				<div class="nextprev-body-element next">
-					<div><img src="/hero2.png" alt="" /></div>
-					<h6>Название кейса</h6>
-				</div>
+				<a href={"/cases/" + next.SEO.slug} class="nextprev-body-element next">
+					<div><img src={CMS_URL + next.thumbnail.data.attributes.url} alt="" /></div>
+					<h6>{next.title}</h6>
+				</a>
 			</div>
 			<div class="nextprev-borders">
 				<div></div>

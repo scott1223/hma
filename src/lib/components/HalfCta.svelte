@@ -4,6 +4,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 
+	let {scrollText,scrollText2} = $props();
+
 	gsap.registerPlugin(ScrollTrigger);
 
 	const master = gsap.timeline();
@@ -94,7 +96,7 @@
 					<div class="half-cta-element-content">
 						<a href="/about">Об агенстве</a>
 					</div>
-					<p>Здесь будет важный текст про философию агенства</p>
+					<p>{scrollText}</p>
 				</div>
 			</div>
 			<div class="half-cta-element" data-cover="2">
@@ -103,7 +105,7 @@
 					<div class="half-cta-element-content">
 						<a href="#">Начать проект</a>
 					</div>
-					<p>А здесь добиваем</p>
+					<p>{scrollText2}</p>
 				</div>
 			</div>
 		</div>

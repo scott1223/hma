@@ -2,6 +2,10 @@
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onDestroy, onMount } from 'svelte';
+	import { CMS_URL } from '$env/static/private';
+
+	let { data } = $props()
+	let images = data.images.data
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -50,11 +54,10 @@
 <section class="scroll-philosophy-section --margin-bottom">
 	<div class="container">
 		<div class="scroll-philosophy">
-			<div style="background-image: url('/project3.png');"></div>
-			<div style="background-image: url('/project1.png');"></div>
-			<div style="background-image: url('/project2.png');"></div>
-			<div style="background-image: url('/project3.png');"></div>
-			<h3>Вам как Себе - наша уникальная философия и подход в создании проектов.</h3>
+			{#each images as image}
+				<div style="background-image: url('{CMS_URL + image.attributes.url}');"></div>
+			{/each}
+			<h3>{data.text}</h3>
 		</div>
 	</div>
 </section>

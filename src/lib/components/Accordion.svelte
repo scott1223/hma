@@ -1,27 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 
+	let {accordion}=$props()
 	let accGrid;
-	const infoAcc = [
-		{
-			number: '01.',
-			header: 'Аккодрион',
-			content:
-				'Основа бренда, которая помогает потребителям узнать компанию и запомнить её. Логотип представляет собой уникальное начертание полного или сокращенного наименования компании. Он может включать буквы и графические элементы, которые становятся частью надписи. <br><br> Уникальность логотипа — это один из важнейших критериев оценки, который позволяет выделить бренд среди конкурентов и создать узнаваемый образ.'
-		},
-		{
-			number: '02.',
-			header: 'Аккодрион',
-			content:
-				'Основа бренда, которая помогает потребителям узнать компанию и запомнить её. Логотип представляет собой уникальное начертание полного или сокращенного наименования компании. Он может включать буквы и графические элементы, которые становятся частью надписи. <br><br> Уникальность логотипа — это один из важнейших критериев оценки, который позволяет выделить бренд среди конкурентов и создать узнаваемый образ.'
-		},
-		{
-			number: '03.',
-			header: 'Аккодрион',
-			content:
-				'Основа бренда, которая помогает потребителям узнать компанию и запомнить её. Логотип представляет собой уникальное начертание полного или сокращенного наименования компании. Он может включать буквы и графические элементы, которые становятся частью надписи. <br><br> Уникальность логотипа — это один из важнейших критериев оценки, который позволяет выделить бренд среди конкурентов и создать узнаваемый образ.'
-		}
-	];
 
 	function onclick(e) {
 		const accElement = e.currentTarget;
@@ -50,15 +31,15 @@
 	});
 </script>
 
-{#snippet accElement(info)}
+{#snippet accElement(accordion, i)}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<div class="accordion-grid-element" {onclick} role="button" tabindex="0">
-		<div class="accordion-grid-element-number">{info.number}</div>
+		<div class="accordion-grid-element-number">{i + 1}</div>
 		<div class="border-vertical"></div>
 		<div class="accordion-grid-element-wrap">
-			<div class="accordion-grid-element-wrap-header">{info.header}</div>
+			<div class="accordion-grid-element-wrap-header">{accordion.header}</div>
 			<div class="accordion-grid-element-wrap-content">
-				{@html info.content}
+				{@html accordion.content}
 			</div>
 		</div>
 	</div>
@@ -71,13 +52,13 @@
 				Вам как Себе - наша уникальная философия и подход в создании проектов.
 			</p>
 			<div class="accordion-grid" bind:this={accGrid}>
-				{#each infoAcc as info}
+				{#each accordion as accordionElement, i}
 					<div class="borders">
 						<div></div>
 						<div></div>
 						<div></div>
 					</div>
-					{@render accElement(info)}
+					{@render accElement(accordionElement, i)}
 				{/each}
 				<div class="borders">
 					<div></div>

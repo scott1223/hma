@@ -1,52 +1,21 @@
 <script>
 	import HeroCases from '$lib/components/HeroCases.svelte';
 	import ProjectsGrid from '$lib/components/ProjectsGrid.svelte';
+	import { SITE_URL } from '$env/static/private';
 
-	let projects = [
-		{
-			href: '/cases/123',
-			image: '/project1.png',
-			name: 'Peeps',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '/cases/123',
-			image: '/project2.png',
-			name: 'Happy Pet',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '/cases/123',
-			image: '/project3.png',
-			name: 'Syntesis',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '/cases/123',
-			image: '/project1.png',
-			name: 'Peeps',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '/cases/123',
-			image: '/project2.png',
-			name: 'Happy Pet',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '/cases/123',
-			image: '/project3.png',
-			name: 'Syntesis',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		}
-	];
+	let {data} = $props()
+
+	let seo = data.casesPage.attributes.SEO
 </script>
 
-<HeroCases />
-<ProjectsGrid isCasesPage={true} {projects} />
+<svelte:head>
+	<title>{seo?.title}</title>
+	<meta name="description" content={seo?.description}> 
+	<meta name="og:title" content={seo?.title}> 
+	<meta name="og:description" content={seo?.description}> 
+	<meta name="og:url" content={SITE_URL + seo?.slug}> 
+	<meta name="og:description" content={seo?.description}> 
+</svelte:head>
+
+<HeroCases heroImages1={data.casesPage.attributes.heroImages1.data} heroImages2={data.casesPage.attributes.heroImages2.data} />
+<ProjectsGrid isCasesPage={true} projects={data.cases.data} />

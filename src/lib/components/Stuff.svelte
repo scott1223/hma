@@ -1,28 +1,16 @@
 <script>
-	const stuffPeople = [
-		{
-			img: '/stuff1.png',
-			name: 'Антон Лазарев'
-		},
-		{
-			img: '/stuff1.png',
-			name: 'Антон Лазарев'
-		},
-		{
-			img: '/stuff1.png',
-			name: 'Антон Лазарев'
-		},
-		{
-			img: '/stuff1.png',
-			name: 'Антон Лазарев'
-		}
-	];
+	import { CMS_URL } from '$env/static/private';
+	let { teamMembers } = $props();
+
 </script>
 
-{#snippet stuffPerson(info)}
+{#snippet stuffPerson(teamMembersElement)}
 	<div class="stuff-grid-row-element">
-		<img src={info.img} alt="ceo person" />
-		<p>{info.name}</p>
+		<img
+			src={CMS_URL + teamMembersElement.image.data.attributes.url}
+			alt={teamMembersElement.image.data.attributes.alternativeText}
+		/>
+		<p>{teamMembersElement.name}</p>
 	</div>
 {/snippet}
 
@@ -39,11 +27,11 @@
 					<div></div>
 				</div>
 				<div class="stuff-grid-row">
-					{@render stuffPerson(stuffPeople[0])}
+					{@render stuffPerson(teamMembers[0])}
 
 					<div class="border"></div>
 
-					{@render stuffPerson(stuffPeople[1])}
+					{@render stuffPerson(teamMembers[1])}
 				</div>
 				<div class="stuff-grid-borders">
 					<div></div>
@@ -51,17 +39,31 @@
 					<div></div>
 				</div>
 				<div class="stuff-grid-row">
-					{@render stuffPerson(stuffPeople[2])}
+					{@render stuffPerson(teamMembers[2])}
 
 					<div class="border"></div>
 
-					{@render stuffPerson(stuffPeople[3])}
+					{@render stuffPerson(teamMembers[3])}
 				</div>
 				<div class="stuff-grid-borders">
 					<div></div>
 					<div></div>
 					<div></div>
 				</div>
+				{#if teamMembers[4]}
+					<div class="stuff-grid-row">
+						{@render stuffPerson(teamMembers[4])}
+
+						<div class="border"></div>
+
+						{@render stuffPerson(teamMembers[5])}
+					</div>
+					<div class="stuff-grid-borders">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>

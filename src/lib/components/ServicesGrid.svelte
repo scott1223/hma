@@ -1,36 +1,7 @@
 <script>
-	const services = [
-		{
-			name: 'Нейминг',
-			desc: 'Уникальное название вашего бренда/компании, которое транслирует ваши ценности и философию.',
-			images: ['/service1-1.png', '/service1-2.png', '/service1-3.png']
-		},
-		{
-			name: 'Логотип',
-			desc: 'Основа бренда, которая помогает потребителям узнать компанию и запомнить её. Логотип представляет собой уникальное начертание полного или сокращенного наименования компании. Он может включать буквы и графические элементы, которые становятся частью надписи. <br><br> Уникальность логотипа — это один из важнейших критериев оценки, который позволяет выделить бренд среди конкурентов и создать узнаваемый образ.',
-			images: ['/service1-1.png', '/service1-2.png', '/service1-3.png']
-		},
-		{
-			name: 'Фирменный Стиль',
-			desc: 'Комплекс элементов, формирующих отличительный и целостный образ бренда. Она включает в себя визуальные и вербальные компоненты, которые используются во всем визуале компании и на всех каналах коммуникации с аудиторией.',
-			images: ['/service1-1.png', '/service1-2.png', '/service1-3.png']
-		},
-		{
-			name: 'Платформа',
-			desc: 'Создаем совокупность смыслов, которые формируют образ компании, вектор её движения и позиционирование в определенной рыночной нише, а также преимущества и ключевые характеристики.',
-			images: ['/service1-1.png', '/service1-2.png', '/service1-3.png']
-		},
-		{
-			name: 'Маркетинговая стратегия',
-			desc: 'Главный документ, на основе которого компании планируют продвижение и продажи товаров и услуг. Она помогает систематизировать ресурсы компании и оценить их эффективность для перераспределения на более эффективные каналы продвижения. Эти каналы могут включать наружную рекламу, партнёрства с блогерами, рекламу в социальных сетях, на радио, телевидении и в поисковых сетях.',
-			images: ['/service1-1.png', '/service1-2.png', '/service1-3.png']
-		},
-		{
-			name: 'Сайты',
-			desc: 'Делаем сайты',
-			images: ['/service1-1.png', '/service1-2.png', '/service1-3.png']
-		}
-	];
+	import { CMS_URL } from '$env/static/private';
+	
+	let { services } = $props()
 </script>
 
 {#snippet servicesElement(service)}
@@ -41,16 +12,16 @@
 	</div>
 	<div class="services-grid-element">
 		<div class="services-grid-element-desc">
-			<h3>{service.name}</h3>
-			<p>{@html service.desc}</p>
+			<h3>{service.header}</h3>
+			<p>{@html service.description}</p>
 		</div>
 		<div class="border-vertical"></div>
 		<div class="services-grid-element-images">
-			<img src={service.images[0]} alt="" />
+			<img src={CMS_URL + service.images.data[0].attributes.url} alt={service.images.data[0].attributes.alternativeText} />
 			<div class="border-vertical"></div>
-			<img src={service.images[1]} alt="" />
+			<img src={CMS_URL + service.images.data[1].attributes.url} alt={service.images.data[1].attributes.alternativeText} />
 			<div class="border-vertical"></div>
-			<img src={service.images[2]} alt="" />
+			<img src={CMS_URL + service.images.data[2].attributes.url} alt={service.images.data[2].attributes.alternativeText} />
 		</div>
 	</div>
 {/snippet}

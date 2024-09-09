@@ -1,4 +1,8 @@
 <script>
+	import { CMS_URL } from '$env/static/private';
+	import { marked } from 'marked';
+
+	let { info } = $props();
 </script>
 
 <section class="desc-block-section --margin-bottom">
@@ -11,39 +15,29 @@
 			</div>
 			<div class="desc-block-body">
 				<div class="desc-block-body-subtitle">
-					<p>О проекте</p>
+					<p>{info?.miniTitle}</p>
 				</div>
 				<div class="border-vertical"></div>
 				<div class="desc-block-body-content">
-					<h1>Заголовки пример</h1>
-					<div>
-						<span>Заголовок блока текста - смысловая единица</span>
-						<p>
-							Текст - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident explicabo
-							facilis eaque odit praesentium quod deleniti cumque! Omnis dolore, recusandae
-							dignissimos, aspernatur quo ullam provident quibusdam numquam nihil non quia.
-						</p>
-					</div>
-					<div>
-						<span>Заголовок листа перечисления</span>
-						<ul>
-							<li>Пример единицы листа</li>
-							<li>Пример единицы листа</li>
-							<li>Пример единицы листа</li>
-							<li>Пример единицы листа</li>
-						</ul>
-					</div>
-					<div>
-						<span>Заголовок блока текста 2 - смысловая единица</span>
-						<p>
-							Текст - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident explicabo
-							facilis eaque odit praesentium quod deleniti cumque! Omnis dolore, recusandae
-							dignissimos, aspernatur quo ullam provident quibusdam numquam nihil non quia.
-						</p>
-					</div>
-                    <div>
-                        <p>Просто текст - Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur ipsam doloremque explicabo et mollitia nobis, error tempore neque ex repellat porro ullam quas, officia alias hic sit temporibus deleniti.</p>
-                    </div>
+					{#each info?.contentElement as el}
+						<div>
+							<p>{el.header}</p>
+							{#if el.richContent}
+								{@html marked.parse(el.richContent)}
+							{/if}
+						</div>
+					{/each}
+					{#if info.quote}
+						<div class="quote">
+							<div class="quote-avatar">
+								<img src={CMS_URL + info.quote.image.data.attributes.url} alt="" />
+								<p>{info.quote.name}</p>
+							</div>
+							<p>
+								{info.quote.quote}
+							</p>
+						</div>
+					{/if}
 				</div>
 			</div>
 			<div class="desc-block-borders">
@@ -96,7 +90,7 @@
 
 				@media (max-width: 767px) {
 					&:not(:nth-child(1)) {
-                        display: none;
+						display: none;
 					}
 				}
 			}
@@ -118,7 +112,7 @@
 			&-subtitle {
 				padding: 15px;
 
-				p {
+				:global(p) {
 					color: #a9a9a9;
 					font-size: clamp(16px, calc(23 / 1600 * 100vw), 23px);
 				}
@@ -129,54 +123,105 @@
 				flex-direction: column;
 				gap: 60px;
 
-                @media (max-width: 767px) {
-                    
-				gap: 40px;
-                }
+				@media (max-width: 767px) {
+					gap: 40px;
+				}
 
-				h1,
-				h2,
-				h3,
-				h4,
-				h5,
-				h6 {
+				:global(h1),
+				:global(h2),
+				:global(h3),
+				:global(h4),
+				:global(h5),
+				:global(h6) {
 					font-size: clamp(50px, calc(65 / 1600 * 100vw), 65px);
 				}
 
-				& > div {
-					display: flex;
-					flex-direction: column;
-					gap: 20px;
-
-					span {
-						font-size: 16px;
-
-						@media (max-width: 767px) {
-							font-size: 14px;
-						}
+				.quote {
+					@media (max-width: 768px) {
+						display: flex;
+						flex-direction: column-reverse;
+						align-items: end;
 					}
-					p {
-						font-size: clamp(16px, calc(23 / 1600 * 100vw), 23px);
-					}
-					ul {
+					& > div {
+						position: absolute;
 						display: flex;
 						flex-direction: column;
-						list-style: disc inside;
+						width: 100%;
+						max-width: 200px;
+						gap: 10px;
+						top: 0;
+						left: -320px;
 
-						li {
-							padding: 10px;
-							border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
-							list-style: disc inside;
+						@media (max-width: 1024px) {
+							max-width: 150px;
+							left: -170px;
+						}
+						@media (max-width: 768px) {
+							position: relative;
+							max-width: 40%;
+							left: 0;
+							top: 0;
+						}
 
-							@media (max-width: 1024px) {
-								padding: 7px 5px 7px 0;
+						img {
+							border-radius: 100%;
+							aspect-ratio: 1;
+							object-fit: cover;
+							width: 50%;
+
+							@media (max-width: 768px) {
+								width: 70%;
 							}
-							&:first-child {
-								border-top: none;
-								padding-top: 0;
+						}
+						p {
+							text-wrap: balance;
+							font-size: clamp(14px, calc(16 / 1600 * 100vw), 16px);
+
+							@media (max-width: 768px) {
+								text-wrap: wrap;
 							}
 						}
 					}
+
+					& > p {
+						font-size: clamp(23px, calc(40 / 1600 * 100vw), 40px);
+					}
+				}
+			}
+		}
+	}
+
+	:global(.desc-block-body-content > div) {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		:global(span) {
+			font-size: 16px;
+
+			@media (max-width: 767px) {
+				font-size: 14px;
+			}
+		}
+		:global(p) {
+			font-size: clamp(16px, calc(23 / 1600 * 100vw), 23px);
+		}
+		:global(ul) {
+			display: flex;
+			flex-direction: column;
+			list-style: disc inside;
+
+			:global(li) {
+				padding: 10px;
+				border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
+				list-style: disc inside;
+
+				@media (max-width: 1024px) {
+					padding: 7px 5px 7px 0;
+				}
+				&:first-child {
+					border-top: none;
+					padding-top: 0;
 				}
 			}
 		}

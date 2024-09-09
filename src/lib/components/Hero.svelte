@@ -3,6 +3,9 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Button from './uikit/Button.svelte';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
+	import { CMS_URL } from '$env/static/private';
+
+	let {heroImages1, heroImages2} = $props();
 
 	const globalNavigation = getIsNavigating();
 	const master = gsap.timeline({
@@ -261,10 +264,10 @@
 					<div class="preloader-element" id="first-preloader">
 						<p><span>sites</span></p>
 						<div data-hero="1">
-							<img class="--m-top" src="/hero1.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages1?.data[0]?.attributes?.url} alt={heroImages1.data[0].attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img class="--m-top" src="/hero-collection2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages2.data[0].attributes.url} alt={heroImages2.data[0].attributes.alternativeText} />
 						</div>
 					</div>
 
@@ -275,17 +278,17 @@
 					<div class="preloader-element" id="third-preloader">
 						<p><span>branding</span></p>
 						<div data-hero="2">
-							<img class="--m-top" src="/hero-collection2-2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages2.data[1].attributes.url} alt={heroImages2.data[1].attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="fourth-preloader">
-						<p><span>branding</span></p>
+						<p><span>naming</span></p>
 						<div data-hero="1">
-							<img class="--m-top" src="/hero2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages1.data[1].attributes.url} alt={heroImages1.data[1].attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img class="--m-top" src="/hero-collection2-3.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages2.data[3].attributes.url} alt={heroImages2.data[3].attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
@@ -299,10 +302,10 @@
 					<div class="preloader-element" id="fifth-preloader">
 						<p><span>branding</span></p>
 						<div data-hero="1">
-							<img src="/hero3.png" alt="" />
+							<img src={CMS_URL + heroImages1.data[2].attributes.url} alt={heroImages1.data[2].attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img src="/hero-collection2-4.png" alt="" />
+							<img src={CMS_URL + heroImages2.data[4].attributes.url} alt={heroImages2.data[4].attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="sixth-preloader">

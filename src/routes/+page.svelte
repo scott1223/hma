@@ -4,33 +4,13 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import ProjectsGrid from '$lib/components/ProjectsGrid.svelte';
 	import ScrollPhilosophy from '$lib/components/ScrollPhilosophy.svelte';
-	import HalfCta from '../lib/components/HalfCta.svelte';
-	import ServicesGrid from '../lib/components/ServicesGrid.svelte';
+	import HalfCta from '$lib/components/HalfCta.svelte';
+	import ServicesGrid from '$lib/components/ServicesGrid.svelte';
+	import { SITE_URL } from '$env/static/private';
 
-	let projects = [
-		{
-			href: '#',
-			image: '/project1.png',
-			name: 'Peeps',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '#',
-			image: '/project2.png',
-			name: 'Happy Pet',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		},
-		{
-			href: '#',
-			image: '/project3.png',
-			name: 'Syntesis',
-			desc: 'Our mission is creating world-class websites where beauty meets art of sales. Why rot to have both.',
-			tags: ['Our mission', 'branding', 'logo']
-		}
-	]
+	let { data } = $props();
 
+	let seo = data?.home?.attributes.SEO
 
 	onMount(() => {
 		ScrollTrigger.getAll().forEach((trigger) => {
@@ -44,8 +24,17 @@
 	});
 </script>
 
-<Hero />
-<ProjectsGrid {projects} isCasesPage={false} />
-<ScrollPhilosophy />
-<ServicesGrid />
-<HalfCta />
+<svelte:head>
+	<title>{seo?.title}</title>
+	<meta name="description" content={seo?.description}> 
+	<meta name="og:title" content={seo?.title}> 
+	<meta name="og:description" content={seo?.description}> 
+	<meta name="og:url" content={SITE_URL}> 
+	<meta name="og:description" content={seo?.description}> 
+</svelte:head>
+
+<Hero heroImages1={data?.home?.attributes?.heroImages1} heroImages2={data?.home?.attributes?.heroImages2} />
+<ProjectsGrid projects={data.cases.data} isCasesPage={false} />
+<ScrollPhilosophy data={data.home.attributes.photoScroll} />
+<ServicesGrid services={data.home.attributes.workProccessStep} />
+<HalfCta scrollText={data.home.attributes.scrollText} scrollText2={data.home.attributes.scrollText2} />

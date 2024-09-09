@@ -1,150 +1,18 @@
 <script>
-	const mediaInfo = [
-		{
-			url: '/media/123',
-			title: '123123',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 2',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 3',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 4',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: '123123',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 2',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 3',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 4',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: '123123',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 2',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 3',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 4',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: '123123',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 2',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 3',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 4',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: '123123',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 2',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 3',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 4',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: '123123',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 2',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 3',
-			sourceImage: '/vcru.svg',
-			date: '24.05.2024'
-		},
-		{
-			url: '/media/123',
-			title: 'Название 4',
-			sourceImage: '/yt.svg',
-			date: '24.05.2024'
-		}
-	];
+	import { CMS_URL } from '$env/static/private';
+	let { mediaArray } = $props();
+
+	function formatedDate(date) {
+		const noFormat = new Date(date);
+
+		const formattedDate = noFormat.toLocaleDateString('de-DE', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric'
+		});
+
+		return formattedDate;
+	}
 </script>
 
 {#snippet mediaElement(info)}
@@ -153,14 +21,17 @@
 		<div></div>
 		<div></div>
 	</div>
-	<a href={info.url} class="media-grid-element">
+	<a href={'/media/' + info.SEO.slug} class="media-grid-element">
 		<div class="media-grid-element-title">
 			{info.title}
 		</div>
 		<div class="border-vertical"></div>
 		<div class="media-grid-element-source">
-			<img src={info.sourceImage} alt="" />
-			<p>{info.date}</p>
+			<img
+				src={CMS_URL + info.thumbnail.data.attributes.url}
+				alt={info.thumbnail.data.attributes.alternativeText}
+			/>
+			<p>{formatedDate(info.publishedAt)}</p>
 			<svg
 				class="link-appear"
 				width="121"
@@ -181,8 +52,8 @@
 <section class="media-grid-section --margin-bottom">
 	<div class="container">
 		<div class="media-grid">
-			{#each mediaInfo as info}
-				{@render mediaElement(info)}
+			{#each mediaArray as el}
+				{@render mediaElement(el.attributes)}
 			{/each}
 			<div class="media-grid-borders">
 				<div></div>
@@ -289,10 +160,10 @@
 					transform: translateY(-50%) rotateY(180deg);
 					transition: all 0.5s ease;
 
-                    @media (hover: none) { 
+					@media (hover: none) {
 						display: none;
 					}
-                    @media (max-width: 767px) { 
+					@media (max-width: 767px) {
 						display: none;
 					}
 				}

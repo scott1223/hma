@@ -1,15 +1,33 @@
 <script>
-	import HeroSoloCase from "$lib/components/solocase/HeroSoloCase.svelte";
-	import FullImage from "$lib/components/solocase/FullImage.svelte";
-	import DescriptionBlock from "$lib/components/solocase/DescriptionBlock.svelte";
-	import SliderCase from "$lib/components/solocase/SliderCase.svelte";
-	import NextPrev from "../../../lib/components/solocase/NextPrev.svelte";
+	import HeroSoloCase from '$lib/components/solocase/HeroSoloCase.svelte';
+	import FullImage from '$lib/components/solocase/FullImage.svelte';
+	import DescriptionBlock from '$lib/components/solocase/DescriptionBlock.svelte';
+	import SliderCase from '$lib/components/solocase/SliderCase.svelte';
+	import NextPrev from '$lib/components/solocase/NextPrev.svelte';
+	import { SITE_URL } from '$env/static/private';
 
+	let {data} = $props();
+	let content = data.content.attributes
+	let seo = data.content.attributes.SEO
+	
 </script>
 
-<HeroSoloCase />
-<FullImage link={'/hero1.png'} />
-<DescriptionBlock /> 
-<SliderCase />
-<DescriptionBlock /> 
-<NextPrev />
+<svelte:head>
+	<title>{seo?.title}</title>
+	<meta name="description" content={seo?.description}> 
+	<meta name="og:title" content={seo?.title}> 
+	<meta name="og:description" content={seo?.description}> 
+	<meta name="og:url" content={SITE_URL + 'cases/' + seo?.slug}> 
+	<meta name="og:description" content={seo?.description}> 
+</svelte:head>
+
+<!-- <pre>
+	{JSON.stringify(data.content[0].attributes, null, 4)}
+</pre> -->
+
+<HeroSoloCase heroImages={content.heroImages?.data} heroImages2={content.heroImages2?.data} services={content.servicesList} client={content.client} title={content.title}  />
+<FullImage bigImage={content.bigImage?.data?.attributes} />
+<DescriptionBlock info={content.textBlock} />
+<SliderCase sliderData={content.slider} />
+<DescriptionBlock info={content.textBlock2} />
+<NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	

@@ -102,10 +102,14 @@
 	<Header />
 	<div class="cover-transition" bind:this={cover}>
 		<p>
-			{#if data.url === '/about'}
+			{#if data.title}
+				{data.title}
+			{:else if data.url === '/about'}
 				О нас
 			{:else if data.url === '/cases'}
 				Кейсы
+			{:else if data.url === '/media'}
+				Медиа
 			{:else if data.url === '/'}
 				Hey Marketing Agency
 			{/if}
@@ -136,7 +140,7 @@
 			}}
 		>
 			<slot />
-			<Footer />
+			<Footer info={data?.footerInfo} />
 		</div>
 	{/key}
 </main>

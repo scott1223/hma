@@ -2,6 +2,9 @@
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { onMount } from 'svelte';
 	import { getIsNavigating } from '$lib/settings.svelte.js';
+	import { CMS_URL } from '$env/static/private';
+
+	let { heroImages1 } = $props();
 
 	const globalNavigation = getIsNavigating();
 	const master = gsap.timeline({
@@ -145,17 +148,24 @@
 					<div class="line --width"><span></span></div>
 					<div class="preloader-element" id="first-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero1.png" alt="" />
+							<img
+								class="--m-top"
+								src={CMS_URL + heroImages1[0]?.attributes.url}
+								alt={heroImages1[0]?.attributes.alternativeText}
+							/>
 						</div>
 					</div>
 
-					<div class="preloader-element" id="second-preloader"></div>
+					<div class="preloader-element" id="second-preloader">
+						<div data-hero="1">
+							<img src={CMS_URL + heroImages1[2]?.attributes.url} alt={heroImages1[2]?.attributes.alternativeText} />
+						</div></div>
 
 					<div class="preloader-element" id="third-preloader"></div>
 
 					<div class="preloader-element" id="fourth-preloader">
 						<div data-hero="1">
-							<img class="--m-top" src="/hero2.png" alt="" />
+							<img class="--m-top" src={CMS_URL + heroImages1[1]?.attributes.url} alt={heroImages1[1]?.attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
@@ -165,11 +175,10 @@
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
-						<div data-hero="1">
-							<img src="/hero3.png" alt="" />
-						</div>
 					</div>
-					<div class="preloader-element" id="sixth-preloader"></div>
+					<div class="preloader-element" id="sixth-preloader">
+						
+					</div>
 				</div>
 			</div>
 		</div>
@@ -372,11 +381,12 @@
 			display: flex;
 			grid-column: 7 / span 3;
 			grid-row: 3 / span 1;
-
 			@media (max-width: 1024px) {
-				grid-column: 5 / span 1;
-				grid-row: 3 / span 1;
+				display: flex;
+				grid-column: 3 / span 1;
+				grid-row: 5 / span 1;
 			}
+			
 		}
 		#main-square {
 			display: flex;
@@ -397,9 +407,8 @@
 			grid-row: 5 / span 1;
 
 			@media (max-width: 1024px) {
-				display: flex;
-				grid-column: 3 / span 1;
-				grid-row: 5 / span 1;
+				grid-column: 5 / span 1;
+				grid-row: 3 / span 1;
 			}
 
 			div[data-hero='1'] {

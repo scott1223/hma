@@ -1,9 +1,9 @@
 <script>
 	import ButtonText from './uikit/ButtonText.svelte';
+	import { CMS_URL } from '$env/static/private';
 
 	let { isCasesPage, projects } = $props()
 
-	console.log(projects)
 </script>
 
 {#snippet projectElement(project)}
@@ -13,19 +13,19 @@
 		<div></div>
 	</div>
 
-	<a href={project.href} class="projects-grid-element">
+	<a href={"/cases/" + project.attributes.SEO.slug} class="projects-grid-element">
 		<div class="projects-grid-element-image">
-			<img src={project.image} alt="project thumbnail" />
+			<img src={CMS_URL + project.attributes.thumbnail.data.attributes.url} alt="project thumbnail" />
 		</div>
 		<div class="projects-grid-element-border"></div>
 		<div class="projects-grid-element-desc">
-			<h2>{project.name}</h2>
+			<h2>{project.attributes.title}</h2>
 			<p>
-				{project.desc}
+				{project.attributes.SEO.description}
 			</p>
 			<div>
-				{#each project.tags as tag}
-					<span>{tag}</span>
+				{#each project.attributes.tags as tag}
+					<span>{tag.text}</span>
 				{/each}
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			{#if !isCasesPage}
-				<ButtonText text="Смотреть все проекты" href="/projects" />
+				<ButtonText text="Смотреть все проекты" href="/cases" />
 			{/if}
 		</div>
 	</div>
@@ -110,6 +110,11 @@
 			&-image {
 				border-radius: var(--border-radius);
 				overflow: hidden;
+
+				img{
+					aspect-ratio: 936/590;
+					object-fit: cover;
+				}
 			}
 
 			&-border {

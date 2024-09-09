@@ -1,11 +1,14 @@
 <script>
-	let { link } = $props();
+	import { CMS_URL } from '$env/static/private';
+	
+	let { bigImage } = $props();
+
 </script>
 
 <section class="fullimage-section --margin-bottom">
 	<div class="container">
 		<div class="fullimage">
-			<img src={link} alt="" />
+			<img src={CMS_URL + bigImage?.url} alt="" />
 		</div>
 	</div>
 </section>

@@ -1,10 +1,14 @@
 <script>
 	import Button from './uikit/Button.svelte';
+
+	let { info } = $props();
+
+	console.log(info)
 </script>
 
 {#snippet footerLink(link)}
 	<a href={link.url} class="footer-grid-row-element" class:invert={link.class}>
-		<span>{link.text}</span>
+		<span>{link.label}</span>
 		<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<line x1="-6.10352e-05" y1="10.5344" x2="8.57137" y2="10.5344" stroke="#4A3AD9" />
 			<line x1="11.4286" y1="10.5344" x2="20.0001" y2="10.5344" stroke="#4A3AD9" />
@@ -18,7 +22,7 @@
 	<div class="container">
 		<div class="footer">
 			<h4 class="footer-text">
-				Вам как Себе - наша уникальная философия и подход в создании проектов.
+				{info?.philosophy}
 			</h4>
 			<div class="footer-grid hidden-tablet">
 				<div class="borders">
@@ -33,15 +37,15 @@
 					<div></div>
 				</div>
 				<div class="footer-grid-row">
-					{@render footerLink({ url: '/#', text: 'instagram' })}
+					{@render footerLink({ url: '/cases', label: 'Кейсы', class:false })}
 					<div class="border-vertical"></div>
 					<Button text="Превращаем компании в бренды" />
 					<div class="border-vertical"></div>
-					{@render footerLink({ url: '/#', text: 'instagram' })}
+					{@render footerLink({ url: '/media', label: 'Медиа', class:false })}
 					<div class="border-vertical"></div>
-					{@render footerLink({ url: '/#', text: 'instagram' })}
+					{@render footerLink(info.footerLink[0])}
 					<div class="border-vertical"></div>
-					{@render footerLink({ url: '/#', text: 'instagram', class: 'invert' })}
+					{@render footerLink(info.footerLink[1])}
 				</div>
 				<div class="borders">
 					<div></div>
@@ -55,15 +59,15 @@
 					<div></div>
 				</div>
 				<div class="footer-grid-row">
-					{@render footerLink({ url: '/#', text: 'instagram' })}
+					{@render footerLink({ url: '/about', label: 'о нас', class:false })}
 					<div class="border-vertical"></div>
 					<div></div>
 					<div class="border-vertical"></div>
 					<div><img src="/footer-anton.png" alt="ceo photo" /></div>
 					<div class="border-vertical"></div>
-					{@render footerLink({ url: '/#', text: 'instagram' })}
+					{@render footerLink(info.footerLink[2])}
 					<div class="border-vertical"></div>
-					{@render footerLink({ url: '/#', text: 'instagram' })}
+					{@render footerLink(info.footerLink[3])}
 				</div>
 				<div class="borders">
 					<div></div>
@@ -78,14 +82,13 @@
 				</div>
 			</div>
 			<div class="footer-tablet visible-tablet">
-				{@render footerLink({ url: '/#', text: 'instagram' })}
+				{@render footerLink(info.footerLink[0])}
 				<div class="border-vertical"></div>
-				{@render footerLink({ url: '/#', text: 'instagram', class: 'invert' })}
+				{@render footerLink(info.footerLink[1])}
 				<div class="border-horizontal"></div>
-				{@render footerLink({ url: '/#', text: 'instagram' })}
+				{@render footerLink(info.footerLink[2])}
 				<div class="border-vertical"></div>
-
-				{@render footerLink({ url: '/#', text: 'instagram' })}
+				{@render footerLink(info.footerLink[3])}
 			</div>
 		</div>
 	</div>
