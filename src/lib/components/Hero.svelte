@@ -264,10 +264,10 @@
 					<div class="preloader-element" id="first-preloader">
 						<p><span>sites</span></p>
 						<div data-hero="1">
-							<img class="--m-top" src={CMS_URL + heroImages1?.data[0]?.attributes?.url} alt={heroImages1.data[0].attributes.alternativeText} />
+							<img class="--m-top" src={CMS_URL + heroImages1?.data[0]?.attributes?.url} alt={heroImages1.data[0]?.attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img class="--m-top" src={CMS_URL + heroImages2.data[0].attributes.url} alt={heroImages2.data[0].attributes.alternativeText} />
+							<img class="--m-top" src={CMS_URL + heroImages2.data[0]?.attributes.url} alt={heroImages2.data[0]?.attributes.alternativeText} />
 						</div>
 					</div>
 
@@ -278,17 +278,17 @@
 					<div class="preloader-element" id="third-preloader">
 						<p><span>branding</span></p>
 						<div data-hero="2">
-							<img class="--m-top" src={CMS_URL + heroImages2.data[1].attributes.url} alt={heroImages2.data[1].attributes.alternativeText} />
+							<img class="--m-top" src={CMS_URL + heroImages2.data[1]?.attributes.url} alt={heroImages2.data[1]?.attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="fourth-preloader">
 						<p><span>naming</span></p>
 						<div data-hero="1">
-							<img class="--m-top" src={CMS_URL + heroImages1.data[1].attributes.url} alt={heroImages1.data[1].attributes.alternativeText} />
+							<img class="--m-top" src={CMS_URL + heroImages1.data[1]?.attributes.url} alt={heroImages1.data[1]?.attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img class="--m-top" src={CMS_URL + heroImages2.data[3].attributes.url} alt={heroImages2.data[3].attributes.alternativeText} />
+							<img class="--m-top" src={CMS_URL + heroImages2.data[2]?.attributes.url} alt={heroImages2.data[2]?.attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="main-square">
@@ -302,10 +302,10 @@
 					<div class="preloader-element" id="fifth-preloader">
 						<p><span>branding</span></p>
 						<div data-hero="1">
-							<img src={CMS_URL + heroImages1.data[2].attributes.url} alt={heroImages1.data[2].attributes.alternativeText} />
+							<img src={CMS_URL + heroImages1.data[2]?.attributes.url} alt={heroImages1.data[2]?.attributes.alternativeText} />
 						</div>
 						<div data-hero="2">
-							<img src={CMS_URL + heroImages2.data[4].attributes.url} alt={heroImages2.data[4].attributes.alternativeText} />
+							<img src={CMS_URL + heroImages2.data[3]?.attributes.url} alt={heroImages2.data[3]?.attributes.alternativeText} />
 						</div>
 					</div>
 					<div class="preloader-element" id="sixth-preloader">
@@ -315,7 +315,7 @@
 							<Button text="Превращаем компании в бренды" />
 						</div>
 						<div data-hero="2">
-							<img src="/hero-collection2-4.png" alt="" />
+							<img src={CMS_URL + heroImages2.data[4]?.attributes.url} alt={heroImages2.data[4]?.attributes.alternativeText} />
 						</div>
 					</div>
 				</div>
