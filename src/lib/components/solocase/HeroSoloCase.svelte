@@ -188,7 +188,7 @@
 					<div class="preloader-element" id="fifth-preloader">
 						<div data-hero="0">
 							<div class="list">
-								<p class="list-label">Услуга</p>
+								<p class="list-label">Услуги</p>
 								<ul>
 									{#each services as service}
 										<li>{service.text}</li>
