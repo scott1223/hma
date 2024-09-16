@@ -139,11 +139,19 @@
 				}
 				div {
 					display: flex;
-					gap: 50px;
+					flex-wrap: wrap;
+					row-gap: 10px;
+					column-gap: 50px;
+
+					@media (max-width:1244px) {
+						row-gap: 10px;
+						column-gap: 20px;
+					}
 
 					span {
 						font-size: clamp(14px, calc(16 / 1600 * 100vw), 16px);
 						color: #a9a9a9;
+						white-space: nowrap;
 					}
 				}
 			}

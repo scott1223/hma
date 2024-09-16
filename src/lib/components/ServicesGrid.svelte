@@ -17,11 +17,11 @@
 		</div>
 		<div class="border-vertical"></div>
 		<div class="services-grid-element-images">
-			<img src={CMS_URL + service.images.data[0].attributes.url} alt={service.images.data[0].attributes.alternativeText} />
+			<img src={CMS_URL + service.images.data[0]?.attributes.url} alt={service.images.data[0]?.attributes.alternativeText} />
 			<div class="border-vertical"></div>
-			<img src={CMS_URL + service.images.data[1].attributes.url} alt={service.images.data[1].attributes.alternativeText} />
+			<img src={CMS_URL + service.images.data[1]?.attributes.url} alt={service.images.data[1]?.attributes.alternativeText} />
 			<div class="border-vertical"></div>
-			<img src={CMS_URL + service.images.data[2].attributes.url} alt={service.images.data[2].attributes.alternativeText} />
+			<img src={CMS_URL + service.images.data[2]?.attributes.url} alt={service.images.data[2]?.attributes.alternativeText} />
 		</div>
 	</div>
 {/snippet}
@@ -133,7 +133,9 @@
 				}
 
 				img {
+					object-fit: cover;
 					aspect-ratio: 1;
+					border-radius: var(--border-radius);
 				}
 			}
 		}
