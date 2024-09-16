@@ -1,14 +1,13 @@
 import { CMS_URL } from '$lib/globals.js';
+import { fetchWithRetry } from '$lib/utils.js';
 
 export async function load({ url }) {
 	const slug = url.pathname.replace('/cases/', '');
-    const apiForTitle = `${CMS_URL}/api/cases?filters[SEO][slug][$eq]=${slug}&fields[0]=title`
-    const responseTitle = await fetch(apiForTitle)
-    const title = await responseTitle.json()
+    const titleURL = `${CMS_URL}/api/cases?filters[SEO][slug][$eq]=${slug}&fields[0]=title`
+    const title = await fetchWithRetry(titleURL)
 
-    const apiForFooter = `${CMS_URL}/api/footer?populate=*`
-    const responseFooter = await fetch(apiForFooter)
-    const footer = await responseFooter.json()
+    const footerURL = `${CMS_URL}/api/footer?populate=*`
+    const footer = await fetchWithRetry(footerURL)
 
     return {
         url: url.pathname,

@@ -4,6 +4,7 @@
 	import { SITE_URL } from '$lib/globals.js';
 
 	let { data } = $props();
+
 	console.log(data)
 
 	let seo = data?.mediaPage?.attributes?.SEO

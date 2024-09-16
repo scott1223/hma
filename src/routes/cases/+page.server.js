@@ -1,19 +1,18 @@
 import { error } from '@sveltejs/kit';
 import { CMS_URL } from '$lib/globals.js';
+import { fetchWithRetry } from '$lib/utils.js';
 
 export async function load({ url }) {
-	const slug = url.pathname.replace('/cases/', '');
 	try {
-		const cases = await fetch(`${CMS_URL}/api/cases?fields[0]=title&populate[thumbnail]=true&populate[tags]=true&populate[SEO]=true`);
-		const casesData = await cases.json();
+		const casesURL = `${CMS_URL}/api/cases?fields[0]=title&populate[thumbnail]=true&populate[tags]=true&populate[SEO]=true`;
+		const cases = await fetchWithRetry(casesURL);
 
-		const casesPage = await fetch(`${CMS_URL}/api/cases-page?populate=*`);
-		const casesPageData = await casesPage.json();
-
+		const casesPageURL = `${CMS_URL}/api/cases-page?populate=*`;
+		const casesPage = await fetchWithRetry(casesPageURL);
 
 		return {
-			cases: casesData,
-			casesPage: casesPageData.data
+			cases: cases,
+			casesPage: casesPage.data
 		};
 	} catch (error) {
 		console.error('Error fetching data:', error);

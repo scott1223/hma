@@ -103,7 +103,7 @@
 				<div class="half-cta-element-wrap">
 					<div class="half-cta-element-cover"></div>
 					<div class="half-cta-element-content">
-						<a href="#">Начать проект</a>
+						<a href="">Начать проект</a>
 					</div>
 					<p>{scrollText2}</p>
 				</div>

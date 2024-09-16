@@ -8,7 +8,6 @@
 	let {data} = $props();
 
 	let seo = data.soloMediaData.SEO
-	console.log(seo)
 </script>
 
 <svelte:head>

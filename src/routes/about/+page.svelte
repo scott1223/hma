@@ -7,7 +7,6 @@
     let {data} = $props()
 
 	let seo = data?.data?.SEO
-	console.log(data)
 </script>
 
 <svelte:head>
