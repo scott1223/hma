@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let {accordion}=$props()
+	let {accordion, philosophy}=$props()
 	let accGrid;
 
 	function onclick(e) {
@@ -49,7 +49,7 @@
 	<div class="container">
 		<div class="accordion">
 			<p class="accordion-text">
-				Вам как Себе - наша уникальная философия и подход в создании проектов.
+				{philosophy}
 			</p>
 			<div class="accordion-grid" bind:this={accGrid}>
 				{#each accordion as accordionElement, i}

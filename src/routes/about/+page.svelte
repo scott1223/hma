@@ -6,6 +6,8 @@
 
     let {data} = $props()
 
+	console.log(data)
+
 	let seo = data?.data?.SEO
 </script>
 
@@ -19,5 +21,5 @@
 </svelte:head>
 
 <HeroAbout heroImages1={data.data.heroImages1.data} heroImages2={data.data.heroImages2.data} />
-<Accordion accordion={data.data.accordion} />
-<Stuff teamMembers={data.data.teamMembers} />
+<Accordion accordion={data.data.accordion} philosophy={data.data.philosophyAbout}  />
+<Stuff teamMembers={data.data.teamMembers} philosophy={data.data.philosophyAbout2} />

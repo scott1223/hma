@@ -1,6 +1,6 @@
 <script>
 	import { CMS_URL } from '$lib/globals.js';
-	let { teamMembers } = $props();
+	let { teamMembers, philosophy } = $props();
 
 </script>
 
@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="stuff">
 			<p class="stuff-text">
-				Вам как Себе - наша уникальная философия и подход в создании проектов.
+				{philosophy}
 			</p>
 			<div class="stuff-grid">
 				<div class="stuff-grid-borders">
