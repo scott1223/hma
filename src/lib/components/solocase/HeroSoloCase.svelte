@@ -368,7 +368,8 @@
 				}
 			}
             .client-logo {
-                max-width: 50%;
+                max-width: 200px;
+                max-height: 200px;
             }
 		}
 
