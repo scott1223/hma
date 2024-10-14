@@ -3,6 +3,11 @@
 
 	let {accordion, philosophy}=$props()
 	let accGrid;
+	
+	function expandBlock(content) {
+		content.style.paddingTop = `30px`;
+		content.style.maxHeight = `${content.scrollHeight + 30}px`;
+	}
 
 	function onclick(e) {
 		const accElement = e.currentTarget;
@@ -17,8 +22,7 @@
 
 			accElement.classList.add('active');
 
-			content.style.paddingTop = `30px`;
-			content.style.maxHeight = `${content.scrollHeight + 30}px`;
+			expandBlock(content);
 		} else {
 			accElement.classList.remove('active');
 			content.style.paddingTop = `0px`;
@@ -27,14 +31,16 @@
 	}
 
 	onMount(() => {
-		accGrid.querySelector('.accordion-grid-element').click();
+		const accElement = accGrid.querySelector('.accordion-grid-element');
+		const content = accElement.querySelector('.accordion-grid-element-wrap-content');
+		expandBlock(content);
 	});
 </script>
 
 {#snippet accElement(accordion, i)}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
-	<div class="accordion-grid-element" {onclick} role="button" tabindex="0">
-		<div class="accordion-grid-element-number">{i + 1}</div>
+	<div class="accordion-grid-element { !i ? 'active' : '' }" {onclick} role="button" tabindex="0">
+		<div class="accordion-grid-element-number"><span>+</span><span>-</span></div>
 		<div class="border-vertical"></div>
 		<div class="accordion-grid-element-wrap">
 			<div class="accordion-grid-element-wrap-header">{accordion.header}</div>
@@ -123,7 +129,14 @@
 
 				&-number {
 					color: #a9a9a9;
-					padding: 15px 0px;
+					padding: 5px 0px;
+					font-size: 2em;
+					span {
+						display: block;
+					}
+					span + span {
+						display: none;
+					}
 				}
 				&-wrap {
 					display: flex;
@@ -139,6 +152,16 @@
 						max-height: 0;
 						overflow: hidden;
 						transition: all 0.5s ease;
+					}
+				}
+				&.active {
+					.accordion-grid-element-number {
+						span {
+							display: none;
+						}
+						span + span {
+							display: block;
+						}
 					}
 				}
 			}
