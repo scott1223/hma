@@ -82,9 +82,9 @@
 		&-text {
 			text-align: center;
 			width: 80%;
-			line-height: 100%;
+			line-height: 120%;
 			text-wrap: balance;
-			font-size: clamp(50px, calc(75 / 1600 * 100vw), 75px);
+			font-size: clamp(25px, calc(37 / 1600 * 100vw), 37px);
 			color: #333333;
 			font-weight: 500;
 
