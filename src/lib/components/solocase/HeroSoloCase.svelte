@@ -4,7 +4,7 @@
 	import { getIsNavigating } from '$lib/settings.svelte.js';
 	import { CMS_URL } from '$lib/globals.js';
 
-	let { heroImages, services, client, title } = $props();
+	let { heroImages, services, client, client_logo, title } = $props();
 
 	const globalNavigation = getIsNavigating();
 	const master = gsap.timeline({
@@ -198,6 +198,11 @@
 							<div class="list">
 								<p class="list-label">Клиент</p>
 								<p>{client}</p>
+                                {#if client_logo && client_logo.data?.attributes?.url}
+                                  <div class="client-logo">
+                                    <img src={`${CMS_URL}${client_logo.data?.attributes?.url}`} alt="Client Logo">
+                                  </div>
+                                {/if}
 							</div>
 						</div>
 					</div>
@@ -362,6 +367,9 @@
 					}
 				}
 			}
+            .client-logo {
+                max-width: 50%;
+            }
 		}
 
 		#first-preloader {
