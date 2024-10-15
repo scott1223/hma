@@ -4,6 +4,7 @@
 	import DescriptionBlock from '$lib/components/solocase/DescriptionBlock.svelte';
 	import SliderCase from '$lib/components/solocase/SliderCase.svelte';
 	import NextPrev from '$lib/components/solocase/NextPrev.svelte';
+	import GridPhotoBlock from '$lib/components/GridPhotoBlock.svelte';
 	import { SITE_URL } from '$lib/globals.js';
 
 	let {data} = $props();
@@ -25,9 +26,10 @@
 	{JSON.stringify(data.content[0].attributes, null, 4)}
 </pre> -->
 
-<HeroSoloCase heroImages={content.heroImages?.data} heroImages2={content.heroImages2?.data} services={content.servicesList} client={content.client} client_logo={content.client_logo} title={content.title}  />
+<HeroSoloCase heroImages={content.heroImages?.data} heroImages2={content.heroImages2?.data} services={content.servicesList} client={content.client} client_logo={content.client_logo} title={content.title} />
 <FullImage bigImage={content.bigImage?.data?.attributes} />
 <DescriptionBlock info={content.textBlock} />
 <SliderCase sliderData={content.slider} />
 <DescriptionBlock info={content.textBlock2} />
+<GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
 <NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	

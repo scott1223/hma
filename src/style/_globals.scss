@@ -80,3 +80,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 500;
 }
+/* custom lightbox */
+.pswp__zoom-wrap {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+}
+img.pswp__img {
+    width: initial !important;
+    margin: auto;
+    position: relative;
+}
