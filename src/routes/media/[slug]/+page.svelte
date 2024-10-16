@@ -19,7 +19,7 @@
 	<meta name="og:description" content={seo?.description}> 
 </svelte:head>
 
-<HeroMediaSolo heroImages1={data.soloMediaData.heroImages1.data}  />
+<HeroMediaSolo heroImages1={data.soloMediaData.heroImages1.data} soloText={data.soloMediaData.soloText} />
 <DescriptionBlock info={data.soloMediaData.textBlock}  />
 <FullImage bigImage={data.soloMediaData.bigImage?.data?.attributes}  />
 <MediaGrid mediaArray={data.mediaArray} />
