@@ -20,11 +20,17 @@
 				<div class="border-vertical"></div>
 				<div class="desc-block-body-content">
 					{#each info?.contentElement as el}
-						<div>
+						<div class="desc-block-body-item">
 							<p>{el.header}</p>
 							{#if el.richContent}
 								{@html marked.parse(el.richContent)}
 							{/if}
+                            {#if el.videoMp4?.data}
+                            <video class="desc-block-video-container" autoplay muted loop>
+                              <source src="{el.videoMp4.data.attributes.url}" type="video/mp4">
+                              Ваш браузер не поддерживает воспроизведение видео.
+                            </video>                            
+                            {/if}
 						</div>
 					{/each}
 					{#if info.quote}
