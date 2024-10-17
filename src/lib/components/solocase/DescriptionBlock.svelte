@@ -27,7 +27,7 @@
 							{/if}
                             {#if el.videoMp4?.data}
                             <video class="desc-block-video-container" autoplay muted loop>
-                              <source src="{el.videoMp4.data.attributes.url}" type="video/mp4">
+                              <source src="{CMS_URL + el.videoMp4.data.attributes.url}" type="video/mp4">
                               Ваш браузер не поддерживает воспроизведение видео.
                             </video>                            
                             {/if}
@@ -193,6 +193,9 @@
 						font-size: clamp(23px, calc(40 / 1600 * 100vw), 40px);
 					}
 				}
+                .desc-block-video-container {
+                    max-width: 100%;
+                }
 			}
 		}
 	}
