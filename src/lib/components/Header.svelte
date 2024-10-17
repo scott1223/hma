@@ -1,6 +1,7 @@
 <script>
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
+	import CallBack from './CallBack.svelte';
 
 	let header;
 
@@ -82,6 +83,7 @@
 
 <!-- svelte-ignore a11y_interactive_supports_focus -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
+<div>
 <header
 	id="header"
 	bind:this={header}
@@ -120,6 +122,8 @@
 		</div>
 	</div>
 </header>
+<CallBack />
+</div>
 
 <style lang="scss">
 	.word {
