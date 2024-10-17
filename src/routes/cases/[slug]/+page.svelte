@@ -5,6 +5,7 @@
 	import SliderCase from '$lib/components/solocase/SliderCase.svelte';
 	import NextPrev from '$lib/components/solocase/NextPrev.svelte';
 	import GridPhotoBlock from '$lib/components/GridPhotoBlock.svelte';
+	import CallContactFormBlock from '$lib/components/CallContactFormBlock.svelte';
 	import { SITE_URL } from '$lib/globals.js';
 
 	let {data} = $props();
@@ -32,4 +33,5 @@
 <SliderCase sliderData={content.slider} />
 <DescriptionBlock info={content.textBlock2} />
 <GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
+<CallContactFormBlock />
 <NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	
