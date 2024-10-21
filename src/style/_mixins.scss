@@ -1,5 +1,7 @@
 @mixin fluid-text($max:25, $min:20){
+    & {
     font-size: clamp(#{$min}px, #{calc($max / 1600 * 100)}vw, #{$max}px);
+    }
 }
 
 @mixin abs-center{
