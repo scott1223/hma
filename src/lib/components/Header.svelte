@@ -113,6 +113,9 @@
 						<li>
 							<a href="/service"><span>услуги</span></a>
 						</li>
+						<li>
+							<a href="/contact"><span>Контакт</span></a>
+						</li>
 					</ul>
 				</nav>
 			</div>
