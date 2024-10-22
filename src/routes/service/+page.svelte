@@ -7,7 +7,7 @@
 	let { data } = $props();
   
   let teamData = [];
-  data.mediaArray.data.map( e => {
+  data.mediaPage.attributes.service_list.data.map( e => {
     teamData.push({
       image: {
         data: {
