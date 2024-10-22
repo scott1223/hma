@@ -6,11 +6,23 @@
 
 {#snippet stuffPerson(teamMembersElement)}
 	<div class="stuff-grid-row-element">
-		<img
-			src={CMS_URL + teamMembersElement.image.data.attributes.url}
-			alt={teamMembersElement.image.data.attributes.alternativeText}
-		/>
-		<p>{teamMembersElement.name}</p>
+    {#if (teamMembersElement.image.data.attributes.link)}
+    <a href={teamMembersElement.image.data.attributes.link}>
+      {#if (teamMembersElement.image.data.attributes.url)}
+      <img
+        src={CMS_URL + teamMembersElement.image.data.attributes.url}
+        alt={teamMembersElement.image.data.attributes.alternativeText}
+      />
+      {/if}
+      <p>{teamMembersElement.name}</p>
+    </a>
+    {:else}
+      <img
+        src={CMS_URL + teamMembersElement.image.data.attributes.url}
+        alt={teamMembersElement.image.data.attributes.alternativeText}
+      />
+      <p>{teamMembersElement.name}</p>
+    {/if}
 	</div>
 {/snippet}
 
@@ -21,50 +33,23 @@
 				{philosophy}
 			</p>
 			<div class="stuff-grid">
+      {#each teamMembers as item, index}
+        {#if (index % 2 == 0)}
 				<div class="stuff-grid-borders">
 					<div></div>
 					<div></div>
 					<div></div>
 				</div>
-				<div class="stuff-grid-row">
-					{@render stuffPerson(teamMembers[0])}
-
-					<div class="border"></div>
-
-					{@render stuffPerson(teamMembers[1])}
-				</div>
-				<div class="stuff-grid-borders">
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				<div class="stuff-grid-row">
-					{@render stuffPerson(teamMembers[2])}
-
-					<div class="border"></div>
-
-					{@render stuffPerson(teamMembers[3])}
-				</div>
-				<div class="stuff-grid-borders">
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				{#if teamMembers[4]}
-					<div class="stuff-grid-row">
-						{@render stuffPerson(teamMembers[4])}
-
-						<div class="border"></div>
-
-						{@render stuffPerson(teamMembers[5])}
-					</div>
-					<div class="stuff-grid-borders">
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				{/if}
-			</div>
+        <div class="stuff-grid-row">
+          {@render stuffPerson(teamMembers[index])}
+          <div class="border"></div>
+          {#if (teamMembers[index + 1])}
+            {@render stuffPerson(teamMembers[index + 1])}
+          {/if}
+        </div>
+        {/if}
+      {/each}
+      </div>
 		</div>
 	</div>
 </section>
@@ -171,6 +156,10 @@
 						text-transform: uppercase;
 						font-weight: 500;
 					}
+          
+          a {
+            position: static;
+          }
 				}
 			}
 		}

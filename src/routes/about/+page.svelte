@@ -6,8 +6,6 @@
 
     let {data} = $props()
 
-	console.log(data)
-
 	let seo = data?.data?.SEO
 </script>
 
