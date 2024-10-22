@@ -26,7 +26,6 @@
 	:global(.cdu-service-mediagrid-wrapper  .media-grid.media-grid) {
       width: 80%;
       margin: auto;
-      min-width: 1200px;
       flex-wrap: wrap;
       flex-direction: row;
     }
@@ -41,6 +40,7 @@
       width: calc(50% - 3px);
       height: 500px;
       position: relative;
+      max-height: 40vw;
   }
 
   :global(.cdu-service-mediagrid-wrapper .media-grid-element-title.media-grid-element-title) {
@@ -61,9 +61,10 @@
   }
 
   :global(.cdu-service-mediagrid-wrapper .media-grid-element-source.media-grid-element-source img) {
-      min-width: 100%;
-      height: auto;
+      height: 100%;
       border-radius: 0;
       width: 100%;
+      object-fit: cover;
+      object-position: center;
   }
 </style>
