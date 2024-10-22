@@ -1,6 +1,7 @@
 <script>
 	import HeroMedia from '$lib/components/media/HeroMedia.svelte';
 	import { SITE_URL } from '$lib/globals.js';
+  import ContactModal from '$lib/components/ContactModal.svelte';
 
     let {data} = $props()
     data = data?.data
@@ -32,6 +33,7 @@
     {@html data.yandexMapLink}
   </div>
   {/if}
-  
+
+<ContactModal open={true} notModal={true} />  
 
 </div>

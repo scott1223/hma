@@ -3,6 +3,7 @@
   import { createEventDispatcher } from 'svelte';
 
   export let open = false; // Пропс для управления видимостью
+  export let notModal = false; // Пропс для управления видимостью
   const dispatch = createEventDispatcher();
 
   let name = "";
@@ -35,7 +36,7 @@
 </script>
 
 {#if open}
-  <div class="modal-overlay" on:click={closeModal}>
+  <div class={notModal ? '' : 'modal-overlay'} on:click={closeModal}>
     <div class="modal-content" on:click|stopPropagation>
       <h2>Контактная форма</h2>
       <form on:submit|preventDefault={submitForm}>
