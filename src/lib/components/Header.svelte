@@ -110,6 +110,9 @@
 						<li>
 							<a href="/media"><span>медиа</span></a>
 						</li>
+						<li>
+							<a href="/service"><span>услуги</span></a>
+						</li>
 					</ul>
 				</nav>
 			</div>

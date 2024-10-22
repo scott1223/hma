@@ -1,6 +1,6 @@
 <script>
 	import { CMS_URL } from '$lib/globals.js';
-	let { mediaArray } = $props();
+	let { mediaArray, sectionCode } = $props();
 
 	function formatedDate(date) {
 		const noFormat = new Date(date);
@@ -21,17 +21,23 @@
 		<div></div>
 		<div></div>
 	</div>
-	<a href={'/media/' + info.SEO.slug} class="media-grid-element">
+	<a href={sectionCode + info.SEO.slug} class="media-grid-element">
 		<div class="media-grid-element-title">
 			{info.title}
 		</div>
+    {#if (info?.thumbnail?.data?.attributes?.url || info?.publishedAt)}
 		<div class="border-vertical"></div>
+    {/if}
 		<div class="media-grid-element-source">
+      {#if (info?.thumbnail?.data?.attributes?.url)}
 			<img
 				src={CMS_URL + info.thumbnail.data.attributes.url}
 				alt={info.thumbnail.data.attributes.alternativeText}
 			/>
+      {/if}
+      {#if (info?.publishedAt)}
 			<p>{formatedDate(info.publishedAt)}</p>
+      {/if}
 			<svg
 				class="link-appear"
 				width="121"

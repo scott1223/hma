@@ -111,6 +111,8 @@
 				Кейсы
 			{:else if data.url === '/media'}
 				Медиа
+			{:else if data.url === '/service'}
+				Услуги
 			{:else if data.url === '/'}
 				Hey Marketing Agency
 			{/if}

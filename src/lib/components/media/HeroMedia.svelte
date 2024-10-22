@@ -4,8 +4,7 @@
 	import { getIsNavigating } from '$lib/settings.svelte.js';
 	import { CMS_URL } from '$lib/globals.js';
 
-	let { heroImages1, heroImages2 } = $props();
-
+	let { heroImages1, heroImages2, title } = $props();
 	const globalNavigation = getIsNavigating();
 	const master = gsap.timeline({
 		defaults: {
@@ -217,7 +216,7 @@
 					<div class="preloader-element" id="main-square">
 						<div>
 							<p></p>
-							<p><span class="first">Медиа</span></p>
+							<p><span class="first">{title}</span></p>
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">

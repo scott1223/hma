@@ -36,7 +36,7 @@
     <section class="grid-photo-text3-section">
         <div class="container">
                 <p class="textBlock-text">
-                    {GridPhotoBlock.TextBlock3}
+                    {@html GridPhotoBlock.TextBlock3.replaceAll("\n", "<br>")}
                 </p>
         </div>
     </section>

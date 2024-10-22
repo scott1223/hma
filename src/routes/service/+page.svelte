@@ -17,5 +17,5 @@
 	<meta name="og:description" content={seo?.description}> 
 </svelte:head>
 
-<HeroMedia heroImages1={data.mediaPage.attributes.heroImages1.data} heroImages2={data.mediaPage.attributes.heroImages2.data} title='Медиа' />
-<MediaGrid mediaArray={data.mediaArray.data} sectionCode='/media/'/>
+<HeroMedia heroImages1={data.mediaPage.attributes.heroImages.data} heroImages2={data.mediaPage.attributes.heroImages2.data} title={data.mediaPage.attributes.title}/>
+<MediaGrid mediaArray={data.mediaArray.data} sectionCode='/service/' />
