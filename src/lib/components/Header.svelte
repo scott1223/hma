@@ -1,4 +1,6 @@
 <script>
+    import 'bootstrap/dist/css/bootstrap-grid.min.css';
+    import 'bootstrap/dist/css/bootstrap-utilities.min.css'
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
 	import CallBack from './CallBack.svelte';
