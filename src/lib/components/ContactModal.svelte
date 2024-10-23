@@ -13,6 +13,7 @@
   let phone = "";
   let email = "";
   let note = "";
+  let sentOk;
 
   async function submitForm() {
     const response = await fetch(CMS_URL + '/api/contact-forms', {
@@ -26,7 +27,8 @@
     });
 
     if (response.ok) {
-      closeModal();
+      sentOk = true;
+      setTimeout(closeModal, 3000);
     } else {
       console.log('Ошибка при отправке формы.', response);
     }
@@ -54,7 +56,7 @@
       {#if (!hiddenFields.includes('subtitle'))}
       <h3>{subtitle}</h3>
       {/if}
-      <form on:submit|preventDefault={submitForm}>
+      <form on:submit|preventDefault={submitForm} class:ok={sentOk}>
         {#if (!hiddenFields.includes('name'))}
         <input type="text" bind:value={name} required placeholder="Ваше имя"/>
         {/if}
@@ -141,5 +143,19 @@
       position: absolute;
       top: 0.7em;
       right: 0.7em;
+  }
+  form.ok:after {
+      content: 'Спасибо! Мы свяжемся с Вами в ближайшее время!';
+      position: absolute;
+      background: #FFF;
+      opacity: 0.95;
+      top: 0;
+      bottom: 0;
+      font-size: 1.5em;
+      padding-left: 1em;
+      padding-right: 1em;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
   }
 </style>
