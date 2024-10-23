@@ -21,7 +21,7 @@
 				<div class="desc-block-body-content">
 					{#each info?.contentElement as el}
 						<div class="desc-block-body-item">
-							<p>{el.header}</p>
+							<h3>{el.header}</h3>
 							{#if el.richContent}
 								{@html marked.parse(el.richContent)}
 							{/if}
@@ -135,12 +135,14 @@
 
 				:global(h1),
 				:global(h2),
-				:global(h3),
 				:global(h4),
 				:global(h5),
 				:global(h6) {
 					font-size: clamp(50px, calc(65 / 1600 * 100vw), 65px);
 				}
+				:global(h3) {
+                  font-size: clamp(24px, 2.1vw, 35px);
+                }
 
 				.quote {
 					@media (max-width: 768px) {
@@ -155,10 +157,10 @@
 						width: 100%;
 						max-width: 200px;
 						gap: 10px;
-						top: 0;
-						left: -320px;
-
-						@media (max-width: 1024px) {
+                        top: 20px;
+                        left: -250px;
+                        align-items: center;
+                        @media (max-width: 1024px) {
 							max-width: 150px;
 							left: -170px;
 						}
@@ -204,6 +206,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+    
+        :globalstrong {
+          font-weight: bold;
+        }
 
 		:global(span) {
 			font-size: 16px;
@@ -214,6 +220,7 @@
 		}
 		:global(p) {
 			font-size: clamp(16px, calc(23 / 1600 * 100vw), 23px);
+            line-height: 1.5;
 		}
 		:global(ul) {
 			display: flex;

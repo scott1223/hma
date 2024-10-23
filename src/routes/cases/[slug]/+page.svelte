@@ -23,10 +23,6 @@
 	<meta name="og:description" content={seo?.description}> 
 </svelte:head>
 
-<!-- <pre>
-	{JSON.stringify(data.content[0].attributes, null, 4)}
-</pre> -->
-
 <HeroSoloCase heroImages={content.heroImages?.data} heroImages2={content.heroImages2?.data} services={content.servicesList} client={content.client} client_logo={content.client_logo} title={content.title} />
 <FullImage bigImage={content.bigImage?.data?.attributes} />
 <DescriptionBlock info={content.textBlock} />
@@ -35,5 +31,5 @@
 <div class="--margin-bottom --margin-top">
   <GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
 </div>
-<CallContactFormBlock hiddenFields={["email", "note", "title"]} />
+<CallContactFormBlock hiddenFields={["email", "note", "title"]} title="Связь"/>
 <NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	
