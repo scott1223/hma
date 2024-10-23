@@ -105,13 +105,13 @@
 							<a href="/about"><span>О нас</span></a>
 						</li>
 						<li>
+							<a href="/service"><span>услуги</span></a>
+						</li>
+						<li>
 							<a href="/cases"><span>кейсы</span></a>
 						</li>
 						<li>
 							<a href="/media"><span>медиа</span></a>
-						</li>
-						<li>
-							<a href="/service"><span>услуги</span></a>
 						</li>
 						<li>
 							<a href="/contact"><span>Контакт</span></a>
