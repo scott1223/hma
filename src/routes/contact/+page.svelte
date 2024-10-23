@@ -19,21 +19,49 @@
 </svelte:head>
 
 <HeroMedia heroImages1={data?.heroImages1.data} heroImages2={data?.heroImages2.data} title={data?.title} />
-<div class="container cdu-address-container">
-  <dl>
-    <dt>Телефон:</dt>
-    <dd>{data.phone}</dd>
-    <dt>e-mail:</dt>
-    <dd>{data.email}</dd>
-    <dt>Адрес:</dt>
-    <dd>{data.address}</dd>
-  </dl>
+<div class="row cdu-address-container">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+    <div class="row pb-4">
+      <div class="col-3">
+      Телефон:
+      </div>
+      <div class="col-9">
+      {data.phone}
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col-3">
+      e-mail:
+      </div>
+      <div class="col-9">
+      {data.email}
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col-3">
+      Адрес:
+      </div>
+      <div class="col-9">
+      {data.address}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <ContactModal open={true} notModal={true} hiddenFields={['title']}/>  
+      </div>
+    </div>
+  </div>
   {#if (data.yandexMapLink)}
-  <div class="cdu-yandex-map-wrapper">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-4 d-flex justify-content-end ">
     {@html data.yandexMapLink}
   </div>
   {/if}
-
-<ContactModal open={true} notModal={true} />  
-
 </div>
+
+<style lang="scss">
+.cdu-address-container {
+  justify-content: center;
+  font-size: 23px;
+  font-weight: 300;
+}
+</style>
