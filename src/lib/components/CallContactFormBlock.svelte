@@ -2,11 +2,14 @@
   import ContactModal from './ContactModal.svelte';
   let showModal = $state(false);
   const props = $props();
-  let initiator = props.initiator;
-
-  if (initiator) {
+  let initiator;
+  $effect( () => {
+    initiator = props.initiator;
+    if (initiator) {
+    console.log({initiator});
     initiator.addEventListener("click", openModal)
-  }
+    }
+  } )
 
   function openModal() {
     showModal = true;
