@@ -1,8 +1,12 @@
 <script>
   import ContactModal from './ContactModal.svelte';
-  let showModal = false;
-  export let hiddenFields = [];
-  export let title = "";
+  let showModal = $state(false);
+  const props = $props();
+  let initiator = props.initiator;
+
+  if (initiator) {
+    initiator.addEventListener("click", openModal)
+  }
 
   function openModal() {
     showModal = true;
@@ -12,7 +16,4 @@
     showModal = false;
   }
 </script>
-
-<button on:click={openModal}>Открыть контактную форму</button>
-
-<ContactModal open={showModal} on:close={closeModal} hiddenFields={hiddenFields} title={title}/>
+<ContactModal open={showModal} on:close={closeModal} {...props}/>

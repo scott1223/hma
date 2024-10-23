@@ -3,8 +3,12 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onDestroy, onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
+    import CallContactFormBlock from '$lib/components/CallContactFormBlock.svelte';
 
 	let {scrollText,scrollText2} = $props();
+    let openModalButton = $state(null);
+    let openModalButtonEl;
+    let locked;
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +75,8 @@
 	};
 
 	onMount(() => {
+        openModalButton = openModalButtonEl;
+        locked.addEventListener('click', (e) => {e.preventDefault();});
 		if (window.innerWidth > 1024) {
 			setTimeout(() => {
 				master.add(scrollAnimation()).add(scaleBack());
@@ -102,8 +108,8 @@
 			<div class="half-cta-element" data-cover="2">
 				<div class="half-cta-element-wrap">
 					<div class="half-cta-element-cover"></div>
-					<div class="half-cta-element-content">
-						<a href="">Начать проект</a>
+					<div class="half-cta-element-content" bind:this={openModalButtonEl}>
+						<a href="/" class="js-openModalButton" bind:this={locked}>Начать проект</a>
 					</div>
 					<p>{scrollText2}</p>
 				</div>
@@ -111,6 +117,7 @@
 		</div>
 	</div>
 </section>
+<CallContactFormBlock hiddenFields={["email", "note"]} initiator={openModalButton}/>
 
 <style lang="scss">
 	.half-cta {
