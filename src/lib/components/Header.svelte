@@ -3,7 +3,6 @@
     import 'bootstrap/dist/css/bootstrap-utilities.min.css'
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
-	import CallBack from './CallBack.svelte';
 
 	let header;
 
@@ -130,7 +129,6 @@
 		</div>
 	</div>
 </header>
-<CallBack />
 </div>
 
 <style lang="scss">
