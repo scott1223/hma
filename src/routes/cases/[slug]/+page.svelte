@@ -32,6 +32,8 @@
 <DescriptionBlock info={content.textBlock} />
 <SliderCase sliderData={content.slider} />
 <DescriptionBlock info={content.textBlock2} />
-<GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
+<div class="--margin-bottom --margin-top">
+  <GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
+</div>
 <CallContactFormBlock />
 <NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	
