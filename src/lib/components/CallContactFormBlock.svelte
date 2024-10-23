@@ -1,6 +1,8 @@
 <script>
   import ContactModal from './ContactModal.svelte';
   let showModal = false;
+  export let hiddenFields = [];
+  export let title = "";
 
   function openModal() {
     showModal = true;
@@ -13,4 +15,4 @@
 
 <button on:click={openModal}>Открыть контактную форму</button>
 
-<ContactModal open={showModal} on:close={closeModal} />
+<ContactModal open={showModal} on:close={closeModal} hiddenFields={hiddenFields} title={title}/>

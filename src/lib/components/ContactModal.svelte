@@ -2,8 +2,11 @@
   import { CMS_URL } from '$lib/globals.js';
   import { createEventDispatcher } from 'svelte';
 
-  export let open = false; // Пропс для управления видимостью
-  export let notModal = false; // Пропс для управления видимостью
+  export let open = false; // видимость
+  export let notModal = false; // является ли модальной
+  export let hiddenFields = []; // скрыть поля
+  export let title = "Контакт"; // заголовок модальной формы
+  export let subtitle = "Оставьте свой номер телефона и мы вам перезвоним"; // заголовок модальной формы
   const dispatch = createEventDispatcher();
 
   let name = "";
@@ -23,10 +26,9 @@
     });
 
     if (response.ok) {
-      alert('Форма успешно отправлена!');
       closeModal();
     } else {
-      alert('Ошибка при отправке формы.');
+      console.log('Ошибка при отправке формы.', response);
     }
   }
 
@@ -38,24 +40,34 @@
 {#if open}
   <div class={notModal ? '' : 'modal-overlay'} on:click={closeModal}>
     <div class="modal-content" on:click|stopPropagation>
-      <h2>Контактная форма</h2>
+      {#if (!notModal)}
+      <button class="close-button" type="button" title="Close" aria-label="Close" on:click={closeModal}>
+        <svg aria-hidden="true" viewBox="0 0 32 32" fill="#000" width="32" height="32">
+          <use class="pswp__icn-shadow" xlink:href="#pswp__icn-close"></use>
+          <path d="M24 10l-2-2-6 6-6-6-2 2 6 6-6 6 2 2 6-6 6 6 2-2-6-6z" id="pswp__icn-close"></path>
+        </svg>
+      </button>
+      {/if}
+      {#if (!hiddenFields.includes('title'))}
+      <h2>{title}</h2>
+      {/if}
+      {#if (!hiddenFields.includes('subtitle'))}
+      <h3>{subtitle}</h3>
+      {/if}
       <form on:submit|preventDefault={submitForm}>
-        <label>ФИО:</label>
-        <input type="text" bind:value={name} required />
-
-        <label>Телефон:</label>
-        <input type="text" bind:value={phone} required />
-
-        <label>Email:</label>
-        <input type="email" bind:value={email} required />
-
-        <label>Примечание:</label>
-        <textarea bind:value={note}></textarea>
-
-        <div class="actions">
-          <button type="button" on:click={closeModal}>Отмена</button>
-          <button type="submit">Отправить</button>
-        </div>
+        {#if (!hiddenFields.includes('name'))}
+        <input type="text" bind:value={name} required placeholder="Ваше имя"/>
+        {/if}
+        {#if (!hiddenFields.includes('phone'))}
+        <input type="text" bind:value={phone} required placeholder="Ваш телефон"/>
+        {/if}
+        {#if (!hiddenFields.includes('email'))}
+        <input type="email" bind:value={email} required placeholder="Email" />
+        {/if}
+        {#if (!hiddenFields.includes('note'))}
+        <textarea bind:value={note} placeholder="Текст сообщения"></textarea>
+        {/if}
+        <button type="submit">Позвоните мне</button>
       </form>
     </div>
   </div>
@@ -77,15 +89,57 @@
 
   .modal-content {
     background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 400px;
+    padding: 2em;
+    border-radius: 7px;
+    max-width: 500px;
     width: 100%;
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: center;
+    position: relative;
   }
 
   .actions {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+  }
+  
+  h2 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+  }
+
+  h3 {
+      font-size: 1em;
+      margin-bottom: 0.5em;
+  }
+
+  form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      justify-content: center;
+      width: 100%;
+  }
+  input, button[type="submit"], textarea {
+      height: 3em;
+      border: 1px solid #000;
+      font-size: 1em;
+      padding: 1em;
+      border-radius: 7px;
+  }
+  textarea {
+      height: 6em;
+  }
+  button[type="submit"] {
+      background: #000;
+      color: #FFF;
+  }
+  .close-button {
+      position: absolute;
+      top: 0.7em;
+      right: 0.7em;
   }
 </style>

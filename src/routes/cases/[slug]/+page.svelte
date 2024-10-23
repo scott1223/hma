@@ -35,5 +35,5 @@
 <div class="--margin-bottom --margin-top">
   <GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
 </div>
-<CallContactFormBlock />
+<CallContactFormBlock hiddenFields={["email", "note", "title"]} />
 <NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	
