@@ -1,7 +1,7 @@
 <script>
 	import { CMS_URL } from '$lib/globals.js';
 	let { mediaArray, sectionCode } = $props();
-
+    if (!sectionCode) sectionCode = '';
 	function formatedDate(date) {
 		const noFormat = new Date(date);
 
