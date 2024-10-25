@@ -303,12 +303,4 @@
 		width: 100%;
 		background-color: rgba($color: #000000, $alpha: 0.1);
 	}
-    :global(.btn-blue) {
-        background: #4A3AD9;
-        color: #FFF;
-        font-size: 1em;
-        padding: 1em;
-        border-radius: 7px;
-        border: none;
-    }
 </style>
