@@ -7,12 +7,22 @@
 	import Lenis from 'lenis';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '../lib/components/Header.svelte';
+    import ContactModal from '$lib/components/ContactModal.svelte';
 
 	const globalNavigation = getIsNavigating();
 	const { data } = $props();
-	
 	let lenis;
 	let cover;
+    let showModal = $state(false);
+    
+    function openModal() {
+        console.log('openModal');
+        showModal = true;
+    }
+
+    function closeModal() {
+        showModal = false;
+    }
 
 	function setInitials() {
 		gsap.set(cover, { yPercent: 0, scale: 0.95 });
@@ -100,7 +110,8 @@
 </script>
 
 <main>
-	<Header />
+	<Header openContactForm={openModal} phone={data.footerInfo.phone}/>
+    <ContactModal open={showModal} on:close={closeModal} hiddenFields={['email', 'note']} />
 	<div class="cover-transition" bind:this={cover}>
 		<p>
 			{#if data.title}
@@ -142,7 +153,7 @@
 				}
 			}}
 		>
-			<slot />
+			<slot openContactForm={openModal} />
 			<Footer info={data?.footerInfo} />
 		</div>
 	{/key}

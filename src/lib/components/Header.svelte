@@ -3,8 +3,11 @@
     import 'bootstrap/dist/css/bootstrap-utilities.min.css'
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
+	import CallBack from './CallBack.svelte';
 
 	let header;
+    export let openContactForm;
+    export let phone;
 
 	function setBurger() {
 		gsap.set('.header__menu li a span', {
@@ -129,6 +132,7 @@
 		</div>
 	</div>
 </header>
+<CallBack {openContactForm} {phone} hiddenFields={['email', 'note']} />
 </div>
 
 <style lang="scss">

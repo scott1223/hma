@@ -69,7 +69,7 @@
         {#if (!hiddenFields.includes('note'))}
         <textarea bind:value={note} placeholder="Текст сообщения"></textarea>
         {/if}
-        <button type="submit">Отправить</button>
+        <button type="submit" class="btn-blue">Отправить</button>
       </form>
     </div>
   </div>
@@ -119,6 +119,7 @@
   h3 {
       font-size: 1em;
       margin-bottom: 0.5em;
+      font-weight: 100;
   }
 
   form {
@@ -128,7 +129,7 @@
       justify-content: center;
       width: 100%;
   }
-  input, button[type="submit"], textarea {
+  input, textarea {
       border: 1px solid #000;
       font-size: 1em;
       padding: 1em;
@@ -138,8 +139,6 @@
       height: 6em;
   }
   button[type="submit"] {
-      background: #4A3AD9;
-      color: #FFF;
       margin-top: 1em;
   }
   .close-button {
