@@ -28,7 +28,7 @@ export async function load({ url }) {
       
     }
 
-    const footerURL = `${CMS_URL}/api/footer?populate=*`
+    const footerURL = `${CMS_URL}/api/footer?populate[contactForm][populate]=*&populate=*&populate[footerLink][populate]=*`
     const footer = await fetchWithRetry(footerURL)
 
     return {

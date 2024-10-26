@@ -5,12 +5,12 @@
 	import SliderCase from '$lib/components/solocase/SliderCase.svelte';
 	import NextPrev from '$lib/components/solocase/NextPrev.svelte';
 	import GridPhotoBlock from '$lib/components/GridPhotoBlock.svelte';
-	import CallContactFormBlock from '$lib/components/CallContactFormBlock.svelte';
 	import { SITE_URL } from '$lib/globals.js';
 
 	let {data} = $props();
 	let content = data.content.attributes
 	let seo = data.content.attributes.SEO
+    let contactForm = data.footerInfo.contactForm;
 	
 </script>
 
@@ -27,9 +27,8 @@
 <FullImage bigImage={content.bigImage?.data?.attributes} />
 <DescriptionBlock info={content.textBlock} />
 <SliderCase sliderData={content.slider} />
-<DescriptionBlock info={content.textBlock2} />
+<DescriptionBlock info={content.textBlock2} contactFormData={{hiddenFields: ["email", "note", "title"], contactForm}}/>
 <div class="--margin-bottom --margin-top">
   <GridPhotoBlock GridPhotoBlock={content.GridPhotoBlock} galleryId="casesPhotoGrid" />
 </div>
-<CallContactFormBlock hiddenFields={["email", "note", "title"]} title="Связь"/>
-<NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />	
+<NextPrev prev={data.prevCase?.attributes} next={data.nextCase?.attributes} current={content} />

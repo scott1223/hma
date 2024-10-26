@@ -132,7 +132,7 @@
 		</div>
 	</div>
 </header>
-<CallBack {openContactForm} {phone} hiddenFields={['email', 'note']} />
+<CallBack {phone} hiddenFields={['email', 'note']} />
 </div>
 
 <style lang="scss">

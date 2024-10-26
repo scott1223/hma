@@ -1,14 +1,15 @@
 <script>
   import { CMS_URL } from '$lib/globals.js';
+  import { getContext} from 'svelte';
 
-  export let openContactForm;
   export let phone;
 
+  const openModal = getContext('openModal');
 </script>
 
 <div class="callback-form-wrapper">
           <a href="tel:{phone}">{phone}</a>
-          <button on:click={openContactForm} class="btn-blue">Обратный звонок</button>
+          <button on:click={openModal} class="btn-blue">Обратный звонок</button>
 </div>
 
 <style>

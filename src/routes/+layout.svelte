@@ -8,6 +8,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '../lib/components/Header.svelte';
     import ContactModal from '$lib/components/ContactModal.svelte';
+    
+    import { setContext } from 'svelte';
 
 	const globalNavigation = getIsNavigating();
 	const { data } = $props();
@@ -23,6 +25,8 @@
     function closeModal() {
         showModal = false;
     }
+    
+    setContext('openModal', openModal);
 
 	function setInitials() {
 		gsap.set(cover, { yPercent: 0, scale: 0.95 });
@@ -110,7 +114,7 @@
 </script>
 
 <main>
-	<Header openContactForm={openModal} phone={data.footerInfo.phone}/>
+	<Header phone={data.footerInfo.contactForm.phone}/>
     <ContactModal open={showModal} on:close={closeModal} hiddenFields={['email', 'note']} />
 	<div class="cover-transition" bind:this={cover}>
 		<p>
