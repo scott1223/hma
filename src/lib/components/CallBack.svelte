@@ -20,12 +20,19 @@
         z-index: 1;
         background: transparent;
         font-size: 23px;
-        & a {
+        a {
             color: #4A3AD9;
             margin-right: 1em;
+        }
+        button {
             @media(max-width:767px) {
                 display: none;
             }
         }
+        @media(max-width:767px) {
+            font-size: 16px;
+            right: 0;
+        }
+
     }
 </style>
