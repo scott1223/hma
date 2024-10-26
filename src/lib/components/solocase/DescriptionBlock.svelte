@@ -1,7 +1,7 @@
 <script>
 	import { CMS_URL } from '$lib/globals.js';
 	import { marked } from 'marked';
-	import CallContactFormBlock from '$lib/components/CallContactFormBlock.svelte';
+	import CallContactFormBlockComponent from '$lib/components/CallContactFormBlockComponent.svelte';
 
     marked.setOptions({
       breaks: true,
@@ -65,18 +65,7 @@
 				<div></div>
 			</div>
 			<div class="desc-block-body">
-				<div class="desc-block-body-subtitle contact-form-avatar">
-					{#if contactFormData.contactForm?.avatar}
-                    <img src={CMS_URL + contactFormData.contactForm?.avatar.data.attributes.url}>
-                    {/if}
-                    {#if contactFormData.contactForm?.avatarTitle}
-                    <div class="contact-form-avatar-title">{@html marked.parse(contactFormData.contactForm?.avatarTitle)}</div>
-                    {/if}
-				</div>
-				<div class="border-vertical"></div>
-				<div class="desc-block-body-content">
-                    <CallContactFormBlock hiddenFields={contactFormData.hiddenFields} />
-                </div>
+                <CallContactFormBlockComponent {contactFormData} />
 			</div>
 			<div class="desc-block-borders">
 				<div></div>
@@ -235,25 +224,6 @@
 		}
 	}
     
-    .contact-form-avatar {
-        padding-right: 5em !important;
-        img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center;
-        }
-        .contact-form-avatar-title {
-            p {
-                color: #000;
-                font-size: 16px;
-                strong {
-                    font-weight: 600;
-                }
-            }
-        }
-    }
     .contact-form-block .desc-block-body {
         text-align: right;
         @media (max-width: 767px) {

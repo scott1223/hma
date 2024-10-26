@@ -1,8 +1,9 @@
 <script>
 	import { CMS_URL } from '$lib/globals.js';
 	import { marked } from 'marked';
+	import CallContactFormBlockComponent from '$lib/components/CallContactFormBlockComponent.svelte';
 
-	let { content, className } = $props();
+	let { content, className, contactFormData } = $props();
 </script>
 
 {#if content}
@@ -10,6 +11,11 @@
 	<div class="container">
       {@html marked.parse(content)}
 	</div>
+</section>
+{/if}
+{#if contactFormData}
+<section class="contact-form-block">
+    <CallContactFormBlockComponent {contactFormData} />
 </section>
 {/if}
 

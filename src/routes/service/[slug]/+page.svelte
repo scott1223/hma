@@ -9,6 +9,7 @@
 	import GridPhotoBlock from '$lib/components/GridPhotoBlock.svelte';
 
 	let {data} = $props();
+    let contactForm = data.footerInfo.contactForm;
 
 	let seo = data.soloMediaData.SEO
 </script>
@@ -28,7 +29,7 @@
   <Accordion accordion={data.soloMediaData.accordion} philosophy='' />
   <div class="container"><h2>{data.soloMediaData.title2}</h2></div>
   <GridPhotoBlock GridPhotoBlock={data.soloMediaData.gridPhoto} galleryId="casesPhotoGrid" />
-  <DescriptionBlockRich content={data.soloMediaData.textBlock2_1} className='--margin-bottom' />
+  <DescriptionBlockRich content={data.soloMediaData.textBlock2_1} contactFormData={{hiddenFields: ["email", "note", "title"], contactForm}} className='--margin-bottom' />
 </div>
 
 <style lang="scss">
@@ -51,6 +52,18 @@
 
 :global(.cdu-service-item-wrapper .accordion) {
     gap: 0;
+}
+
+:global(.contact-form-block) {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+    :global(.border-vertical) {
+        display: none;
+    }
+    :global(h2), :global(h3) {
+        margin: 0;
+    }
 }
 
 </style>
