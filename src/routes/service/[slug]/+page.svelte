@@ -15,15 +15,15 @@
 </script>
 
 <svelte:head>
-	<title>{seo?.title}</title>
+	<title>{seo?.title ?? data.soloMediaData.pageTitle}</title>
 	<meta name="description" content={seo?.description}> 
-	<meta name="og:title" content={seo?.title}> 
+	<meta name="og:title" content={seo?.title ?? data.soloMediaData.pageTitle}> 
 	<meta name="og:description" content={seo?.description}> 
 	<meta name="og:url" content={SITE_URL + 'media/' + seo?.slug}> 
 	<meta name="og:description" content={seo?.description}> 
 </svelte:head>
 
-<HeroMediaSolo heroImages1={data.soloMediaData.heroimages.data} soloText={data.soloMediaData.title} />
+<HeroMediaSolo heroImages1={data.soloMediaData.heroimages.data} soloText={data.soloMediaData.pageTitle} />
 <div class="cdu-service-item-wrapper">
   <DescriptionBlockRich content={data.soloMediaData.textBlock1_1} />
   <Accordion accordion={data.soloMediaData.accordion} philosophy='' />

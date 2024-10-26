@@ -7,7 +7,7 @@ export async function load({ url }) {
 	try {
 		const soloMedaURL = `${CMS_URL}/api/services?filters[SEO][slug][$eq]=${slug}&populate[gridPhoto][populate]=*&populate[heroimages][populate]=true&populate[accordion][populate]=true&populate=*`;
 		const soloMediaData = await fetchWithRetry(soloMedaURL);
-		const mediaArrayURL = `${CMS_URL}/api/services?fields[0]=title&populate[thumbnail]=*&populate[SEO]=*&fields[1]=publishedAt&pagination[page]=1&pagination[pageSize]=6`
+		const mediaArrayURL = `${CMS_URL}/api/services?fields[0]=title&fields[2]=pageTitle&populate[thumbnail]=*&populate[SEO]=*&fields[1]=publishedAt&pagination[page]=1&pagination[pageSize]=6`
 		const mediaArray = await fetchWithRetry(mediaArrayURL)
 
 		if(soloMediaData.data.length === 0) {
