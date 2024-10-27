@@ -3,6 +3,8 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onDestroy, onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
+    import { CMS_URL } from '$lib/globals.js';
+
 
 	let {scrollText,scrollText2} = $props();
     let openModalButton = $state(null);
@@ -98,7 +100,7 @@
 			<div class="half-cta-element" data-cover="1">
 				<div class="half-cta-element-wrap">
 					<div class="half-cta-element-cover"></div>
-					<div class="half-cta-element-content">
+					<div class="half-cta-element-content" style="background-image: url('{CMS_URL + '/uploads/about_hero1_2_839fe0180a.svg'}')">
 						<a href="/about">Об агенстве</a>
 					</div>
 					<p>{scrollText}</p>
@@ -226,10 +228,6 @@
 				}
 				@media (max-width: 767px) {
 					width: 100%;
-				}
-
-				.half-cta-element-content {
-					background-image: url('/about-cta.png');
 				}
 
 				.half-cta-element-cover {
