@@ -29,7 +29,7 @@
   <Accordion accordion={data.soloMediaData.accordion} philosophy='' />
   <div class="container"><h2>{data.soloMediaData.title2}</h2></div>
   <GridPhotoBlock GridPhotoBlock={data.soloMediaData.gridPhoto} galleryId="casesPhotoGrid" />
-  <DescriptionBlockRich content={data.soloMediaData.textBlock2_1} contactFormData={{hiddenFields: ["email", "note", "title"], contactForm}} className='--margin-bottom' />
+  <DescriptionBlockRich content={data.soloMediaData.textBlock2_1} className='--margin-bottom' />
 </div>
 
 <style lang="scss">

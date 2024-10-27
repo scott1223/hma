@@ -1,7 +1,6 @@
 <script>
 	import { CMS_URL } from '$lib/globals.js';
 	import { marked } from 'marked';
-	import CallContactFormBlockComponent from '$lib/components/CallContactFormBlockComponent.svelte';
 
     marked.setOptions({
       breaks: true,
@@ -57,23 +56,6 @@
 				<div></div>
 			</div>
 		</div>
-        {#if contactFormData}
-		<div class="desc-block contact-form-block">
-			<div class="desc-block-borders">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-			<div class="desc-block-body">
-                <CallContactFormBlockComponent {contactFormData} />
-			</div>
-			<div class="desc-block-borders">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-        </div>
-        {/if}
 	</div>
 </section>
 

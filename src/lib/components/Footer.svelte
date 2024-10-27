@@ -1,7 +1,12 @@
 <script>
 	import Button from './uikit/Button.svelte';
+	import CallContactFormBlockComponent from '$lib/components/CallContactFormBlockComponent.svelte';
 
 	let { info } = $props();
+    const contactFormData = {
+        ...info,
+        hiddenFields: ["email", "note", "title"]
+    };
 </script>
 
 {#snippet footerLink(link)}
@@ -18,6 +23,9 @@
 
 <footer>
 	<div class="container">
+        <div class="cdu-footer-contact-form --margin-bottom --margin-top">
+            <CallContactFormBlockComponent {contactFormData} />
+        </div>
 		<div class="footer">
 			<h4 class="footer-text">
 				{info?.philosophy}

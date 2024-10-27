@@ -3,23 +3,29 @@
 	import { marked } from 'marked';
     import CallContactFormBlock from '$lib/components/CallContactFormBlock.svelte';
     let { contactFormData } = $props();
+    marked.setOptions({
+      breaks: true,
+    });
 </script>
 
-<div class="desc-block-body-subtitle contact-form-avatar">
-    {#if contactFormData.contactForm?.avatar}
-    <img src={CMS_URL + contactFormData.contactForm?.avatar.data.attributes.url}>
-    {/if}
-    {#if contactFormData.contactForm?.avatarTitle}
-    <div class="contact-form-avatar-title">{@html marked.parse(contactFormData.contactForm?.avatarTitle)}</div>
-    {/if}
-</div>
-<div class="border-vertical"></div>
-<div class="desc-block-body-content">
-    <CallContactFormBlock hiddenFields={contactFormData.hiddenFields} />
+<div class="cdu-contact-form-wrapper">
+    <div class="contact-form-avatar">
+        {#if contactFormData.contactForm?.avatar}
+        <img src={CMS_URL + contactFormData.contactForm?.avatar.data.attributes.url}>
+        {/if}
+        {#if contactFormData.contactForm?.avatarTitle}
+        <div class="contact-form-avatar-title">{@html marked.parse(contactFormData.contactForm?.avatarTitle)}</div>
+        {/if}
+    </div>
+    <div class="desc-block-body-content">
+        <CallContactFormBlock hiddenFields={contactFormData.hiddenFields} />
+    </div>
 </div>
 
 <style lang="scss">
-:global(.cdu-contact-form-wrapper) {
+.cdu-contact-form-wrapper {
+    display: flex;
+    justify-content: center;
     :global(.modal-content) {
         max-width: 600px;
         padding: 0;
@@ -41,17 +47,18 @@
             font-size: 16px !important;
         }
     }
-}
-:global(.contact-form-avatar) {
-    padding-right: 5em !important;
-    :global(img) {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: center;
+    .contact-form-avatar {
+        padding-right: 5em !important;
+        text-align: right;
+        img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
-    :global(.contact-form-avatar-title) {
+    .contact-form-avatar-title {
         :global(p) {
             color: #000;
             font-size: 16px;
