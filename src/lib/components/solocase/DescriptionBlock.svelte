@@ -27,7 +27,9 @@
 						<div class="desc-block-body-item">
 							<h3>{el.header}</h3>
 							{#if el.richContent}
+                                <div class="marked-parse-block">
 								{@html marked.parse(el.richContent)}
+                                </div>
 							{/if}
                             {#if el.videoMp4?.data}
                             <video class="desc-block-video-container" autoplay muted loop>

@@ -14,7 +14,7 @@
         <img src={CMS_URL + contactFormData.contactForm?.avatar.data.attributes.url}>
         {/if}
         {#if contactFormData.contactForm?.avatarTitle}
-        <div class="contact-form-avatar-title">{@html marked.parse(contactFormData.contactForm?.avatarTitle)}</div>
+        <div class="contact-form-avatar-title marked-parse-block">{@html marked.parse(contactFormData.contactForm?.avatarTitle)}</div>
         {/if}
     </div>
     <div class="desc-block-body-content">

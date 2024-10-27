@@ -7,7 +7,7 @@
 
 {#if content}
 <section class={`cdu-block-rich ${className}`}>
-	<div class="container">
+	<div class="container marked-parse-block">
       {@html marked.parse(content)}
 	</div>
 </section>
