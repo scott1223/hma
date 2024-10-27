@@ -3,7 +3,6 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { onDestroy, onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
-    import CallContactFormBlock from '$lib/components/CallContactFormBlock.svelte';
 
 	let {scrollText,scrollText2} = $props();
     let openModalButton = $state(null);
@@ -117,7 +116,6 @@
 		</div>
 	</div>
 </section>
-<CallContactFormBlock hiddenFields={["email", "note"]} initiator={openModalButton}/>
 
 <style lang="scss">
 	.half-cta {
