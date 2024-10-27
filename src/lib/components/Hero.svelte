@@ -272,18 +272,18 @@
 					</div>
 
 					<div class="preloader-element" id="second-preloader">
-						<p><span>РЕКЛАМА</span></p>
+						<p><span>МАРКЕТИНГ</span></p>
 					</div>
 
 					<div class="preloader-element" id="third-preloader">
-						<p><span>БРЕНДИНГ</span></p>
+						<p><span>РЕКЛАМА</span></p>
 						<div data-hero="2">
 							<img class="--m-top" src={CMS_URL + heroImages2.data[1]?.attributes.url} alt={heroImages2.data[1]?.attributes.alternativeText} />
 						</div>
 					</div>
 
 					<div class="preloader-element" id="fourth-preloader">
-						<p><span>МАРКЕТИНГ</span></p>
+						<p><span>БРЕНДИНГ</span></p>
 						<div data-hero="1">
 							<img class="--m-top" src={CMS_URL + heroImages1.data[1]?.attributes.url} alt={heroImages1.data[1]?.attributes.alternativeText} />
 						</div>
@@ -300,7 +300,7 @@
 						</div>
 					</div>
 					<div class="preloader-element" id="fifth-preloader">
-						<p><span>БРЕНДИНГ</span></p>
+						<p><span>РЕКЛАМА</span></p>
 						<div data-hero="1">
 							<img src={CMS_URL + heroImages1.data[2]?.attributes.url} alt={heroImages1.data[2]?.attributes.alternativeText} />
 						</div>
