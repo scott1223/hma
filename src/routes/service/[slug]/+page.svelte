@@ -23,7 +23,7 @@
 	<meta name="og:description" content={seo?.description}> 
 </svelte:head>
 
-<HeroMediaSolo heroImages1={data.soloMediaData.heroimages.data} soloText={data.soloMediaData.pageTitle} />
+<HeroMediaSolo heroImages1={data.soloMediaData.heroimages.data} soloText={data.soloMediaData.pageTitle ?? data.soloMediaData.title ?? seo?.title} />
 <div class="cdu-service-item-wrapper">
   <DescriptionBlockRich content={data.soloMediaData.textBlock1_1} />
   <Accordion accordion={data.soloMediaData.accordion} philosophy='' />
