@@ -45,17 +45,17 @@
       {data.address}
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <ContactModal open={true} notModal={true} hiddenFields={['title']}/>  
-      </div>
-    </div>
   </div>
   {#if (data.yandexMapLink)}
   <div class="col-12 col-sm-8 col-md-6 col-lg-4 d-flex justify-content-end ">
     {@html data.yandexMapLink}
   </div>
   {/if}
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <ContactModal open={true} notModal={true} bigForm={true}/>  
+  </div>
 </div>
 
 <style lang="scss">

@@ -15,10 +15,11 @@
 	const { data } = $props();
 	let lenis;
 	let cover;
+    let bigForm = $state(false);
     let showModal = $state(false);
     
-    function openModal() {
-        console.log('openModal');
+    function openModal(bigFormFlag = false) {
+        bigForm = bigFormFlag;
         showModal = true;
     }
 
@@ -115,7 +116,7 @@
 
 <main>
 	<Header phone={data.footerInfo.contactForm.phone}/>
-    <ContactModal open={showModal} on:close={closeModal} hiddenFields={['email', 'note']} />
+    <ContactModal open={showModal} on:close={closeModal} hiddenFields={['email', 'note']} {bigForm} />
 	<div class="cover-transition" bind:this={cover}>
 		<p>
 			{#if data.title}
