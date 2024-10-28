@@ -1,15 +1,14 @@
 <script>
 	import { gsap } from 'gsap/dist/gsap.js';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount, getContext } from 'svelte';
 	import { scale } from 'svelte/transition';
     import { CMS_URL } from '$lib/globals.js';
 
-
 	let {scrollText,scrollText2} = $props();
-    let openModalButton = $state(null);
-    let openModalButtonEl;
     let locked;
+
+    const openModal = getContext('openModal');
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -76,8 +75,10 @@
 	};
 
 	onMount(() => {
-        openModalButton = openModalButtonEl;
-        locked.addEventListener('click', (e) => {e.preventDefault();});
+        locked.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(true);
+        });
 		if (window.innerWidth > 1024) {
 			setTimeout(() => {
 				master.add(scrollAnimation()).add(scaleBack());
@@ -109,7 +110,7 @@
 			<div class="half-cta-element" data-cover="2">
 				<div class="half-cta-element-wrap">
 					<div class="half-cta-element-cover"></div>
-					<div class="half-cta-element-content" bind:this={openModalButtonEl}>
+					<div class="half-cta-element-content">
 						<a href="/" class="js-openModalButton" bind:this={locked}>Начать проект</a>
 					</div>
 					<p>{scrollText2}</p>

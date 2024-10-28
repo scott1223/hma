@@ -24,16 +24,6 @@
   let files = null; // Для файла
   let formData = new FormData();
 
-  let scale = 1;
-
-  // Функция для установки масштаба в зависимости от высоты экрана
-  function calculateScale() {
-    if (bigForm && !notModal) {
-      const vh = window.innerHeight;
-      scale = Math.min(1, vh / 1100); // например, масштаб 1 при высоте 1000px
-    }
-  }
-  onMount(calculateScale); // Рассчитываем масштаб при монтировании
   // Обработчик выбора файла
   function handleFileChange(event) {
     files = event.target.files[0]; // Сохраняем выбранный файл
@@ -71,7 +61,7 @@
 
 {#if open}
   <div class={notModal ? '' : 'modal-overlay'} on:click={closeModal}>
-    <div class="modal-content{bigForm && ' big-form'}" on:click|stopPropagation style="transform: scale({scale});">
+    <div class="modal-content{bigForm && ' big-form'}" on:click|stopPropagation style="transform: scale({bigForm ? Math.min(1, window.innerHeight / 1100) : 1});">
       {#if (!notModal)}
       <button class="close-button" type="button" title="Close" aria-label="Close" on:click={closeModal}>
         <svg aria-hidden="true" viewBox="0 0 32 32" fill="#4A3AD9" width="32" height="32">
