@@ -43,8 +43,6 @@
     const formData = new FormData();
     if (!note) note = null;
     let resultNote = ['Компания ' + company, note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n");
-    const resultNote = [note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n\n");
-    console.log({resultNote});
     formData.append('data', JSON.stringify({ name, phone, email, note: resultNote })); // Добавляем текстовые данные
     formData.append('files.files', files); // Добавляем файл (Strapi ждет ключ 'files')
 
