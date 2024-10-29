@@ -8,7 +8,7 @@
 	let {scrollText2} = $props();
     let locked;
 
-    const openModal = getContext('openModal');
+    const openBigModal = getContext('openBigModal');
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +77,7 @@
 	onMount(() => {
         locked.addEventListener('click', (e) => {
             e.preventDefault();
-            openModal(true);
+            openBigModal();
         });
 		if (window.innerWidth > 1024) {
 			setTimeout(() => {

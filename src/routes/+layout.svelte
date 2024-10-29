@@ -18,8 +18,12 @@
     let bigForm = $state(false);
     let showModal = $state(false);
     
-    function openModal(bigFormFlag = false) {
-        bigForm = bigFormFlag;
+    function openModal() {
+        showModal = true;
+    }
+
+    function openBigModal() {
+        bigForm = true;
         showModal = true;
     }
 
@@ -28,6 +32,7 @@
     }
     
     setContext('openModal', openModal);
+    setContext('openBigModal', openBigModal);
 
 	function setInitials() {
 		gsap.set(cover, { yPercent: 0, scale: 0.95 });

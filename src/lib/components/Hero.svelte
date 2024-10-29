@@ -5,11 +5,7 @@
 	import { getIsNavigating } from '$lib/settings.svelte.js';
 	import { CMS_URL } from '$lib/globals.js';
 
-    const openModal = getContext('openModal');
-  
-    function openBigFormModal () {
-        openModal(true);
-    }
+    const openBigFormModal = getContext('openBigModal');
 
 	let {heroImages1, heroImages2} = $props();
 
@@ -317,8 +313,8 @@
 					<div class="preloader-element" id="sixth-preloader">
 						<p><span>БРЕНДИНГ</span></p>
 
-						<div data-hero="0" on:click={openBigFormModal}>
-							<Button text="Превращаем компании в бренды" on:click={openBigFormModal}/>
+						<div data-hero="0">
+							<Button text="Превращаем компании в бренды" onClick={openBigFormModal}/>
 						</div>
 						<div data-hero="2">
 							<img src={CMS_URL + heroImages2.data[4]?.attributes.url} alt={heroImages2.data[4]?.attributes.alternativeText} />

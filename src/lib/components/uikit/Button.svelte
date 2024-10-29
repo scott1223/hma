@@ -1,8 +1,8 @@
 <script>
-	let { text } = $props();
+	let { text, onClick } = $props();
 </script>
 
-<button class="button">
+<button class="button" on:click={onClick ?? null}>
 	<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<line x1="-6.10352e-05" y1="10.5344" x2="8.57137" y2="10.5344" stroke="#fff" />
 		<line x1="11.4286" y1="10.5344" x2="20.0001" y2="10.5344" stroke="#fff" />

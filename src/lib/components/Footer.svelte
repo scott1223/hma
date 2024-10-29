@@ -1,12 +1,14 @@
 <script>
 	import Button from './uikit/Button.svelte';
 	import CallContactFormBlockComponent from '$lib/components/CallContactFormBlockComponent.svelte';
+    import { getContext } from 'svelte';
 
 	let { info } = $props();
     const contactFormData = {
         ...info,
         hiddenFields: ["email", "note", "title"]
     };
+    const openBigModal = getContext('openBigModal');
 </script>
 
 {#snippet footerLink(link)}
@@ -45,7 +47,7 @@
 				<div class="footer-grid-row">
 					{@render footerLink({ url: '/cases', label: 'Кейсы', class:false })}
 					<div class="border-vertical"></div>
-					<Button text="Превращаем компании в бренды" />
+					<Button text="Превращаем компании в бренды" onClick={openBigModal}/>
 					<div class="border-vertical"></div>
 					{@render footerLink({ url: '/media', label: 'Медиа', class:false })}
 					<div class="border-vertical"></div>
