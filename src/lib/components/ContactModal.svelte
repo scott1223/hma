@@ -61,7 +61,7 @@
 
 {#if open}
   <div class={notModal ? '' : 'modal-overlay'} on:click={closeModal}>
-    <div class="modal-content{bigForm && ' big-form'}" on:click|stopPropagation style="transform: scale({bigForm ? Math.min(1, window.innerHeight / 1100) : 1});">
+    <div class="modal-content{bigForm ? ' big-form' : ''}" on:click|stopPropagation style="transform: scale({bigForm ? Math.min(1, window.innerHeight / 1100) : 1});">
       {#if (!notModal)}
       <button class="close-button" type="button" title="Close" aria-label="Close" on:click={closeModal}>
         <svg aria-hidden="true" viewBox="0 0 32 32" fill="#4A3AD9" width="32" height="32">

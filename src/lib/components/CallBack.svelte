@@ -7,7 +7,7 @@
   const openModal = getContext('openModal');
   
   function openBigFormModal () {
-    openModal(true);
+    openModal();
   }
 </script>
 
