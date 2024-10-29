@@ -22,7 +22,6 @@
 
 <style>
     .callback-form-wrapper {
-        animation: zoom-in-zoom-out 2s ease infinite;
         position: fixed;
         right: 20px;
         top: 20px;
@@ -42,18 +41,4 @@
             }
         }
     }
-
-
-@keyframes zoom-in-zoom-out {
-    0% {
-        rotate: -5deg;
-    }
-    50% {
-        rotate: 5deg;
-    }
-    100% {
-        rotate: -5deg;
-    }
-}    
-    
 </style>
