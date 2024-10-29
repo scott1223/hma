@@ -37,4 +37,4 @@
 <ProjectsGrid projects={data.cases.data} isCasesPage={false} />
 <ScrollPhilosophy data={data.home.attributes.photoScroll} />
 <ServicesGrid services={data.home.attributes.workProccessStep} />
-<HalfCta scrollText={data.home.attributes.scrollText} scrollText2={data.home.attributes.scrollText2} />
+<HalfCta scrollText2={data.home.attributes.scrollText2} />
