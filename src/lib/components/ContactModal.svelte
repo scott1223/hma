@@ -3,6 +3,8 @@
   import { createEventDispatcher, onMount } from 'svelte';
   import 'bootstrap/dist/css/bootstrap-grid.min.css';
   import 'bootstrap/dist/css/bootstrap-utilities.min.css'
+  import { imask } from 'svelte-imask';
+
 
   export let open = false; // видимость
   export let notModal = false; // является ли модальной
@@ -11,6 +13,9 @@
   export let title = "Свяжитесь с нами"; // заголовок модальной формы
   export let subtitle = "Заполните ваши данные, чтобы мы связались с вами в ближайшее время"; // заголовок модальной формы
   const dispatch = createEventDispatcher();
+  const options = { 
+    mask: '+{7} (000) 000-00-00'
+  };
 
   let name = "";
   let phone = "";
@@ -82,7 +87,7 @@
             <input type="text" bind:value={name} required placeholder="Ваше имя"/>
             {/if}
             {#if (!hiddenFields.includes('phone'))}
-            <input type="text" bind:value={phone} required placeholder="+7 (999) 999-99-99"/>
+            <input type="text" bind:value={phone} use:imask={options} required placeholder="+7 (999) 999-99-99"/>
             {/if}
             {#if (!hiddenFields.includes('email'))}
             <input type="email" bind:value={email} required placeholder="Email" />
@@ -102,7 +107,7 @@
                 <input type="email" bind:value={email} required placeholder="Email" class="w-100" />
             </div>
             <div class="col-6 pb-4">
-                <input type="text" bind:value={phone} required placeholder="+7 (999) 999-99-99" class="w-100" />
+                <input type="text" bind:value={phone} use:imask={options} required placeholder="+7 (999) 999-99-99" class="w-100" />
             </div>
             <div class="col-12 big-form-subtitle font-blue pb-4">
             Выберите нужные услуги
