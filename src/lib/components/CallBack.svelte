@@ -23,8 +23,8 @@
 <style>
     .callback-form-wrapper {
         position: fixed;
-        right: 20px;
-        top: 20px;
+        right: 30px;
+        top: 30px;
         z-index: 1;
         background: transparent;
         font-size: 23px;
