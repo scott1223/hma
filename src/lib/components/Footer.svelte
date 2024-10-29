@@ -99,6 +99,15 @@
 				{@render footerLink(info.footerLink[3])}
 			</div>
 		</div>
+        <div class="row fs-6">
+            <div class="col-12 col-sm-6 text-center pb-2">
+                <a href="/policy/"><u class="font-blue">Политика конфиденциальности</u></a>
+            </div>
+            <div class="col-12 col-sm-6 text-center pb-2">
+                © 2023 All rights reserved by HMA           
+            </div>
+        </div>
+            
 	</div>
 </footer>
 
