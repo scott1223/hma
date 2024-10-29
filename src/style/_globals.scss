@@ -105,9 +105,14 @@ img.pswp__img {
 .font-white {
     color: #FFF !important;
 }
-.marked-parse-block a {
-    color: #4A3AD9;
-    font-weight: 600;
+.marked-parse-block {
+    a {
+        color: #4A3AD9;
+        font-weight: 600;
+    }
+    p {
+        margin-bottom: 1em;
+    }
 }
 .custom-checkbox {
     display: flex;
