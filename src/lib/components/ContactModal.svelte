@@ -36,7 +36,7 @@
     // Создаём FormData и добавляем текст и файл
     const formData = new FormData();
     if (!note) note = null;
-    const resultNote = [note, services.join(", "), sum, spam].join("\n\n");
+    const resultNote = [note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n\n");
     console.log({resultNote});
     formData.append('data', JSON.stringify({ name, phone, email, note: resultNote })); // Добавляем текстовые данные
     formData.append('files.files', files); // Добавляем файл (Strapi ждет ключ 'files')
@@ -109,20 +109,20 @@
             </div>
             <div class="col-12 button-selectors pb-4">
                 <div>
-                    <input type="checkbox" id="ch1" bind:group={services} value="Услуги: Консалтинг">
-                    <label for="ch1">Консалтинг</label>
+                    <input type="checkbox" id="ch1" bind:group={services} value="брендинг">
+                    <label for="ch1">Брендинг</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="ch2" bind:group={services} value="Услуги: Дизайн упаковки">
-                    <label for="ch2">Дизайн упаковки</label>
+                    <input type="checkbox" id="ch2" bind:group={services} value="упаковка продукции">
+                    <label for="ch2">Упаковка продукции</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="ch3" bind:group={services} value="Услуги: Дизайн сайта">
-                    <label for="ch3">Дизайн сайта</label>
+                    <input type="checkbox" id="ch3" bind:group={services} value="сайт">
+                    <label for="ch3">Сайт</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="ch4" bind:group={services} value="Услуги: Графический дизайн">
-                    <label for="ch4">Графический дизайн</label>
+                    <input type="checkbox" id="ch4" bind:group={services} value="видеопродакшн">
+                    <label for="ch4">Видеопродакшн</label>
                 </div>
             </div>
             <div class="col-12 big-form-subtitle font-blue pb-4">
@@ -130,15 +130,15 @@
             </div>
             <div class="col-12 button-selectors pb-4">
                 <div>
-                    <input type="radio" id="r1" bind:group={sum} value="Бюджет < 500000">
+                    <input type="radio" id="r1" bind:group={sum} value="< 500000">
                     <label for="r1">&lt; 500 000</label>
                 </div>
                 <div>
-                    <input type="radio" id="r2" bind:group={sum} value="Бюджет 500000-1000000">
+                    <input type="radio" id="r2" bind:group={sum} value="500000-1000000">
                     <label for="r2">500 000 - 1 000 000</label>
                 </div>
                 <div>
-                    <input type="radio" id="r3" bind:group={sum} value="Бюджет >1000000">
+                    <input type="radio" id="r3" bind:group={sum} value=">1000000">
                     <label for="r3">&gt; 1 000 000</label>
                 </div>
             </div>
