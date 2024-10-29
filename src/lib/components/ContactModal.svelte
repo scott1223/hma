@@ -1,5 +1,5 @@
 <script>
-  import { CMS_URL } from '$lib/globals.js';
+  import { CMS_URL, tgSendMessage } from '$lib/globals.js';
   import { createEventDispatcher, onMount } from 'svelte';
   import 'bootstrap/dist/css/bootstrap-grid.min.css';
   import 'bootstrap/dist/css/bootstrap-utilities.min.css'
@@ -20,10 +20,11 @@
   let name = "";
   let phone = "";
   let email = "";
+  let company = "";
   let note = null;
   let spam = "";
-  let services = ["Услуги: Консалтинг"];
-  let sum = "Бюджет 500000-1000000";
+  let services = ["упаковка продукции", "брендинг"];
+  let sum = "500000-1000000";
   let sentOk;
 
   let files = null; // Для файла
@@ -41,6 +42,7 @@
     // Создаём FormData и добавляем текст и файл
     const formData = new FormData();
     if (!note) note = null;
+    let resultNote = ['Компания ' + company, note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n");
     const resultNote = [note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n\n");
     console.log({resultNote});
     formData.append('data', JSON.stringify({ name, phone, email, note: resultNote })); // Добавляем текстовые данные
@@ -57,6 +59,14 @@
     } else {
       console.log('Ошибка при отправке формы.', response);
     }
+    const resultTelegramNote = [
+      '<b>Сообщение с сайта</b>',
+      'Имя: ' + name,
+      "Телефон:" + phone.replaceAll(" ", ""),
+      bigForm ? 'Email: ' + email : null,
+      bigForm ? resultNote : null
+    ].join("\n");
+    tgSendMessage(resultTelegramNote);
   }
 
   function closeModal() {
@@ -101,7 +111,7 @@
                 <input type="text" bind:value={name} required placeholder="Ваше имя" class="w-100" />
             </div>
             <div class="col-6 pb-4">
-                <input type="text" data-note placeholder="Название компании" class="w-100" />
+                <input type="text" bind:value={company} placeholder="Название компании" class="w-100" />
             </div>
             <div class="col-6 pb-4">
                 <input type="email" bind:value={email} required placeholder="Email" class="w-100" />
