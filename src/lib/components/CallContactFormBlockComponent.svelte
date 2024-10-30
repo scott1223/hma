@@ -45,6 +45,7 @@
         margin: 0;
         @media (max-width: 767px) {
             font-size: 16px !important;
+            margin-bottom: 0.8em !important;
         }
     }
     .contact-form-avatar {
@@ -56,6 +57,13 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: center;
+            @media (max-width: 767px) {
+                  width: 90px;
+                  height: 90px;
+            }
+        }
+        @media (max-width: 767px) {
+          text-align: left;
         }
     }
     .contact-form-avatar-title {
@@ -65,6 +73,9 @@
             :global(strong) {
                 font-weight: 600;
             }
+        }
+        @media (max-width: 767px) {
+          margin-top: 0.6em;
         }
     }
 }

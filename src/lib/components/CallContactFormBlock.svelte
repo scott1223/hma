@@ -28,5 +28,14 @@
             font-size: 16px !important;
         }
     }
+    :global(button) {
+        @media (max-width: 767px) {
+          margin-top: 0.2em !important;
+          font-size: 1.1em;
+        }
+    }
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
 }
 </style>
