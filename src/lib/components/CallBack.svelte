@@ -30,7 +30,6 @@
         font-size: 23px;
         a {
             color: #4A3AD9;
-            margin-right: 1em;
             @media(min-width:768px) {
                 display: none;
             }
