@@ -42,7 +42,7 @@
     // Создаём FormData и добавляем текст и файл
     const formData = new FormData();
     if (!note) note = null;
-    let resultNote = ['Компания ' + company, note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n");
+    let resultNote = ['Компания: ' + company, note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n");
     formData.append('data', JSON.stringify({ name, phone, email, note: resultNote })); // Добавляем текстовые данные
     formData.append('files.files', files); // Добавляем файл (Strapi ждет ключ 'files')
 
@@ -60,7 +60,7 @@
     const resultTelegramNote = [
       '<b>Сообщение с сайта</b>',
       'Имя: ' + name,
-      "Телефон:" + phone.replaceAll(" ", ""),
+      "Телефон: " + phone.replaceAll(" ", ""),
       bigForm ? 'Email: ' + email : null,
       bigForm ? resultNote : null
     ].join("\n");
