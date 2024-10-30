@@ -76,6 +76,12 @@
 		flex-direction: column;
 		gap: 6px;
 
+    @media (max-width: 767px) {
+      .border-vertical {
+          display: none;
+      }
+    }
+
 		&-borders {
 			display: grid;
 			grid-template-columns: 3fr 1px 2fr;
@@ -134,7 +140,7 @@
 				align-items: center;
 
 				@media (max-width: 767px) {
-					padding: 10px;
+					padding: 0 10px 10px 10px;
 				}
 			}
 			&-source {
@@ -149,8 +155,8 @@
 					height: 40px;
 
 					@media (max-width: 767px) {
-						width: 30px;
-						height: 30px;
+						width: 32px;
+						height: 32px;
 					}
 				}
 
@@ -173,7 +179,15 @@
 						display: none;
 					}
 				}
+        @media (max-width: 767px) {
+          gap: 1em;
+        }
 			}
+      @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0;
+      }
 		}
 	}
 </style>
