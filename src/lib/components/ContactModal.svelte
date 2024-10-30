@@ -18,7 +18,6 @@
   };
 
   let name = "";
-  let phone = "";
   let email = "";
   let company = "";
   let note = null;
@@ -28,6 +27,7 @@
   let sentOk;
 
   let files = null; // Для файла
+  let phoneControl;
   let formData = new FormData();
 
   // Обработчик выбора файла
@@ -41,6 +41,7 @@
 
     // Создаём FormData и добавляем текст и файл
     const formData = new FormData();
+    const phone = phoneControl.value;
     if (!note) note = null;
     let resultNote = ['Компания: ' + company, note, 'Услуги: ' + services.join(", "), 'Бюджет: ' + sum, spam].join("\n");
     formData.append('data', JSON.stringify({ name, phone, email, note: resultNote })); // Добавляем текстовые данные
@@ -95,7 +96,7 @@
             <input type="text" bind:value={name} required placeholder="Ваше имя"/>
             {/if}
             {#if (!hiddenFields.includes('phone'))}
-            <input type="text" bind:value={phone} use:imask={options} required placeholder="+7 (999) 999-99-99"/>
+            <input type="text" maxlength="20" bind:this={phoneControl} use:imask={options} required placeholder="+7 (999) 999-99-99"/>
             {/if}
             {#if (!hiddenFields.includes('email'))}
             <input type="email" bind:value={email} required placeholder="Email" />
@@ -115,7 +116,7 @@
                 <input type="email" bind:value={email} required placeholder="Email" class="w-100" />
             </div>
             <div class="col-6 pb-4">
-                <input type="text" bind:value={phone} use:imask={options} required placeholder="+7 (999) 999-99-99" class="w-100" />
+                <input type="text" maxlength="20" bind:this={phoneControl}  use:imask={options} required placeholder="+7 (999) 999-99-99" class="w-100" />
             </div>
             <div class="col-12 big-form-subtitle font-blue pb-4">
             Выберите нужные услуги
