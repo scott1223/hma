@@ -106,19 +106,19 @@
             {/if}
         {:else}
         <div class="row">
-            <div class="col-6 pb-4">
+            <div class="col-12 col-sm-6 pb-2 pb-sm-4">
                 <input type="text" bind:value={name} required placeholder="Ваше имя" class="w-100" />
             </div>
-            <div class="col-6 pb-4">
+            <div class="col-12 col-sm-6 pb-2 pb-sm-4">
                 <input type="text" bind:value={company} placeholder="Название компании" class="w-100" />
             </div>
-            <div class="col-6 pb-4">
+            <div class="col-12 col-sm-6 pb-2 pb-sm-4">
                 <input type="email" bind:value={email} required placeholder="Email" class="w-100" />
             </div>
-            <div class="col-6 pb-4">
+            <div class="col-12 col-sm-6 pb-2 pb-sm-4">
                 <input type="text" maxlength="20" bind:this={phoneControl}  use:imask={options} required placeholder="+7 (999) 999-99-99" class="w-100" />
             </div>
-            <div class="col-12 big-form-subtitle font-blue pb-4">
+            <div class="col-12 big-form-subtitle font-blue pb-4 pt-3 pt-sm-0 ">
             Выберите нужные услуги
             </div>
             <div class="col-12 button-selectors pb-4">
@@ -184,7 +184,7 @@
                 <label class="custom-checkbox">
                   <input type="checkbox" name="cp" checked required>
                   <span class="checkmark"></span>
-                  Я соглашаюсь с <a href="/policy/"><u>политикой конфиденциальности</u></a>
+                  <div>Я соглашаюсь с <a href="/policy/"><u>политикой конфиденциальности</u></a></div>
                 </label>
             </div>
 
@@ -210,6 +210,14 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    @media (max-width: 767px) {
+        overflow-y: auto;
+        height: initial;
+        bottom: 10px;
+        display: inline-block;
+        padding: 10px;
+        overflow-x: hidden;
+    }
   }
 
   .modal-content {
@@ -228,6 +236,12 @@
     gap: 1em;
     &.big-form {
         max-width: 900px;
+        @media (max-width: 767px) {
+            transform: none !important;
+            width: calc(100% - 10px);
+            padding: 1em;
+            gap: 0.2em;
+        }
     }
   }
 
@@ -246,6 +260,9 @@
       font-size: 1em;
       margin-bottom: 0.5em;
       font-weight: 100;
+      @media (max-width: 767px) {
+          margin-bottom: 1.7em;
+      }
   }
 
   form {
@@ -266,11 +283,15 @@
   }
   button[type="submit"] {
       margin-top: 1em;
+      @media (max-width: 767px) {
+        margin-top: 0;
+      }
   }
   .close-button {
       position: absolute;
       top: 0.7em;
       right: 0.7em;
+      z-index: 100;
   }
   form.ok:after {
     content: 'Спасибо! Мы свяжемся с Вами в ближайшее время!';
@@ -299,7 +320,7 @@
     }
     .button-selectors {
         display: flex;
-        justify-content: center;
+        justify-content: start;
         gap: 1em;
         input {
             display: none;
@@ -316,6 +337,14 @@
         }
         input:checked + label {
             opacity: 1;
+        }
+        @media (max-width: 767px) {
+            font-size: 0.8em;
+            flex-wrap: wrap;
+            gap: 0.8em;
+            label {
+                white-space: nowrap;
+            }
         }
     }
 
