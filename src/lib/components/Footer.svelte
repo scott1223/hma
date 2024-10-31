@@ -313,7 +313,6 @@
 	}
 
 	:global(.border-vertical) {
-		height: 100%;
 		width: 1px;
 		background-color: rgba($color: #000000, $alpha: 0.1);
 	}
