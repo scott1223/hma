@@ -25,7 +25,7 @@
 
 <footer>
 	<div class="container">
-        <div class="cdu-footer-contact-form my-2">
+        <div class="cdu-footer-contact-form mt-2 mb-5">
             <CallContactFormBlockComponent {contactFormData} />
         </div>
 		<div class="footer">
