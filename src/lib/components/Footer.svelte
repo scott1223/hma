@@ -104,7 +104,7 @@
                 <a href="/policy/"><u class="font-blue">Политика конфиденциальности</u></a>
             </div>
             <div class="col-12 col-sm-6 text-center pb-2">
-                © 2023 All rights reserved by HMA           
+                ©&nbsp;{(new Date()).getFullYear()}&nbsp;All&nbsp;rights&nbsp;reserved&nbsp;by&nbsp;HMA           
             </div>
         </div>
             
