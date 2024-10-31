@@ -139,12 +139,8 @@
 					}
 
 					img {
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
 						transition: all 0.5s ease;
 						filter: brightness(90%);
-						aspect-ratio: 16/11;
 					}
 
 					p {
