@@ -197,12 +197,14 @@
 							</div>
 							<div class="list">
 								<p class="list-label">Клиент</p>
+								<div class="cdu-case-client-title-container">
 								<p>{client}</p>
-                                {#if client_logo && client_logo.data?.attributes?.url}
-                                  <div class="client-logo">
-                                    <img src={`${CMS_URL}${client_logo.data?.attributes?.url}`} alt="Client Logo">
-                                  </div>
-                                {/if}
+								{#if client_logo && client_logo.data?.attributes?.url}
+								  <div class="client-logo">
+								    <img src={`${CMS_URL}${client_logo.data?.attributes?.url}`} alt="Client Logo">
+								  </div>
+								{/if}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -222,6 +224,11 @@
 		left: 0;
 		opacity: 0;
 
+		.cdu-case-client-title-container {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+		}
 		&-wrap {
 			margin-top: 10px;
 			min-height: calc(100vh - 20px);
@@ -240,8 +247,18 @@
 			}
 
 			@media (max-width: 767px) {
+				.cdu-case-client-title-container {
+					.cdu-case-client-title-container {
+						display: flex;
+						flex-direction: column;
+						gap: 1em;
+						p {
+							font-size: 1.5em;
+						}
+					}
+				}      
 				@media (orientation: portrait) {
-					min-height: calc(100vh - 20px);
+					min-height: calc(100vh + 150px);
 				}
 
 				@media (orientation: landscape) {
