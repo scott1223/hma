@@ -5,7 +5,7 @@ import { fetchWithRetry } from '$lib/utils.js';
 export async function load({ url }) {
 	try {
 		const slug = url.pathname.replace('/cases/', '');
-		const caseURL = `${CMS_URL}/api/cases?filters[SEO][slug][$eq]=${slug}&populate[heroImages]=*&populate[thumbnail]=*&populate[servicesList][populate]=*&populate[bigImage][populate][image]=*&populate[textBlock][populate][quote][populate][image]=*&populate[slider][populate]=*&populate[textBlock2][populate][contentElement]=*&populate[textBlock2][populate][quote][populate][image]=*&populate[SEO][populate][image]=*&populate[client_logo]=*&populate[GridPhotoBlock][populate]=*&populate[Test]=*&populate[textBlock][populate][contentElement][populate]=videoMp4`;
+		const caseURL = `${CMS_URL}/api/cases?filters[SEO][slug][$eq]=${slug}&populate[heroImages]=*&populate[thumbnail]=*&populate[servicesList][populate]=*&populate[bigImage][populate][image]=*&populate[textBlock][populate][quote][populate][image]=*&populate[slider][populate]=*&populate[textBlock2][populate][contentElement][populate]=videoMp4&populate[textBlock2][populate][contentElement]=*&populate[textBlock2][populate][quote][populate][image]=*&populate[SEO][populate][image]=*&populate[client_logo]=*&populate[GridPhotoBlock][populate]=*&populate[Test]=*&populate[textBlock][populate][contentElement][populate]=videoMp4`;
 		const { data } = await fetchWithRetry(caseURL);
 		let currentCaseId = data[0]?.id;
 		let prevCase;
