@@ -5,7 +5,7 @@
 	import { scale } from 'svelte/transition';
     import { CMS_URL } from '$lib/globals.js';
 
-	let {scrollText2} = $props();
+	let {scrollText, scrollText2} = $props();
     let locked;
 
     const openBigModal = getContext('openBigModal');
@@ -103,6 +103,7 @@
 					<div class="half-cta-element-cover"></div>
 					<div class="half-cta-element-content" style="background-image: url('{CMS_URL + '/uploads/about_hero1_2_839fe0180a.svg'}')">
 					</div>
+					<p>{scrollText}</p>
 				</div>
                 <a href="/about" class="position-absolute" style="z-index:1;inset:0"></a> 
 			</div>
@@ -246,6 +247,7 @@
 					transform: translate(-50%, -50%);
 					z-index: 2;
 					color: #fff;
+					max-width: calc(100% - 40px);
 
 					font-size: clamp(50px, calc(60 / 1600 * 100vw), 60px);
 					text-align: center;
@@ -285,6 +287,7 @@
 					transform: translate(-50%, -50%);
 					z-index: 1;
 					color: #333333;
+					max-width: calc(100% - 40px);
 
 					font-size: clamp(50px, calc(60 / 1600 * 100vw), 60px);
 					text-align: center;
