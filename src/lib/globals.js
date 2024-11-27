@@ -25,7 +25,7 @@ const tgSendMessage =  async function sendMessageToTelegram(message) {
       });
 
       if (!response.ok) {
-        alert('Ошибка при отправке сообщения в telegram', response);
+        console.error('Ошибка при отправке сообщения в telegram', response);
       }
     } catch (error) {
       console.error('Ошибка при отправке сообщения в telegram', error);

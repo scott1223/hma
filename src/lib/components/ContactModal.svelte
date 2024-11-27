@@ -144,7 +144,7 @@
             </div>
             <div class="col-12 button-selectors pb-4">
                 <div>
-                    <input type="radio" id="r1" bind:group={sum} value="< 500000">
+                    <input type="radio" id="r1" bind:group={sum} value="до 500000">
                     <label for="r1">&lt; 500 000</label>
                 </div>
                 <div>
@@ -152,7 +152,7 @@
                     <label for="r2">500 000 - 1 000 000</label>
                 </div>
                 <div>
-                    <input type="radio" id="r3" bind:group={sum} value=">1000000">
+                    <input type="radio" id="r3" bind:group={sum} value="от 1000000">
                     <label for="r3">&gt; 1 000 000</label>
                 </div>
             </div>
