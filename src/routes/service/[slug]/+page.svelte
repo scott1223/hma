@@ -11,7 +11,8 @@
 	let {data} = $props();
     let contactForm = data.footerInfo.contactForm;
 
-	let seo = data.soloMediaData.SEO
+    let seo = data.soloMediaData.SEO
+    const caseLinks = data.soloMediaData.gridPhoto?.case_links?.split("\n");
 </script>
 
 <svelte:head>
@@ -28,7 +29,7 @@
   <DescriptionBlockRich content={data.soloMediaData.textBlock1_1} />
   <Accordion accordion={data.soloMediaData.accordion} philosophy='' />
   <div class="container"><h2>{data.soloMediaData.title2}</h2></div>
-  <GridPhotoBlock GridPhotoBlock={data.soloMediaData.gridPhoto} galleryId="casesPhotoGrid" />
+  <GridPhotoBlock GridPhotoBlock={data.soloMediaData.gridPhoto} {caseLinks} galleryId="casesPhotoGrid" />
   <DescriptionBlockRich content={data.soloMediaData.textBlock2_1} className='--margin-bottom' />
 </div>
 

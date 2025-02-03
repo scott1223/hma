@@ -4,11 +4,11 @@
     import 'photoswipe/style.css';
     import { CMS_URL } from '$lib/globals.js';
     
-	let {GridPhotoBlock, galleryId}=$props()
+	let {GridPhotoBlock, galleryId, caseLinks}=$props()
     let gridPhotos = GridPhotoBlock?.Images?.data
     
     onMount(() => {
-        if (gridPhotos) {
+        if (0 && gridPhotos) {
             let lightbox = new PhotoSwipeLightbox({
               gallery: '#' + galleryId,
               children: 'a',
@@ -26,7 +26,7 @@
     <div class="grid-photo-wrapper" id={galleryId}>
     {#each gridPhotos as img, i}
         <div class="grid-photo-container g{i}" style="background-image: url('{CMS_URL + img.attributes.url}')">
-            <a href={CMS_URL + img.attributes.url} class="grid-photo" target="_blank">
+            <a href={(caseLinks && caseLinks[i]) ? caseLinks[i] : CMS_URL + img.attributes.url} class="grid-photo" target="{(caseLinks && caseLinks[i]) ? '_self' : '_blank'}">
             </a>
         </div>
     {/each}

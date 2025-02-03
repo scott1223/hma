@@ -5,7 +5,7 @@ import { fetchWithRetry } from '$lib/utils.js';
 export async function load({ url }) {
 	const slug = url.pathname.replace('/service/', '');
 	try {
-		const soloMedaURL = `${CMS_URL}/api/services?filters[SEO][slug][$eq]=${slug}&populate[gridPhoto][populate]=*&populate[heroimages][populate]=true&populate[accordion][populate]=true&populate=*`;
+		const soloMedaURL = `${CMS_URL}/api/services?filters[SEO][slug][$eq]=${slug}&populate[gridPhoto][populate]=*&populate[heroimages][populate]=true&populate[accordion][populate]=*&populate=*&populate[SEO]=*`;
 		const soloMediaData = await fetchWithRetry(soloMedaURL);
 		const mediaArrayURL = `${CMS_URL}/api/services?fields[0]=title&fields[2]=pageTitle&populate[thumbnail]=*&populate[SEO]=*&fields[1]=publishedAt&pagination[page]=1&pagination[pageSize]=6`
 		const mediaArray = await fetchWithRetry(mediaArrayURL)
