@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import { marked } from 'marked';
+
 
 	let {accordion, philosophy}=$props()
 	let accGrid;
@@ -45,7 +47,7 @@
 		<div class="accordion-grid-element-wrap">
 			<div class="accordion-grid-element-wrap-header">{accordion.header}</div>
 			<div class="accordion-grid-element-wrap-content">
-				{@html accordion.content}
+				{@html marked.parse(accordion.content_marked)}
 			</div>
 		</div>
 	</div>

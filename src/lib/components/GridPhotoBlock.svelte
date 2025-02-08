@@ -25,7 +25,7 @@
 {#if (gridPhotos) }
     <div class="grid-photo-wrapper" id={galleryId}>
     {#each gridPhotos as img, i}
-        <div class="grid-photo-container g{i}" style="background-image: url('{CMS_URL + img.attributes.url}')">
+        <div class="grid-photo-container g{i}{caseLinks ? ' caseLinks' : ''}" style="background-image: url('{CMS_URL + img.attributes.url}')">
             <a href={(caseLinks && caseLinks[i]) ? caseLinks[i] : CMS_URL + img.attributes.url} class="grid-photo" target="{(caseLinks && caseLinks[i]) ? '_self' : '_blank'}">
             </a>
         </div>
@@ -68,6 +68,15 @@
         a {
             margin-top: 50%;
         }
+    }
+    .caseLinks {
+        &:hover {
+            transform: scale(1.01);
+            filter: brightness(1);
+        }
+        transition: all 0.3s;
+        border-radius: 10px;
+        filter: brightness(0.8);
     }
 }
 </style>
