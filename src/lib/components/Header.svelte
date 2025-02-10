@@ -121,9 +121,9 @@
 						<li>
 							<a href="/about"><span>О нас</span></a>
 						</li>
-						<!--li>
+						<li>
 							<a href="/service"><span>услуги</span></a>
-						</li-->
+						</li>
 						<li>
 							<a href="/cases"><span>кейсы</span></a>
 						</li>
