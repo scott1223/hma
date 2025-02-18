@@ -47,7 +47,7 @@
 		<div class="accordion-grid-element-wrap">
 			<div class="accordion-grid-element-wrap-header">{accordion.header}</div>
 			<div class="accordion-grid-element-wrap-content">
-				{@html marked.parse(accordion.content_marked)}
+				{@html accordion.content_marked ? marked.parse(accordion.content_marked) : ""}
 			</div>
 		</div>
 	</div>
